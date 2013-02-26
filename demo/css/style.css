@@ -60,6 +60,10 @@ body {
 	cursor: move;
 }
 
+.draggable-placeholder {
+	opacity: .33;
+}
+
 .course-placeholder {
 	cursor: pointer;
 	background-color: #fff;
@@ -77,8 +81,8 @@ body {
 	background-color: #FFB2B2;
 }
 
-.catalog label {
-	display: block;
+label[for="semester-templates"] {
+	display: inline-block;
 }
 
 .catalog select {

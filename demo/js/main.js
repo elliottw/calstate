@@ -1,10 +1,13 @@
 $(function() {
 	$(".course-draggable").draggable({
-		revert: true,
+		helper: 'clone',
 		start: function(event, ui) {
+			$(event.target).addClass('draggable-placeholder');
+			ui.helper.addClass('draggable-clone');
 			$(".semester").addClass('active');
 		},
 		stop: function(event, ui) {
+			$(event.target).removeClass('draggable-placeholder');
 			$(".semester").removeClass('active');
 		}
 	});
