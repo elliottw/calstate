@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Sandbox</title>
+		<title>Demo</title>
 		<link rel="stylesheet" href="css/reset.css">
 		<!--<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.1.custom.css">-->
 		<link rel="stylesheet" href="css/style.css">
@@ -24,30 +24,36 @@
 					<div class="tab-content">
 						<div class="tab-pane planner active" id="tab-planner">
 							<div class="semester-container">
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Fall 2012</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Spring 2013</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Fall 2013</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Spring 2014</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Fall 2014</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Spring 2015</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Fall 2015</h4>
-								</div>
-								<div class="semester semester-accept">
-									<h4 class="semester-heading">Spring 2016</h4>
-								</div>
+								<h4 class="semester-heading">Fall 2012</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Spring 2013</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Fall 2013</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Spring 2014</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Fall 2014</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Spring 2015</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Fall 2015</h4>
+								<div class="semester semester-accept"></div>
+							</div>
+							<div class="semester-container">
+								<h4 class="semester-heading">Spring 2016</h4>
+								<div class="semester semester-accept"></div>
 							</div>
 						</div> <!-- .planner -->
 
@@ -61,14 +67,14 @@
 									<label for="school">School</label>
 									<select multiple name="school" id="school" size="4">
 										<option value="all">All</option>
-										<option value="calstate">CalState</option>
+										<option value="calstate" selected>CalState</option>
 										<option value="elacc">East Los Angeles Community College</option>
 										<option value="elahs">East Los Angeles High School</option>
 									</select>
 									<label for="career">Career</label>
 									<select multiple name="career" id="career" size="4">
 										<option value="all">All</option>
-										<option value="undergraduate">Undergraduate</option>
+										<option value="undergraduate" selected>Undergraduate</option>
 										<option value="graduate">Graduate</option>
 										<option value="phd">Doctor of Philosophy</option>
 									</select>
@@ -76,10 +82,10 @@
 									<select multiple name="term" id="term" size="4">
 										<option value="current">Current</option>
 										<option value="all">All</option>
-										<option value="fall2013">Fall 2013</option>
+										<option value="fall2012" selected>Fall 2012</option>
 										<option value="winter2013">Winter 2013</option>
-										<option value="spring2014">Spring 2014</option>
-										<option value="fall2014">Fall 2014</option>
+										<option value="spring2013">Spring 2013</option>
+										<option value="fall2013">Fall 2013</option>
 										<option value="winter2014">Winter 2014</option>
 									</select>
 									<label for="course-level">Course Level</label>
@@ -87,25 +93,25 @@
 										<option value="all">All</option>
 										<option value="upper-division">Upper Division</option>
 										<option value="lower-division">Lower Division</option>
-										<option value="electives">Electives</option>
+										<option value="electives" selected>Electives</option>
 									</select>
 									<label for="major-type">Major Type</label>
 									<select multiple name="major-type" id="major-type" size="4">
-										<option value="all">All</option>
+										<option value="all" selected>All</option>
 										<option value="civil-engineering">Civil Engineering</option>
 										<option value="electrical-engineering">Electrical Engineering</option>
 										<option value="computer-engineering">Computer Engineering</option>
 									</select>
 									<label for="department">Department</label>
 									<select multiple name="department" id="department" size="4">
-										<option value="all">All</option>
+										<option value="all" selected>All</option>
 										<option value="arts">Arts</option>
 										<option value="communication">Communication</option>
 										<option value="humanities">Humanities</option>
 									</select>
 									<label for="subject">Subject</label>
 									<select multiple name="subject" id="subject" size="4">
-										<option value="all">All</option>
+										<option value="all" selected>All</option>
 										<option value="mechanical-engineering">Mechanical Engineering</option>
 										<option value="management">Management</option>
 										<option value="music">Music</option>
@@ -116,7 +122,7 @@
 									<label for="class">Classes</label>
 									<select name="class" id="class" size="6">
 										<option value="elec101">ELEC 101</option>
-										<option value="elec102">ELEC 102</option>
+										<option value="elec102" selected>ELEC 102</option>
 										<option value="elec103">ELEC 103</option>
 										<option value="elec104">ELEC 104</option>
 									</select>
@@ -147,7 +153,7 @@
 							</div> <!-- .row -->
 						</div> <!-- .catalog -->
 					</div> <!-- .tab-content -->
-				</div> <!-- .left-panel -->
+				</div> <!-- #left-panel .span8 -->
 				<div class="course-holding-container span4">
 					<div class="course-category">
 						<h3 class="course-category-heading">Lower Division GE Requirements</h3>
