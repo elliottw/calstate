@@ -1,0 +1,106 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.course-holding-container {
+	border: 1px solid #bbb;
+	padding: 10px;
+}
+
+.course-category {
+	padding-bottom: 16px;
+	border-bottom: 1px solid;
+}
+
+.course-category:last-child {
+	border-bottom: 0;
+}
+
+.semester {
+	height: 100px;
+	margin-bottom: 20px;
+	background-color: #ddd;
+	border: 1px solid;
+}
+
+.semester-heading {
+	font-size: 14px;
+	margin: 0.25em 0 0 0.5em;
+}
+
+.course, .course-placeholder {
+	text-align: center;
+	display: inline-block;
+	margin: 5px;
+	min-width: 100px;
+	border: 1px solid;
+	padding: 5px;
+}
+
+.course-category-heading {
+	font-size: 18px;
+	margin: 6px 0;
+}
+
+.course {
+	cursor: auto;
+	background-color: #999;
+}
+
+.course-draggable {
+	background-color: #ccc;
+	cursor: move;
+}
+
+.course-placeholder {
+	cursor: pointer;
+	background-color: #fff;
+}
+
+.semester-accept.hover {
+	background-color: #e5eecc !important;	
+}
+
+.semester-accept.active {
+	background-color: #DCECB5;
+}
+
+.semester-noaccept.active {
+	background-color: #FFB2B2;
+}
+
+.catalog label {
+	display: block;
+}
+
+.catalog select {
+	width: 100%;
+	margin-top: 0.25em;
+	margin-bottom: 1em;
+}
+
+.course-description {
+	border: 1px solid;
+}
+
+.course-description > .course {
+	float: left;
+	margin: 8px;
+}
+
+.course-name {
+	font-size: 18px;
+	line-height: 1.25em;
+	margin: 8px;
+}
+
+.course-description dl {
+	margin: 20px;
+}
+
+.course-description dd {
+	margin-bottom: 1em;
+}

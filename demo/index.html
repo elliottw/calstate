@@ -1,0 +1,243 @@
+<html>
+	<head>
+		<title>Sandbox</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<!--<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.1.custom.css">-->
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-responsive.css">
+
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/jquery-ui-1.10.1.custom.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="span8" id="left-panel">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab-planner" data-toggle="tab">Planner</a></li>
+						<li><a href="#tab-calendar" data-toggle="tab">Calendar</a></li>
+						<li><a href="#tab-catalog" data-toggle="tab">Catalog</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane planner active" id="tab-planner">
+							<div class="semester-container">
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Fall 2012</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Spring 2013</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Fall 2013</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Spring 2014</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Fall 2014</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Spring 2015</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Fall 2015</h4>
+								</div>
+								<div class="semester semester-accept">
+									<h4 class="semester-heading">Spring 2016</h4>
+								</div>
+							</div>
+						</div> <!-- .planner -->
+
+						<div class="tab-pane calendar" id="tab-calendar">
+							<img src="img/calendar-placeholder.png" />
+						</div> <!-- .calendar -->
+
+						<div class="tab-pane catalog" id="tab-catalog">
+							<div class="row">
+								<div class="filters span3">
+									<label for="school">School</label>
+									<select multiple name="school" id="school" size="4">
+										<option value="all">All</option>
+										<option value="calstate">CalState</option>
+										<option value="elacc">East Los Angeles Community College</option>
+										<option value="elahs">East Los Angeles High School</option>
+									</select>
+									<label for="career">Career</label>
+									<select multiple name="career" id="career" size="4">
+										<option value="all">All</option>
+										<option value="undergraduate">Undergraduate</option>
+										<option value="graduate">Graduate</option>
+										<option value="phd">Doctor of Philosophy</option>
+									</select>
+									<label for="term">Term</label>
+									<select multiple name="term" id="term" size="4">
+										<option value="current">Current</option>
+										<option value="all">All</option>
+										<option value="fall2013">Fall 2013</option>
+										<option value="winter2013">Winter 2013</option>
+										<option value="spring2014">Spring 2014</option>
+										<option value="fall2014">Fall 2014</option>
+										<option value="winter2014">Winter 2014</option>
+									</select>
+									<label for="course-level">Course Level</label>
+									<select multiple name="course-level" id="course-level" size="4">
+										<option value="all">All</option>
+										<option value="upper-division">Upper Division</option>
+										<option value="lower-division">Lower Division</option>
+										<option value="electives">Electives</option>
+									</select>
+									<label for="major-type">Major Type</label>
+									<select multiple name="major-type" id="major-type" size="4">
+										<option value="all">All</option>
+										<option value="civil-engineering">Civil Engineering</option>
+										<option value="electrical-engineering">Electrical Engineering</option>
+										<option value="computer-engineering">Computer Engineering</option>
+									</select>
+									<label for="department">Department</label>
+									<select multiple name="department" id="department" size="4">
+										<option value="all">All</option>
+										<option value="arts">Arts</option>
+										<option value="communication">Communication</option>
+										<option value="humanities">Humanities</option>
+									</select>
+									<label for="subject">Subject</label>
+									<select multiple name="subject" id="subject" size="4">
+										<option value="all">All</option>
+										<option value="mechanical-engineering">Mechanical Engineering</option>
+										<option value="management">Management</option>
+										<option value="music">Music</option>
+									</select>
+								</div> <!-- .filters -->
+
+								<div class="filter-results span5">
+									<label for="class">Classes</label>
+									<select name="class" id="class" size="6">
+										<option value="elec101">ELEC 101</option>
+										<option value="elec102">ELEC 102</option>
+										<option value="elec103">ELEC 103</option>
+										<option value="elec104">ELEC 104</option>
+									</select>
+
+									<div class="course-description">
+										<div class="course course-draggable">ELEC 102</div>
+										<h3 class="course-name">Introduction to Higher Education for Engineers</h3>
+										<dl>
+											<dt>Description</dt>
+											<dd>University structure, policies, and procedures, resources available, and skills necessary for success. Introduction to profession of engineering; engineering, design process; communication skills in engineering. Laboratory 3 hours. Graded CR/NC.</dd>
+											<dt>Learning Outcome</dt>
+											<dd>Upon successful completion of the course, each student should be able to understand and apply concepts and skills that will enhance their success and a student and as an engineer.</dd>
+											<dt>Text</dt>
+											<dd>Landis, Raymond B. (2007). Studying Engineering: A Road Map to a Rewarding Career (3rd Ed.) Los Angeles: Discovery Press.</dd>
+											<dt>Sections</dt>
+											<dd></dd>
+											<dt>Equivalencies</dt>
+											<dd></dd>
+											<dt>Pre-requirements</dt>
+											<dd></dd>
+											<dt>Co-requirements</dt>
+											<dd></dd>
+											<dt>Requirements for</dt>
+											<dd></dd>
+										</dl>
+									</div>
+								</div>
+							</div> <!-- .row -->
+						</div> <!-- .catalog -->
+					</div> <!-- .tab-content -->
+				</div> <!-- .left-panel -->
+				<div class="course-holding-container span4">
+					<div class="course-category">
+						<h3 class="course-category-heading">Lower Division GE Requirements</h3>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Fake Electives for Testing</h3>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Fake Electives for Testing</h3>
+						<div class="course course-draggable">ELEC 101</div>
+						<div class="course course-draggable">ELEC 101</div>
+						<div class="course course-draggable">ELEC 101</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Lower Division Major Requirement</h3>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Upper Division Major Requirement</h3>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Senior Design Requirements</h3>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+						<div class="course">REQ 100</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Upper Division Technical Electives</h3>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">Lab</h3>
+						<div class="course-placeholder">+</div>
+					</div>
+					<div class="course-category">
+						<h3 class="course-category-heading">General Ed Upper Division Theme</h3>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+						<div class="course-placeholder">+</div>
+					</div>
+				</div>
+			</div> <!-- .row -->
+		</div> <!-- .container -->
+	</body>
+</html>
