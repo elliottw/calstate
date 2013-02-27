@@ -1,7 +1,58 @@
 $(function() {
 	getCourses = function(courseName) {
-		return $('[data-course="' + courseName + '"]');
+		return $('.course-marker[data-course="' + courseName + '"]');
 	};
+
+	getSemesters = function(semesterName) {
+		return $('[data-semester="' + semesterName + '"]');
+	};
+
+	var addCourse = function(course, semester) {
+		onSemesterDrop.call(getCourses(course)[0],getSemesters(semester)[0]);
+	};
+
+	$('select#semester-templates').on('change', function() {
+		var selectedEl = $('select#semester-templates option:selected')[0];
+		if ($(selectedEl).val() == 'general-requirements') {
+			resetAll();
+			addCourse('ge101', 'fall12');
+			addCourse('req100', 'spr13');
+
+			addCourse('ge102', 'spr13');
+			addCourse('req100', 'spr13');
+			addCourse('req101', 'spr13');
+
+			addCourse('ge103', 'fall13');
+			addCourse('ge104', 'fall13');
+
+			addCourse('ge105', 'spr14');
+			addCourse('req102', 'spr14');
+		}
+		else if ($(selectedEl).val() == 'special-interests') {
+			resetAll();
+			addCourse('ge101', 'fall12');
+			addCourse('req100', 'fall12');
+			addCourse('elec101', 'fall12');
+
+			addCourse('ge102', 'spr13');
+			addCourse('req100', 'spr13');
+			addCourse('req101', 'spr13');
+			addCourse('elec102', 'spr13');
+
+			addCourse('ge103', 'fall13');
+			addCourse('ge104', 'fall13');
+			addCourse('elec103', 'fall13');
+
+			if (getCourses('elec202').hasClass('course-marker-sidebar'))
+				addCourse('elec202', 'fall13');
+
+			addCourse('ge105', 'spr14');
+			addCourse('req102', 'spr14');
+		}
+		else if ($(selectedEl).val() == 'blank') {
+			resetAll();
+		}
+	});
 
 	var isDroppable = function(draggable) {
 		if (!draggable.hasClass('course-marker-sidebar') && !draggable.hasClass('course-marker-planned')) {
@@ -35,7 +86,7 @@ $(function() {
 	};
 
 	// draggable member function
-	var onSemesterDrop = function(droppable) {
+	onSemesterDrop = function(droppable) {
 		var course = $(this);
 		var semester = $(droppable);
 		var courseText = course.text();
@@ -44,14 +95,17 @@ $(function() {
 			course = course.detach();
 		}
 		else {
-			course.after('<div class="course-slot course-slot-claimed">' + courseText + '</div>');
+			course.after('<div class="course-slot course-slot-claimed" data-course="' + course.data('course') + '">' + courseText + '</div>');
 			course.removeClass("course-marker-sidebar");
 			course.addClass("course-marker-planned");
+			var r = parseInt(Math.random()*10, 10);
+			var grade = ['A','A','A-','A-','B+','B+','B','B-','C+','C'][r];
+			course.append('<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + grade);
 		}
 		course.appendTo(semester);
 	};
 
-	var onSlotDrop = function(droppable) {
+	onSlotDrop = function(droppable) {
 		var course = $(this);
 		var courseSlot = $(droppable);
 		var courseText = course.text();
@@ -62,7 +116,25 @@ $(function() {
 		course.addClass("course-marker-sidebar");
 	};
 
-	$(".course-marker").draggable({
+	resetCourse = function(courseName) {
+		var course = getCourses(courseName)[0];
+		var slot = $('.course-slot-claimed[data-course="' + courseName + '"]');
+		slot.removeClass("course-slot course-slot-claimed");
+		slot.addClass("course-marker course-marker-sidebar");
+		$(course).remove();
+		slot.draggable(courseDragOpts);
+	};
+
+	resetAll = function() {
+		$(".semester").each(function() {
+			$(this).find('.course-marker').each(function() {
+				var courseName = $(this).data('course');
+				resetCourse(courseName);
+			});
+		});
+	};
+
+	var courseDragOpts = {
 		helper: 'clone',
 		start: function(event, ui) {
 			var course = $(event.target);
@@ -83,7 +155,9 @@ $(function() {
 				getCourses(prereq).removeClass('prereq');
 			}
 		}
-	});
+	};
+
+	$(".course-marker").draggable(courseDragOpts);
 
 	$(".semester").droppable({
 		accept: isDroppable,
