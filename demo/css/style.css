@@ -28,6 +28,11 @@ body {
 	margin-bottom: 20px;
 	background-color: #ddd;
 	border: 1px solid;
+	overflow: hidden;
+}
+
+.semester > div {
+	margin: 25px;
 }
 
 .semester-heading {
@@ -36,48 +41,64 @@ body {
 	display: inline-block;
 }
 
-.course, .course-placeholder {
-	text-align: center;
-	display: inline-block;
-	margin: 5px;
-	min-width: 100px;
-	border: 1px solid;
-	padding: 5px;
-}
 
 .course-category-heading {
 	font-size: 18px;
 	margin: 6px 0;
 }
 
-.course {
-	cursor: auto;
-	background-color: #999;
-}
-
-.course-draggable {
-	background-color: #ccc;
+.course-marker {
+	text-align: center;
+	display: inline-block;
+	margin: 5px;
+	min-width: 100px;
+	border: 1px solid;
+	padding: 5px;
 	cursor: move;
+	background-color: #bbb;
 }
 
-.draggable-placeholder {
+.course-slot {
+	text-align: center;
+	display: inline-block;
+	margin: 5px;
+	min-width: 100px;
+	border: 1px solid;
+	padding: 5px;	
+}
+
+.drag-placeholder {
 	opacity: .33;
 }
 
-.course-placeholder {
+.prereq {
+	background-color: #c99;
+}
+
+.course-slot-claimed {
+	cursor: auto;
+	background-color: #bbb;
+	opacity: .33;
+}
+
+.course-slot-open {
 	cursor: pointer;
 	background-color: #fff;
 }
 
-.semester-accept.hover {
-	background-color: #e5eecc !important;	
+.course-slot-open.hover {
+	background-color: #e5eecc !important;
 }
 
-.semester-accept.active {
+.semester.hover {
+	background-color: #e5eecc !important;
+}
+
+.semester.active {
 	background-color: #DCECB5;
 }
 
-.semester-noaccept.active {
+.semester.active {
 	background-color: #FFB2B2;
 }
 

@@ -10,6 +10,8 @@
 		<script src="js/jquery-1.9.1.js"></script>
 		<script src="js/jquery-ui-1.10.1.custom.js"></script>
 		<script src="js/bootstrap.js"></script>
+		<script src="js/underscore.js"></script>
+		<script src="js/data.js"></script>
 		<script src="js/main.js"></script>
 	</head>
 	<body>
@@ -31,35 +33,35 @@
 							</select>
 							<div class="semester-container">
 								<h4 class="semester-heading">Fall 2012</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="fall12" data-semester-order="0"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Spring 2013</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="spr13" data-semester-order="1"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Fall 2013</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="fall13" data-semester-order="2"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Spring 2014</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="spr14" data-semester-order="3"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Fall 2014</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="fall14" data-semester-order="4"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Spring 2015</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="spr15" data-semester-order="5"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Fall 2015</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="fall15" data-semester-order="6"></div>
 							</div>
 							<div class="semester-container">
 								<h4 class="semester-heading">Spring 2016</h4>
-								<div class="semester semester-accept"></div>
+								<div class="semester" data-semester="spr16" data-semester-order="7"></div>
 							</div>
 						</div> <!-- .planner -->
 
@@ -127,14 +129,14 @@
 								<div class="filter-results span5">
 									<label for="class">Classes</label>
 									<select name="class" id="class" size="6">
-										<option value="elec101">ELEC 101</option>
-										<option value="elec102" selected>ELEC 102</option>
-										<option value="elec103">ELEC 103</option>
-										<option value="elec104">ELEC 104</option>
+										<option value="elec201">ELEC 201</option>
+										<option value="elec202" selected>ELEC 202</option>
+										<option value="elec203">ELEC 203</option>
+										<option value="elec204">ELEC 204</option>
 									</select>
 
 									<div class="course-description">
-										<div class="course course-draggable">ELEC 102</div>
+										<div class="course-marker course-marker-catalog" data-course="elec202">ELEC 202</div>
 										<h3 class="course-name">Introduction to Higher Education for Engineers</h3>
 										<dl>
 											<dt>Description</dt>
@@ -154,7 +156,7 @@
 											<dt>Requirements for</dt>
 											<dd></dd>
 										</dl>
-									</div>
+									</div> <!-- .course-description -->
 								</div>
 							</div> <!-- .row -->
 						</div> <!-- .catalog -->
@@ -163,90 +165,85 @@
 				<div class="course-holding-container span4">
 					<div class="course-category">
 						<h3 class="course-category-heading">Lower Division GE Requirements</h3>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
+						<div class="course-marker course-marker-sidebar" data-course="ge101">GE 101</div>
+						<div class="course-marker course-marker-sidebar" data-course="ge102" data-prereq="ge101">GE 102</div>
+						<div class="course-marker course-marker-sidebar" data-course="ge103" data-semesters="spr13 spr14 spr15 spr16" data-prereq="ge102">GE 103</div>
+						<div class="course-marker course-marker-sidebar" data-course="ge104" data-prereq="ge102">GE 104</div>
+						<div class="course-marker course-marker-sidebar" data-course="ge105" data-prereq="ge102">GE 105</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">Fake Electives for Testing</h3>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-					</div>
-					<div class="course-category">
-						<h3 class="course-category-heading">Fake Electives for Testing</h3>
-						<div class="course course-draggable">ELEC 101</div>
-						<div class="course course-draggable">ELEC 101</div>
-						<div class="course course-draggable">ELEC 101</div>
+						<div class="course-marker course-marker-sidebar" data-course="elec101" data-semesters="fall12 fall13 fall14 fall15">ELEC 101</div>
+						<div class="course-marker course-marker-sidebar" data-course="elec102">ELEC 102</div>
+						<div class="course-marker course-marker-sidebar" data-course="elec103">ELEC 103</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">Lower Division Major Requirement</h3>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
+						<div class="course-marker course-marker-sidebar" data-course="req100">REQ 100</div>
+						<div class="course-marker course-marker-sidebar" data-course="req101">REQ 101</div>
+						<div class="course-marker course-marker-sidebar" data-course="req102">REQ 102</div>
+						<div class="course-marker course-marker-sidebar" data-course="req103">REQ 103</div>
+						<div class="course-marker course-marker-sidebar" data-course="req104">REQ 104</div>
+						<div class="course-marker course-marker-sidebar" data-course="req105">REQ 105</div>
+						<div class="course-marker course-marker-sidebar" data-course="req106">REQ 106</div>
+						<div class="course-marker course-marker-sidebar" data-course="req107">REQ 107</div>
+						<div class="course-marker course-marker-sidebar" data-course="req108">REQ 108</div>
+						<div class="course-marker course-marker-sidebar" data-course="req109">REQ 109</div>
+						<div class="course-marker course-marker-sidebar" data-course="req110">REQ 111</div>
+						<div class="course-marker course-marker-sidebar" data-course="req111">REQ 112</div>
+						<div class="course-marker course-marker-sidebar" data-course="req112">REQ 113</div>
+						<div class="course-marker course-marker-sidebar" data-course="req113">REQ 114</div>
+						<div class="course-marker course-marker-sidebar" data-course="req114">REQ 115</div>
+						<div class="course-marker course-marker-sidebar" data-course="req115">REQ 116</div>
+						<div class="course-marker course-marker-sidebar" data-course="req116">REQ 117</div>
+						<div class="course-marker course-marker-sidebar" data-course="req117">REQ 119</div>
+						<div class="course-marker course-marker-sidebar" data-course="req118">REQ 118</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">Upper Division Major Requirement</h3>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
+						<div class="course-marker course-marker-sidebar" data-course="req201">REQ 201</div>
+						<div class="course-marker course-marker-sidebar" data-course="req202">REQ 202</div>
+						<div class="course-marker course-marker-sidebar" data-course="req203">REQ 203</div>
+						<div class="course-marker course-marker-sidebar" data-course="req204">REQ 204</div>
+						<div class="course-marker course-marker-sidebar" data-course="req205">REQ 205</div>
+						<div class="course-marker course-marker-sidebar" data-course="req206">REQ 206</div>
+						<div class="course-marker course-marker-sidebar" data-course="req207">REQ 207</div>
+						<div class="course-marker course-marker-sidebar" data-course="req208">REQ 208</div>
+						<div class="course-marker course-marker-sidebar" data-course="req209">REQ 209</div>
+						<div class="course-marker course-marker-sidebar" data-course="req210">REQ 210</div>
+						<div class="course-marker course-marker-sidebar" data-course="req211">REQ 211</div>
+						<div class="course-marker course-marker-sidebar" data-course="req212">REQ 212</div>
+						<div class="course-marker course-marker-sidebar" data-course="req213">REQ 213</div>
+						<div class="course-marker course-marker-sidebar" data-course="req214">REQ 214</div>
+						<div class="course-marker course-marker-sidebar" data-course="req215">REQ 215</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">Senior Design Requirements</h3>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
-						<div class="course">REQ 100</div>
+						<div class="course-marker course-marker-sidebar" data-course="req500">REQ 501</div>
+						<div class="course-marker course-marker-sidebar" data-course="req502">REQ 502</div>
+						<div class="course-marker course-marker-sidebar" data-course="req503">REQ 503</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">Upper Division Technical Electives</h3>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">Lab</h3>
-						<div class="course-placeholder">+</div>
+						<div class="course-slot course-slot-open">+</div>
 					</div>
 					<div class="course-category">
 						<h3 class="course-category-heading">General Ed Upper Division Theme</h3>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
-						<div class="course-placeholder">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
+						<div class="course-slot course-slot-open">+</div>
 					</div>
 				</div>
 			</div> <!-- .row -->
