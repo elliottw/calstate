@@ -1,0 +1,12 @@
+GE102:
+	Prerequisites: GE101
+GE103:
+	Prerequisites: GE102
+	Spring only
+GE104:
+	Prerequisites: GE102
+GE105:
+	Prerequisites: GE102
+
+ELEC101:
+	Fall only
