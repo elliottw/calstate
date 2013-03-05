@@ -1,0 +1,727 @@
+{
+  "semesters": [
+    {
+      "id": "fall13",
+      "label": "Fall 2013"
+    },
+    {
+      "id": "spr14",
+      "label": "Spring 2014"
+    },
+    {
+      "id": "fall14",
+      "label": "Fall 2014"
+    }
+  ],
+  "courses": [
+    {
+      "id": "engl101",
+      "label": "ENGL 101"
+    },
+    {
+      "id": "comm150",
+      "label": "COMM 150"
+    },
+    {
+      "id": "hist202a",
+      "label": "HIST 202A"
+    },
+    {
+      "id": "hist202b",
+      "label": "HIST 202B"
+    },
+    {
+      "id": "pols150",
+      "label": "POLS 150"
+    },
+    {
+      "id": "engl102",
+      "label": "ENGL 102"
+    },
+    {
+      "id": "wpe",
+      "label": "WPE",
+      "prereq": [
+        "engl102"
+      ]
+    },
+    {
+      "id": "engr150",
+      "label": "ENGR 150"
+    },
+    {
+      "id": "me103",
+      "label": "ME 103",
+      "prereq": [
+        [
+          "drafting",
+          "tech110"
+        ]
+      ]
+    },
+    {
+      "id": "tech110",
+      "label": "TECH 110"
+    },
+    {
+      "id": "ceme201",
+      "label": "CE/ME 201",
+      "prereq": [
+        "phys211",
+        "math207"
+      ]
+    },
+    {
+      "id": "me204",
+      "label": "ME 204",
+      "prereq": [
+        "phys213"
+      ]
+    },
+    {
+      "id": "ceme205",
+      "label": "CE/ME 205",
+      "prereq": [
+        "ceme201"
+      ]
+    },
+    {
+      "id": "engr207",
+      "label": "ENGR 207",
+      "prereq": [
+        "chem101",
+        "math206"
+      ]
+    },
+    {
+      "id": "ceme210",
+      "label": "CE/ME 210",
+      "prereq": [
+        "math208"
+      ]
+    },
+    {
+      "id": "ee210",
+      "label": "EE 210",
+      "prereq": [
+        "phys213"
+      ]
+    },
+    {
+      "id": "ceme211",
+      "label": "CE/ME 211",
+      "prereq": [
+        "math208"
+      ]
+    },
+    {
+      "id": "chem101",
+      "label": "CHEM 101",
+      "prereq": [
+        "hschem",
+        "hsphys",
+        "hsalg1",
+        "hsalg2"
+      ]
+    },
+    {
+      "id": "hschem",
+      "label": "HS CHEM",
+      "school": "hs"
+    },
+    {
+      "id": "hsphys",
+      "label": "HS PHYS",
+      "school": "hs"
+    },
+    {
+      "id": "hsalg1",
+      "label": "HS Algebra 1",
+      "school": "hs"
+    },
+    {
+      "id": "hsalg2",
+      "label": "HS Algebra 2",
+      "school": "hs"
+    },
+    {
+      "id": "cs290",
+      "label": "CS 290",
+      "prereq": [
+        "math206"
+      ]
+    },
+    {
+      "id": "math206",
+      "label": "MATH 206",
+      "prereq": [
+        "elm",
+        "math102",
+        "math103"
+      ]
+    },
+    {
+      "id": "math102",
+      "label": "MATH 102"
+    },
+    {
+      "id": "math103",
+      "label": "MATH 103"
+    },
+    {
+      "id": "elm",
+      "label": "ELM"
+    },
+    {
+      "id": "math207",
+      "label": "MATH 207",
+      "prereq": [
+        "math206"
+      ]
+    },
+    {
+      "id": "math208",
+      "label": "MATH 208",
+      "prereq": [
+        "math207"
+      ]
+    },
+    {
+      "id": "math209",
+      "label": "MATH 209",
+      "prereq": [
+        "math208"
+      ]
+    },
+    {
+      "id": "math215",
+      "label": "MATH 215",
+      "prereq": [
+        "math209"
+      ]
+    },
+    {
+      "id": "phys211",
+      "label": "PHYS 211",
+      "prereq": [
+        "hsphys"
+      ]
+    },
+    {
+      "id": "phys212",
+      "label": "PHYS 212",
+      "prereq": [
+        "phys211"
+      ]
+    },
+    {
+      "id": "phys213",
+      "label": "PHYS 213",
+      "prereq": [
+        "phys212"
+      ]
+    },
+    {
+      "id": "engr300",
+      "label": "ENGR 300"
+    },
+    {
+      "id": "engr301",
+      "label": "ENGR 301"
+    },
+    {
+      "id": "ceme303",
+      "label": "CE/ME 303",
+      "prereq": [
+        "phys212"
+      ]
+    },
+    {
+      "id": "me306",
+      "label": "ME 306",
+      "prereq": [
+        "math208",
+        "phys212"
+      ]
+    },
+    {
+      "id": "me310",
+      "label": "ME 310",
+      "prereq": [
+        [
+          "wpe",
+          "engr100"
+        ]
+      ]
+    },
+    {
+      "id": "engr100",
+      "label": "ENGR 100"
+    },
+    {
+      "id": "ceme313",
+      "label": "CE/ME 313",
+      "prereq": [
+        "ceme303"
+      ]
+    },
+    {
+      "id": "me315",
+      "label": "ME 315",
+      "prereq": [
+        "me326a",
+        "me306"
+      ]
+    },
+    {
+      "id": "ceme312",
+      "label": "CE/ME 312",
+      "prereq": [
+        "ceme205"
+      ]
+    },
+    {
+      "id": "ceme320",
+      "label": "CE/ME 320",
+      "prereq": [
+        "ceme201"
+      ]
+    },
+    {
+      "id": "me321",
+      "label": "ME 321",
+      "prereq": [
+        "me320"
+      ]
+    },
+    {
+      "id": "me323",
+      "label": "ME 323",
+      "prereq": [
+        "me103",
+        "ceme205",
+        "engr207",
+        "math208"
+      ]
+    },
+    {
+      "id": "me326A",
+      "label": "ME 326A",
+      "prereq": [
+        "phys212",
+        "math208"
+      ]
+    },
+    {
+      "id": "me326b",
+      "label": "ME 326B",
+      "prereq": [
+        "me326a"
+      ]
+    },
+    {
+      "id": "me327",
+      "label": "ME 327",
+      "prereq": [
+        "engr207"
+      ]
+    },
+    {
+      "id": "me421",
+      "label": "ME 421",
+      "prereq": [
+        "me320"
+      ]
+    },
+    {
+      "id": "me497a",
+      "label": "ME 497A",
+      "prereq": [
+        "me323",
+        "me103",
+        "ceme201",
+        "me204",
+        "ceme205",
+        "ceme210",
+        "ceme211"
+      ]
+    },
+    {
+      "id": "me497b",
+      "label": "ME 497B",
+      "prereq": [
+        "me497a"
+      ]
+    },
+    {
+      "id": "me497c",
+      "label": "ME 497C",
+      "prereq": [
+        "me497b"
+      ]
+    },
+    {
+      "id": "me402",
+      "label": "ME 402",
+      "prereq": [
+        "me323",
+        "math215"
+      ]
+    },
+    {
+      "id": "me403",
+      "label": "ME 403",
+      "prereq": [
+        "ceme303",
+        "math208"
+      ]
+    },
+    {
+      "id": "me404",
+      "label": "ME 404",
+      "prereq": [
+        "me303",
+        "me326a",
+        "me306"
+      ]
+    },
+    {
+      "id": "me406",
+      "label": "ME 406",
+      "prereq": [
+        "me303",
+        "me306"
+      ]
+    },
+    {
+      "id": "me408",
+      "label": "ME 408",
+      "prereq": [
+        "ceme303",
+        "math209"
+      ]
+    },
+    {
+      "id": "me409",
+      "label": "ME 409",
+      "prereq": [
+        "math215"
+      ]
+    },
+    {
+      "id": "me410",
+      "label": "ME 410",
+      "prereq": [
+        "phys213",
+        "math215"
+      ]
+    },
+    {
+      "id": "me411",
+      "label": "ME 411",
+      "prereq": [
+        "ceme320",
+        "math215"
+      ]
+    },
+    {
+      "id": "me414",
+      "label": "ME 414",
+      "prereq": [
+        "me323"
+      ]
+    },
+    {
+      "id": "me415",
+      "label": "ME 415",
+      "prereq": [
+        "me306",
+        "me326a"
+      ]
+    },
+    {
+      "id": "me416",
+      "label": "ME 416",
+      "prereq": [
+        "me326a"
+      ]
+    },
+    {
+      "id": "me419",
+      "label": "ME 419",
+      "prereq": [
+        "me103",
+        "me323",
+        "me303",
+        "me306",
+        "cs290"
+      ]
+    },
+    {
+      "id": "me422",
+      "label": "ME 422",
+      "prereq": [
+        "phys213",
+        "math215",
+        "me306"
+      ]
+    },
+    {
+      "id": "me423",
+      "label": "ME 423"
+    },
+    {
+      "id": "me428",
+      "label": "ME 428",
+      "prereq": [
+        "me327"
+      ]
+    },
+    {
+      "id": "me430",
+      "label": "ME 430",
+      "prereq": [
+        "engr207",
+        "me327"
+      ]
+    },
+    {
+      "id": "me454",
+      "label": "ME 454"
+    },
+    {
+      "id": "eeme481",
+      "label": "EE/ME 481"
+    },
+    {
+      "id": "me499",
+      "label": "ME 499"
+    }
+  ],
+  "requirements": [
+    {
+      "type": "mandated",
+      "course": "req101"
+    },
+    {
+      "type": "mandated",
+      "course": "engl101"
+    },
+    {
+      "type": "mandated",
+      "course": "comm150"
+    },
+    {
+      "type": "mandated",
+      "course": "hist202a"
+    },
+    {
+      "type": "mandated",
+      "course": "hist202b"
+    },
+    {
+      "type": "mandated",
+      "course": "pols150"
+    },
+    {
+      "type": "mandated",
+      "course": "engl102"
+    },
+    {
+      "type": "mandated",
+      "course": "wpe"
+    },
+    {
+      "type": "mandated",
+      "course": "engr150"
+    },
+    {
+      "type": "mandated",
+      "course": "me103"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme201"
+    },
+    {
+      "type": "mandated",
+      "course": "me204"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme205"
+    },
+    {
+      "type": "mandated",
+      "course": "engr207"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme210"
+    },
+    {
+      "type": "mandated",
+      "course": "ee210"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme211"
+    },
+    {
+      "type": "mandated",
+      "course": "chem101"
+    },
+    {
+      "type": "mandated",
+      "course": "cs290"
+    },
+    {
+      "type": "mandated",
+      "course": "math206"
+    },
+    {
+      "type": "mandated",
+      "course": "math207"
+    },
+    {
+      "type": "mandated",
+      "course": "math208"
+    },
+    {
+      "type": "mandated",
+      "course": "math209"
+    },
+    {
+      "type": "mandated",
+      "course": "math215"
+    },
+    {
+      "type": "mandated",
+      "course": "phys211"
+    },
+    {
+      "type": "mandated",
+      "course": "phys212"
+    },
+    {
+      "type": "mandated",
+      "course": "phys213"
+    },
+    {
+      "type": "mandated",
+      "course": "engr300"
+    },
+    {
+      "type": "mandated",
+      "course": "engr301"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme303"
+    },
+    {
+      "type": "mandated",
+      "course": "me306"
+    },
+    {
+      "type": "mandated",
+      "course": "me310"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme313"
+    },
+    {
+      "type": "mandated",
+      "course": "me315"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme312"
+    },
+    {
+      "type": "mandated",
+      "course": "ceme320"
+    },
+    {
+      "type": "mandated",
+      "course": "me321"
+    },
+    {
+      "type": "mandated",
+      "course": "me323"
+    },
+    {
+      "type": "mandated",
+      "course": "me326A"
+    },
+    {
+      "type": "mandated",
+      "course": "me326b"
+    },
+    {
+      "type": "mandated",
+      "course": "me327"
+    },
+    {
+      "type": "mandated",
+      "course": "me421"
+    },
+    {
+      "type": "mandated",
+      "course": "me497a"
+    },
+    {
+      "type": "mandated",
+      "course": "me497b"
+    },
+    {
+      "type": "mandated",
+      "course": "me497c"
+    },
+    {
+      "type": "choose",
+      "courses": [],
+      "description": "Upper Division GE Theme",
+      "count": 3
+    },
+    {
+      "type": "choose",
+      "courses": [
+        "me402",
+        "me403",
+        "me404",
+        "me406",
+        "me407",
+        "me408",
+        "me409",
+        "me410",
+        "me411",
+        "me414",
+        "me415",
+        "me416",
+        "me419",
+        "me422",
+        "me423",
+        "me428",
+        "me430",
+        "me454",
+        "eeme481"
+      ],
+      "description": "Upper Division Technical Electives",
+      "count": 6
+    },
+    {
+      "type": "choose",
+      "courses": [
+        "me412",
+        "me413",
+        "me417",
+        "me431",
+        "me499"
+      ],
+      "description": "Laboratory Elective",
+      "count": 1
+    }
+  ]
+}
