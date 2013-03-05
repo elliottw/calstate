@@ -1,42 +1,42 @@
 # three example semesters (list them in chronological order)
 semesters:
-    - fall13:
+    -   id: fall13
         label: Fall 2013
-    - spr14:
+    -   id: spr14
         label: Spring 2014
-    - fall14:
+    -   id: fall14
         label: Fall 2014
 
 courses:
     # Course with label "REQ 101", available in Fall 2013, 2014
-    - req101:
+    -   id: req101
         label: REQ 101
         terms: [fall13, fall14]
 
     # Course with label "REQ 102", available all semesters, requires REQ101
-    - req102:
+    -   id: req102
         label: REQ 101
         prereq: [req101]
 
     # Course with random attributes attached
-    - req103:
+    -   id: req103
         label: REQ 103
         prereq: req101
         school: East Los Angeles Community College
         professor: Dr. Seuss
 
     # Course that requires REQ 101, and either REQ 102 or REQ 103
-    - req104:
+    -   id: req104
         label: REQ 104
         prereq: [req101, [req102, req103]]
 
 requirements:
     # mandated course requirement for REQ 101
-    - mandated:
+    -   type: mandated
         course: req101
 
     # choose 2 requirement among REQ 102, REQ 103, REQ 104, displayed as "Lab Experience Requirement" in the rule list
-    - choose:
+    -   type: choose
         courses: [req102, req103, req104]
         description: Lab Experience Requirement
         count: 2
