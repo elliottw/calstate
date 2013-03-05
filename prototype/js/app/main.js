@@ -2,12 +2,21 @@
 	// recursive function that converts a possibly nested array of
 	// course id strings into a parallel structure of course references
 	function processCourses(courseStrArray, courseCollection) {
-		return _.map(courseStrArray, function(prereq) {
-			if (_.isArray(prereq)) {
-				return processCourses(prereq, courseCollection);
+		return _.map(courseStrArray, function(courseStr) {
+			if (_.isArray(courseStr)) {
+				return processCourses(courseStr, courseCollection);
 			}
 			else {
-				return courseCollection.get(prereq);
+				var course = courseCollection.get(courseStr);
+				if (!course) {
+					console.log('creating new Course: ' + courseStr);
+					course = new App.models.Course({
+						id: courseStr,
+						label: courseStr
+					});
+					courseCollection.add(course);
+				}
+				return course;
 			}
 		});
 	}
@@ -35,7 +44,13 @@
 		// Now back to resolve the prequesite references to take advantage of
 		// courses.get
 		_.each(courses.models, function(course) {
-			course.set('prereq', processCourses(course.get('prereq'), courses));
+			var prereqs = course.get('prereq');
+			if (prereqs) {
+				if (!_.isArray(prereqs)) {
+					console.warn("Non-array used for course prerequisites. Course id: " + course.id);
+				}
+				course.set('prereq', processCourses(course.get('prereq'), courses));
+			}
 		});
 
 		// process FixedRequirement and ChooseRequirements separately
@@ -44,7 +59,8 @@
 			return new App.models.FixedRequirement(req);
 		});
 		var chooses = _.map(_.where(data.requirements, {type: 'choose'}), function(req) {
-			req.courses = processCourses(req.courses, courses);
+			var courseStrArray = req.courses;
+			req.courses = processCourses(courseStrArray, courses);
 			return new App.models.ChooseRequirement(req);
 		});
 
@@ -60,7 +76,7 @@
 	// load initial data
 	App.globals = {};
 
-	var data = importData('http://localhost:8081/data/example.json');
+	var data = importData('http://localhost:8081/data/mech-e.json');
 	App.globals.semesters = data.semesters;
 	App.globals.courses = data.courses;
 	App.globals.requirements = data.requirements;
