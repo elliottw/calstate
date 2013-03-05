@@ -9,7 +9,7 @@
 			else {
 				var course = courseCollection.get(courseStr);
 				if (!course) {
-					console.log('creating new Course: ' + courseStr);
+					console.log('Creating new Course model: ' + courseStr);
 					course = new App.models.Course({
 						id: courseStr,
 						label: courseStr
