@@ -1,3 +1,3 @@
 (function(){
-	App = {};
+	App = new Backbone.Marionette.Application();
 })();

@@ -12,9 +12,8 @@
 
 	var Course = Backbone.Model.extend({
 		defaults: {
-			code: '',
-			semestersAvailable: [],	// list of Semester instances
-			prereqs: []				// list of Course instances
+			terms: [],		// list of Semester instances
+			prereqs: []		// list of Course instances
 		}
 	});
 	var Courses = Backbone.Collection.extend({

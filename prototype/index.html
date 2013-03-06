@@ -11,6 +11,7 @@
 		<script src="js/vendor/bootstrap.js"></script>
 		<script src="js/vendor/underscore.js"></script>
 		<script src="js/vendor/backbone.js"></script>
+		<script src="js/vendor/backbone.marionette.js"></script>
 
 		<script src="js/app/init.js"></script>
 		<script src="js/app/models.js"></script>
@@ -19,7 +20,23 @@
 	</head>
 	<body>
 		<div class="container">
+			<div class="row">
+				<div class="span12" id="planner-region" class="planner">
+
+				</div>
+			</div>
 
 		</div> <!-- .container -->
+
+		<script type="text/html" id="tpl-planner">
+			<div class="semester" id="fall13"></div>
+			<div class="semester" id="spr14" ></div>
+			<div class="semester" id="fall14"></div>
+			<div class="semester" id="spr15" ></div>
+		</script>
+
+		<script type="text/html" id="tpl-placed-course">
+			<p><%= label %></p>
+		</script>
 	</body>
 </html>
