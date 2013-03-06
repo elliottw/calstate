@@ -44,12 +44,12 @@
 		// Now back to resolve the prequesite references to take advantage of
 		// courses.get
 		_.each(courses.models, function(course) {
-			var prereqs = course.get('prereq');
+			var prereqs = course.get('prereqs');
 			if (prereqs) {
 				if (!_.isArray(prereqs)) {
 					console.warn("Non-array used for course prerequisites. Course id: " + course.id);
 				}
-				course.set('prereq', processCourses(course.get('prereq'), courses));
+				course.set('prereqs', processCourses(course.get('prereqs'), courses));
 			}
 		});
 

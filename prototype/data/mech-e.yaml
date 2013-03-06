@@ -30,49 +30,49 @@ courses:
 
   - id:       wpe
     label:    WPE
-    prereq:   [engl102]
+    prereqs:  [engl102]
 
   - id:       engr150
     label:    ENGR 150
 
   - id:       me103
     label:    ME 103
-    prereq:   [[drafting, tech110]]
+    prereqs:  [[drafting, tech110]]
 
   - id:       tech110
     label:    TECH 110
 
   - id:       ceme201
     label:    CE/ME 201
-    prereq:   [phys211,math207]
+    prereqs:  [phys211,math207]
 
   - id:       me204
     label:    ME 204
-    prereq:   [phys213]
+    prereqs:  [phys213]
 
   - id:       ceme205
     label:    CE/ME 205
-    prereq:   [ceme201]
+    prereqs:  [ceme201]
 
   - id:       engr207
     label:    ENGR 207
-    prereq:   [chem101, math206]
+    prereqs:  [chem101, math206]
 
   - id:       ceme210
     label:    CE/ME 210
-    prereq:   [math208]
+    prereqs:  [math208]
 
   - id:       ee210
     label:    EE 210
-    prereq:   [phys213]
+    prereqs:  [phys213]
 
   - id:       ceme211
     label:    CE/ME 211
-    prereq:   [math208]
+    prereqs:  [math208]
 
   - id:       chem101
     label:    CHEM 101
-    prereq:   [hschem, hsphys, hsalg1,hsalg2]
+    prereqs:  [hschem, hsphys, hsalg1,hsalg2]
 
   - id:       hschem
     label:    HS CHEM
@@ -92,11 +92,11 @@ courses:
 
   - id:       cs290
     label:    CS 290
-    prereq:   [math206]
+    prereqs:  [math206]
 
   - id:       math206
     label:    MATH 206
-    prereq:   [elm,math102,math103]
+    prereqs:  [elm,math102,math103]
 
   - id:       math102
     label:    MATH 102
@@ -109,31 +109,31 @@ courses:
 
   - id:       math207
     label:    MATH 207
-    prereq:   [math206]
+    prereqs:  [math206]
 
   - id:       math208
     label:    MATH 208
-    prereq:   [math207]
+    prereqs:  [math207]
 
   - id:       math209
     label:    MATH 209
-    prereq:   [math208]
+    prereqs:  [math208]
 
   - id:       math215
     label:    MATH 215
-    prereq:   [math209]
+    prereqs:  [math209]
 
   - id:       phys211
     label:    PHYS 211
-    prereq:   [hsphys]
+    prereqs:  [hsphys]
 
   - id:       phys212
     label:    PHYS 212
-    prereq:   [phys211]
+    prereqs:  [phys211]
 
   - id:       phys213
     label:    PHYS 213
-    prereq:   [phys212]
+    prereqs:  [phys212]
 
   - id:       engr300
     label:    ENGR 300
@@ -143,133 +143,133 @@ courses:
 
   - id:       ceme303
     label:    CE/ME 303
-    prereq:   [phys212]
+    prereqs:  [phys212]
 
   - id:       me306
     label:    ME 306
-    prereq:   [math208, phys212]
+    prereqs:  [math208, phys212]
 
   - id:       me310
     label:    ME 310
-    prereq:   [[wpe,engr100]]
+    prereqs:  [[wpe,engr100]]
 
   - id:       engr100
     label:    ENGR 100
 
   - id:       ceme313
     label:    CE/ME 313
-    prereq:   [ceme303]
+    prereqs:  [ceme303]
 
   - id:       me315
     label:    ME 315
-    prereq:   [me326a, me306]
+    prereqs:  [me326a, me306]
 
   - id:       ceme312
     label:    CE/ME 312
-    prereq:   [ceme205]
+    prereqs:  [ceme205]
 
   - id:       ceme320
     label:    CE/ME 320
-    prereq:   [ceme201]
+    prereqs:  [ceme201]
 
   - id:       me321
     label:    ME 321
-    prereq:   [me320]
+    prereqs:  [me320]
 
   - id:       me323
     label:    ME 323
-    prereq:   [me103,ceme205,engr207,math208]
+    prereqs:  [me103,ceme205,engr207,math208]
 
   - id:       me326A
     label:    ME 326A
-    prereq:   [phys212, math208]
+    prereqs:  [phys212, math208]
 
   - id:       me326b
     label:    ME 326B
-    prereq:   [me326a]
+    prereqs:  [me326a]
 
   - id:       me327
     label:    ME 327
-    prereq:   [engr207]
+    prereqs:  [engr207]
 
   - id:       me421
     label:    ME 421
-    prereq:   [me320]
+    prereqs:  [me320]
 
   - id:       me497a
     label:    ME 497A
-    prereq:   [me323, me103,ceme201,me204,ceme205,ceme210,ceme211]
+    prereqs:  [me323, me103,ceme201,me204,ceme205,ceme210,ceme211]
 
   - id:       me497b
     label:    ME 497B
-    prereq:   [me497a]
+    prereqs:  [me497a]
 
   - id:       me497c
     label:    ME 497C
-    prereq:   [me497b]
+    prereqs:  [me497b]
 
   - id:       me402
     label:    ME 402
-    prereq:   [me323,math215]
+    prereqs:  [me323,math215]
 
   - id:       me403
     label:    ME 403
-    prereq:   [ceme303,math208]
+    prereqs:  [ceme303,math208]
 
   - id:       me404
     label:    ME 404
-    prereq:   [me303,me326a,me306]
+    prereqs:  [me303,me326a,me306]
 
   - id:       me406
     label:    ME 406
-    prereq:   [me303,me306]
+    prereqs:  [me303,me306]
 
   - id:       me408
     label:    ME 408
-    prereq:   [ceme303,math209]
+    prereqs:  [ceme303,math209]
 
   - id:       me409
     label:    ME 409
-    prereq:   [math215]
+    prereqs:  [math215]
 
   - id:       me410
     label:    ME 410
-    prereq:   [phys213,math215]
+    prereqs:  [phys213,math215]
 
   - id:       me411
     label:    ME 411
-    prereq:   [ceme320,math215]
+    prereqs:  [ceme320,math215]
 
   - id:       me414
     label:    ME 414
-    prereq:   [me323]
+    prereqs:  [me323]
 
   - id:       me415
     label:    ME 415
-    prereq:   [me306,me326a]
+    prereqs:  [me306,me326a]
 
   - id:       me416
     label:    ME 416
-    prereq:   [me326a]
+    prereqs:  [me326a]
 
   - id:       me419
     label:    ME 419
-    prereq:   [me103,me323,me303,me306,cs290]
+    prereqs:  [me103,me323,me303,me306,cs290]
 
   - id:       me422
     label:    ME 422
-    prereq:   [phys213,math215,me306]
+    prereqs:  [phys213,math215,me306]
 
   - id:       me423
     label:    ME 423
 
   - id:       me428
     label:    ME 428
-    prereq:   [me327]
+    prereqs:  [me327]
 
   - id:       me430
     label:    ME 430
-    prereq:   [engr207,me327]
+    prereqs:  [engr207,me327]
 
   - id:       me454
     label:    ME 454

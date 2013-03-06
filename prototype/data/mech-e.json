@@ -41,7 +41,7 @@
     {
       "id": "wpe",
       "label": "WPE",
-      "prereq": [
+      "prereqs": [
         "engl102"
       ]
     },
@@ -52,7 +52,7 @@
     {
       "id": "me103",
       "label": "ME 103",
-      "prereq": [
+      "prereqs": [
         [
           "drafting",
           "tech110"
@@ -66,7 +66,7 @@
     {
       "id": "ceme201",
       "label": "CE/ME 201",
-      "prereq": [
+      "prereqs": [
         "phys211",
         "math207"
       ]
@@ -74,21 +74,21 @@
     {
       "id": "me204",
       "label": "ME 204",
-      "prereq": [
+      "prereqs": [
         "phys213"
       ]
     },
     {
       "id": "ceme205",
       "label": "CE/ME 205",
-      "prereq": [
+      "prereqs": [
         "ceme201"
       ]
     },
     {
       "id": "engr207",
       "label": "ENGR 207",
-      "prereq": [
+      "prereqs": [
         "chem101",
         "math206"
       ]
@@ -96,28 +96,28 @@
     {
       "id": "ceme210",
       "label": "CE/ME 210",
-      "prereq": [
+      "prereqs": [
         "math208"
       ]
     },
     {
       "id": "ee210",
       "label": "EE 210",
-      "prereq": [
+      "prereqs": [
         "phys213"
       ]
     },
     {
       "id": "ceme211",
       "label": "CE/ME 211",
-      "prereq": [
+      "prereqs": [
         "math208"
       ]
     },
     {
       "id": "chem101",
       "label": "CHEM 101",
-      "prereq": [
+      "prereqs": [
         "hschem",
         "hsphys",
         "hsalg1",
@@ -147,14 +147,14 @@
     {
       "id": "cs290",
       "label": "CS 290",
-      "prereq": [
+      "prereqs": [
         "math206"
       ]
     },
     {
       "id": "math206",
       "label": "MATH 206",
-      "prereq": [
+      "prereqs": [
         "elm",
         "math102",
         "math103"
@@ -175,49 +175,49 @@
     {
       "id": "math207",
       "label": "MATH 207",
-      "prereq": [
+      "prereqs": [
         "math206"
       ]
     },
     {
       "id": "math208",
       "label": "MATH 208",
-      "prereq": [
+      "prereqs": [
         "math207"
       ]
     },
     {
       "id": "math209",
       "label": "MATH 209",
-      "prereq": [
+      "prereqs": [
         "math208"
       ]
     },
     {
       "id": "math215",
       "label": "MATH 215",
-      "prereq": [
+      "prereqs": [
         "math209"
       ]
     },
     {
       "id": "phys211",
       "label": "PHYS 211",
-      "prereq": [
+      "prereqs": [
         "hsphys"
       ]
     },
     {
       "id": "phys212",
       "label": "PHYS 212",
-      "prereq": [
+      "prereqs": [
         "phys211"
       ]
     },
     {
       "id": "phys213",
       "label": "PHYS 213",
-      "prereq": [
+      "prereqs": [
         "phys212"
       ]
     },
@@ -232,14 +232,14 @@
     {
       "id": "ceme303",
       "label": "CE/ME 303",
-      "prereq": [
+      "prereqs": [
         "phys212"
       ]
     },
     {
       "id": "me306",
       "label": "ME 306",
-      "prereq": [
+      "prereqs": [
         "math208",
         "phys212"
       ]
@@ -247,7 +247,7 @@
     {
       "id": "me310",
       "label": "ME 310",
-      "prereq": [
+      "prereqs": [
         [
           "wpe",
           "engr100"
@@ -261,14 +261,14 @@
     {
       "id": "ceme313",
       "label": "CE/ME 313",
-      "prereq": [
+      "prereqs": [
         "ceme303"
       ]
     },
     {
       "id": "me315",
       "label": "ME 315",
-      "prereq": [
+      "prereqs": [
         "me326a",
         "me306"
       ]
@@ -276,28 +276,28 @@
     {
       "id": "ceme312",
       "label": "CE/ME 312",
-      "prereq": [
+      "prereqs": [
         "ceme205"
       ]
     },
     {
       "id": "ceme320",
       "label": "CE/ME 320",
-      "prereq": [
+      "prereqs": [
         "ceme201"
       ]
     },
     {
       "id": "me321",
       "label": "ME 321",
-      "prereq": [
+      "prereqs": [
         "me320"
       ]
     },
     {
       "id": "me323",
       "label": "ME 323",
-      "prereq": [
+      "prereqs": [
         "me103",
         "ceme205",
         "engr207",
@@ -307,7 +307,7 @@
     {
       "id": "me326A",
       "label": "ME 326A",
-      "prereq": [
+      "prereqs": [
         "phys212",
         "math208"
       ]
@@ -315,28 +315,28 @@
     {
       "id": "me326b",
       "label": "ME 326B",
-      "prereq": [
+      "prereqs": [
         "me326a"
       ]
     },
     {
       "id": "me327",
       "label": "ME 327",
-      "prereq": [
+      "prereqs": [
         "engr207"
       ]
     },
     {
       "id": "me421",
       "label": "ME 421",
-      "prereq": [
+      "prereqs": [
         "me320"
       ]
     },
     {
       "id": "me497a",
       "label": "ME 497A",
-      "prereq": [
+      "prereqs": [
         "me323",
         "me103",
         "ceme201",
@@ -349,21 +349,21 @@
     {
       "id": "me497b",
       "label": "ME 497B",
-      "prereq": [
+      "prereqs": [
         "me497a"
       ]
     },
     {
       "id": "me497c",
       "label": "ME 497C",
-      "prereq": [
+      "prereqs": [
         "me497b"
       ]
     },
     {
       "id": "me402",
       "label": "ME 402",
-      "prereq": [
+      "prereqs": [
         "me323",
         "math215"
       ]
@@ -371,7 +371,7 @@
     {
       "id": "me403",
       "label": "ME 403",
-      "prereq": [
+      "prereqs": [
         "ceme303",
         "math208"
       ]
@@ -379,7 +379,7 @@
     {
       "id": "me404",
       "label": "ME 404",
-      "prereq": [
+      "prereqs": [
         "me303",
         "me326a",
         "me306"
@@ -388,7 +388,7 @@
     {
       "id": "me406",
       "label": "ME 406",
-      "prereq": [
+      "prereqs": [
         "me303",
         "me306"
       ]
@@ -396,7 +396,7 @@
     {
       "id": "me408",
       "label": "ME 408",
-      "prereq": [
+      "prereqs": [
         "ceme303",
         "math209"
       ]
@@ -404,14 +404,14 @@
     {
       "id": "me409",
       "label": "ME 409",
-      "prereq": [
+      "prereqs": [
         "math215"
       ]
     },
     {
       "id": "me410",
       "label": "ME 410",
-      "prereq": [
+      "prereqs": [
         "phys213",
         "math215"
       ]
@@ -419,7 +419,7 @@
     {
       "id": "me411",
       "label": "ME 411",
-      "prereq": [
+      "prereqs": [
         "ceme320",
         "math215"
       ]
@@ -427,14 +427,14 @@
     {
       "id": "me414",
       "label": "ME 414",
-      "prereq": [
+      "prereqs": [
         "me323"
       ]
     },
     {
       "id": "me415",
       "label": "ME 415",
-      "prereq": [
+      "prereqs": [
         "me306",
         "me326a"
       ]
@@ -442,14 +442,14 @@
     {
       "id": "me416",
       "label": "ME 416",
-      "prereq": [
+      "prereqs": [
         "me326a"
       ]
     },
     {
       "id": "me419",
       "label": "ME 419",
-      "prereq": [
+      "prereqs": [
         "me103",
         "me323",
         "me303",
@@ -460,7 +460,7 @@
     {
       "id": "me422",
       "label": "ME 422",
-      "prereq": [
+      "prereqs": [
         "phys213",
         "math215",
         "me306"
@@ -473,14 +473,14 @@
     {
       "id": "me428",
       "label": "ME 428",
-      "prereq": [
+      "prereqs": [
         "me327"
       ]
     },
     {
       "id": "me430",
       "label": "ME 430",
-      "prereq": [
+      "prereqs": [
         "engr207",
         "me327"
       ]
