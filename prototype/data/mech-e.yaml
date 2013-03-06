@@ -281,152 +281,80 @@ courses:
     label:    ME 499
 
 requirements:
-  - type:     mandated
-    course:   req101
+  - title: Lower Division General Education Requirements
+    courses:
+      - engl101
+      - comm150
+      - hist202a
+      - hist202b
+      - pols150
+    electives:
+      - label: Block C
+        count: 3
+      - label: Block E
+        count: 1
 
-  - type:     mandated
-    course:   engl101
+  - title: University Requirement
+    courses:
+      - engl102
+      - wpe
 
-  - type:     mandated
-    course:   comm150
+  - title: Lower Division Major Requirements
+    courses:
+      - engr150
+      - me103
+      - ceme201
+      - me204
+      - ceme205
+      - engr207
+      - ceme210
+      - ee210
+      - ceme211
+      - chem101
+      - cs290
+      - math206
+      - math207
+      - math208
+      - math209
+      - math215
+      - phys211
+      - phys212
+      - phys213
 
-  - type:     mandated
-    course:   hist202a
+  - title: Upper Division Major Requirements
+    courses:
+      - engr300
+      - engr301
+      - ceme303
+      - me306
+      - me310
+      - ceme313
+      - me315
+      - ceme312
+      - ceme320
+      - me321
+      - me323
+      - me326A
+      - me326b
+      - me327
+      - me421
+  - title: Senior Design Requirements
+    courses:
+      - me497a
+      - me497b
+      - me497c
 
-  - type:     mandated
-    course:   hist202b
+  - title: Upper Division GE Theme
+    electives:
+      - courses: []
+        count: 3
 
-  - type:     mandated
-    course:   pols150
+  - title: Upper Division Technical Electives - Lecture
+    electives:
+      - courses:  [me402, me403, me404, me406, me407, me408, me409, me410, me411, me414, me415, me416, me419, me422, me423, me428, me430, me454, eeme481]
+        count: 6
 
-  - type:     mandated
-    course:   engl102
-
-  - type:     mandated
-    course:   wpe
-
-  - type:     mandated
-    course:   engr150
-
-  - type:     mandated
-    course:   me103
-
-  - type:     mandated
-    course:   ceme201
-
-  - type:     mandated
-    course:   me204
-
-  - type:     mandated
-    course:   ceme205
-
-  - type:     mandated
-    course:   engr207
-
-  - type:     mandated
-    course:   ceme210
-
-  - type:     mandated
-    course:   ee210
-
-  - type:     mandated
-    course:   ceme211
-
-  - type:     mandated
-    course:   chem101
-
-  - type:     mandated
-    course:   cs290
-
-  - type:     mandated
-    course:   math206
-
-  - type:     mandated
-    course:   math207
-
-  - type:     mandated
-    course:   math208
-
-  - type:     mandated
-    course:   math209
-
-  - type:     mandated
-    course:   math215
-
-  - type:     mandated
-    course:   phys211
-
-  - type:     mandated
-    course:   phys212
-
-  - type:     mandated
-    course:   phys213
-
-  - type:     mandated
-    course:   engr300
-
-  - type:     mandated
-    course:   engr301
-
-  - type:     mandated
-    course:   ceme303
-
-  - type:     mandated
-    course:   me306
-
-  - type:     mandated
-    course:   me310
-
-  - type:     mandated
-    course:   ceme313
-
-  - type:     mandated
-    course:   me315
-
-  - type:     mandated
-    course:   ceme312
-
-  - type:     mandated
-    course:   ceme320
-
-  - type:     mandated
-    course:   me321
-
-  - type:     mandated
-    course:   me323
-
-  - type:     mandated
-    course:   me326A
-
-  - type:     mandated
-    course:   me326b
-
-  - type:     mandated
-    course:   me327
-
-  - type:     mandated
-    course:   me421
-
-  - type:     mandated
-    course:   me497a
-
-  - type:     mandated
-    course:   me497b
-
-  - type:     mandated
-    course:   me497c
-
-  - type:     choose
-    courses:  []
-    description:  Upper Division GE Theme
-    count: 3
-
-  - type:     choose
-    courses:  [me402, me403, me404, me406, me407, me408, me409, me410, me411, me414, me415, me416, me419, me422, me423, me428, me430, me454, eeme481]
-    description:  Upper Division Technical Electives
-    count: 6
-
-  - type:     choose
-    courses:  [me412, me413, me417, me431, me499]
-    description:  Laboratory Elective
-    count: 1
+  - title: Upper Division Technical Electives - Laboratory
+    electives:
+      courses: [me412, me413, me417, me431, me499]
+      count: 1

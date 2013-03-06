@@ -58,17 +58,18 @@ App.module("Utils", function(Utils, App, Backbone, Marionette, $, _){
 		});
 
 		// process FixedRequirement and ChooseRequirements separately
-		var mandates = _.map(_.where(data.requirements, {type: 'mandated'}), function(req) {
-			req.course = courses.get(req.course);
-			return new App.Requirements.FixedRequirement(req);
+		var requirements = _.map(data.requirements, function(req) {
+			var reqGroup = new App.Requirements.RequirementGroup(req);
+			// resolve course references in mandated cources and elective courses
+			if (reqGroup.get('courses')) {
+				console.log(reqGroup.get('title'));
+				reqGroup.set('courses', processCourses(reqGroup.get('courses'), courses));
+			}
+			_.each(reqGroup.get('electives'), function(elec) {
+				elec.set('courses', processCourses(elec.get('courses'), courses));
+			});
+			return reqGroup;
 		});
-		var chooses = _.map(_.where(data.requirements, {type: 'choose'}), function(req) {
-			var courseStrArray = req.courses;
-			req.courses = processCourses(courseStrArray, courses);
-			return new App.Requirements.ChooseRequirement(req);
-		});
-
-		var requirements = new Backbone.Collection(mandates.concat(chooses));
 
 		return {
 			semesters: semesters,

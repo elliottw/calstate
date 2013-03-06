@@ -1,15 +1,15 @@
 App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, _){
-	Requirements.FixedRequirement = Backbone.Model.extend({
-		defaults: {
-			course: null,	// Course instance
-			label: ''
+
+	Requirements.ElectiveRequirement = Backbone.Model.extend({});
+
+	Requirements.RequirementGroup = Backbone.Model.extend({
+		initialize: function(attributes) {
+			this.set('title', attributes.title);
+			this.set('courses', attributes.courses || []);
+			this.set('electives', _.map(attributes.electives, function(elec) {
+				return new Requirements.ElectiveRequirement(elec);
+			}));
 		}
 	});
-	Requirements.ChooseRequirement = Backbone.Model.extend({
-		defaults: {
-			courses: [],	// list of Course instances
-			label: '',
-			count: 1
-		}
-	});
+
 });
