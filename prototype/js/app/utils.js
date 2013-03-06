@@ -75,5 +75,5 @@ App.module("Utils", function(Utils, App, Backbone, Marionette, $, _){
 			courses: courses,
 			requirements: requirements
 		};
-	}
+	};
 });

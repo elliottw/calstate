@@ -7,6 +7,13 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
 			course: null,	// Course instance
 			status: '',
 			grade: ''
+		},
+
+		// override to unpack the contents of the inner Course model
+		toJSON: function() {
+			var attrs = Backbone.Model.prototype.toJSON.call(this);
+			attrs.course = this.get('course').toJSON();
+			return attrs;
 		}
 	});
 
@@ -15,12 +22,13 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
 	});
 
 	Planner.PlacedCourseView = Backbone.Marionette.ItemView.extend({
+		className: 'course-marker',
 		template: "#tpl-placed-course"
 	});
 
 	Planner.SemesterView = Backbone.Marionette.CollectionView.extend({
 		className: 'semester',
-		itemView: Planner.CoursePlacementView
+		itemView: Planner.PlacedCourseView
 	});
 
 });
