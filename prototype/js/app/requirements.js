@@ -61,7 +61,7 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
             this.$el.popover({
                 html: true,
                 placement: "left",
-                title: this.model.get('course').get('label'),
+                title: "Add <em>" + this.model.get('course').get('label') + "</em> to planner",
                 content: $("#tpl-semester-popup").html(),
                 container: '#' + this.id(),
                 trigger: 'manual'
@@ -70,13 +70,14 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
 
         onClick: function(e) {
             var courseId = this.model.get('course').id;
-            this.$el
-                .popover('toggle')
-                .find('.popover').on('click', 'button', function(e) {
-                    console.log(courseId + ' to ' + $(e.target).val());
-                    return false;
-                }
-            );
+            var self = this;
+            this.$el.popover('toggle');
+            var popover = this.$el.find('.popover');
+            popover.on('click', 'button', function(e) {
+                var semesterId = $(e.target).val();
+                App.vent.trigger('coursePlaced', self.model, semesterId);
+                return false;
+            });
         }
     });
 
@@ -93,11 +94,17 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
         },
 
         onRender: function() {
+            var html = '<form class="form-horizontal"><input type="search" class="search-query"/><select size="5">';
+            this.model.get('choicesDelegate').each(function(course) {
+                html += '<option val="' + course.id + '">' + course.get("label") + '</option>';
+            });
+            html += '</select><button>Add To Planner</button></form>';
+
             this.$el.popover({
                 html: true,
                 placement: "left",
                 title: 'Courses satisfying ' + this.model.get('label'),
-                content: $("#tpl-catalog-popup").html(),
+                content: html,
                 container: '#' + this.id(),
                 trigger: 'manual'
             });
@@ -105,11 +112,16 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
 
         onClick: function(e) {
             this.$el.popover('toggle');
-            var popover = this.$el.find('.popover');
-            popover
+            var self = this;
+            var popover = this.$el.find('.popover')
                 .on('click', 'button', function(e) {
                     var selectedOption = $(e.target).siblings('select').find(':selected');
-                    console.log(selectedOption.val() + ' selected');
+                    if (selectedOption) {
+                        var courseId = selectedOption.val();
+                        // App.vent.trigger('electiveChosen', self, self.get('choicesDelegate').get(courseId));
+                        App.vent.trigger('electiveChosen', self.model, courseId);
+                        popover.popover('destroy');
+                    }
                     return false;
                 })
                 .on('click', 'form', function(e) {
@@ -149,7 +161,10 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
         _.each(requirementGroup.electives, function(elective) {
             var count = elective.count || 1;
             for(var i = 0; i < count; i++) {
-                slots.add(new Requirements.ElectiveSlot({label: elective.label}));
+                slots.add(new Requirements.ElectiveSlot({
+                    label: elective.label,
+                    choicesDelegate: App.fixedChoicesDelegate
+                }));
             }
         });
 
