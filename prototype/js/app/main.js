@@ -49,8 +49,6 @@
 
         App.requirementSidebar.show(sidebarView);
 
-
-
         // App.addRegions({
         //  plannerRegion: '#planner-region'
         // });

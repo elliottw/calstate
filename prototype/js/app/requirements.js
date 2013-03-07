@@ -45,18 +45,43 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
         }
     });
 
-
     Requirements.MandateSlotView = Marionette.ItemView.extend({
-        template: '#tpl-mandate-slot'
-    });
+        template: '#tpl-mandate-slot',
+        className: 'course-slot course-slot-mandate',
 
-    Requirements.ElectiveSlotView = Marionette.ItemView.extend({
-        template: '#tpl-elective-slot'
+        events: {
+            click: 'onClick'
+        },
+
+        id: function() {
+            return 'slot-' + this.model.get('course').id;
+        },
+
+        onRender: function() {
+            this.$el.popover({
+                html: true,
+                placement: "left",
+                title: this.model.get('course').get('label'),
+                content: $("#tpl-semester-popup").html(),
+                container: '#' + this.id(),
+                trigger: 'manual'
+            });
+        },
+
+        onClick: function(e) {
+            var courseId = this.model.get('course').id;
+            this.$el
+                .popover('toggle')
+                .find('.popover').on('click', 'button', function(e) {
+                    console.log(courseId + ' to ' + $(e.target).val());
+                    return false;
+                }
+            );
+        }
     });
 
     Requirements.TrackerView = Marionette.CompositeView.extend({
         initialize: function(options) {
-            console.log(options);
             this.collection = options && options.model && options.model.get('slots');
         },
 

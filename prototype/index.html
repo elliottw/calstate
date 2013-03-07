@@ -17,6 +17,7 @@
 		<script src="js/app/courses.js"></script>
 		<script src="js/app/planner.js"></script>
 		<script src="js/app/requirements.js"></script>
+		<script src="js/app/catalog.js"></script>
 		<script src="js/app/utils.js"></script>
 		<script src="js/app/main.js"></script>
 	</head>
@@ -29,6 +30,7 @@
 				<div class="span4 requirements-sidebar" id="requirements-region">
 				</div>
 			</div>
+
 		</div> <!-- .container -->
 
 		<script type="text/html" id="tpl-placed-course">
@@ -39,13 +41,36 @@
 			<%= course.label %>
 		</script>
 
-		<script type="text/html" id="tpl-mandate-slot">
+		<script type="text/html" id="tpl-elective-slot">
 			+ <%= label %>
 		</script>
 
 		<script type="text/html" id="tpl-requirement-tracker">
-			<%= title %>
-			<ul></ul>
+			<h4 class="requirement-group-heading"><%= title %></h4>
+			<ul class="requirement-slot-list"></ul>
 		</script>
+
+		<script type="text/html" id="tpl-semester-popup">
+			<h4>Add to Semester:</h4>
+			<form class="form-horizontal semester-choice">
+				<button value="fall13">Fall 2013</button>
+				<button value="spr14">Spring 2014</button>
+				<button value="fall14">Fall 2014</button>
+				<button value="spr15">Spring 2015</button>
+			</form>
+		</script>
+
+		<script type="text/html" id="tpl-catalog-popup">
+			<form class="form-horizontal">
+				<input type="search" class="search-query"/>
+				<select size="5">
+					<option value="req101">REQ 101</option>
+					<option value="req102">REQ 102</option>
+					<option value="req102">REQ 103</option>
+				</select>
+				<button>Add to Semester</button>
+			</form>
+		</script>
+
 	</body>
 </html>
