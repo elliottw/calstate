@@ -80,6 +80,45 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
         }
     });
 
+    Requirements.ElectiveSlotView = Marionette.ItemView.extend({
+        template: '#tpl-elective-slot',
+        className: 'course-slot course-slot-elective',
+
+        events: {
+            click: 'onClick'
+        },
+
+        id: function() {
+            return this.model.cid;
+        },
+
+        onRender: function() {
+            this.$el.popover({
+                html: true,
+                placement: "left",
+                title: 'Courses satisfying ' + this.model.get('label'),
+                content: $("#tpl-catalog-popup").html(),
+                container: '#' + this.id(),
+                trigger: 'manual'
+            });
+        },
+
+        onClick: function(e) {
+            this.$el.popover('toggle');
+            var popover = this.$el.find('.popover');
+            popover
+                .on('click', 'button', function(e) {
+                    var selectedOption = $(e.target).siblings('select').find(':selected');
+                    console.log(selectedOption.val() + ' selected');
+                    return false;
+                })
+                .on('click', 'form', function(e) {
+                    return false;
+                });
+        }
+    });
+
+
     Requirements.TrackerView = Marionette.CompositeView.extend({
         initialize: function(options) {
             this.collection = options && options.model && options.model.get('slots');
@@ -92,7 +131,7 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
         },
         itemView: function(item) {
             // duck typing to determine view to render
-            if (_.isUndefined(item.model.get('choicesDelegate'))) {
+            if (!_.isUndefined(item.model.get('choicesDelegate'))) {
                 return new Requirements.MandateSlotView({model: item.model});
             }
             else {
