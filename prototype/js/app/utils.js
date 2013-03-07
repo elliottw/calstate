@@ -57,24 +57,20 @@ App.module("Utils", function(Utils, App, Backbone, Marionette, $, _){
 			}
 		});
 
-		// process FixedRequirement and ChooseRequirements separately
-		var requirements = _.map(data.requirements, function(req) {
-			var reqGroup = new App.Requirements.RequirementGroup(req);
+		// create a base Array of requirement groups
+		var requirementGroups = _.map(data.requirements, function(reqGroup) {
 			// resolve course references in mandated cources and elective courses
-			if (reqGroup.get('courses')) {
-				console.log(reqGroup.get('title'));
-				reqGroup.set('courses', processCourses(reqGroup.get('courses'), courses));
-			}
-			_.each(reqGroup.get('electives'), function(elec) {
-				elec.set('courses', processCourses(elec.get('courses'), courses));
+			reqGroup.mandates = processCourses(reqGroup.mandates || [], courses);
+			_.each(reqGroup.electives, function(elec) {
+				elec.choices = processCourses(elec.choices || [], courses);
 			});
 			return reqGroup;
 		});
 
 		return {
-			semesters: semesters,
-			courses: courses,
-			requirements: requirements
+			semesterCollection: semesters,
+			courseCollection: courses,
+			requirementGroups: requirementGroups
 		};
 	};
 });

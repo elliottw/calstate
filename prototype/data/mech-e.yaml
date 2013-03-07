@@ -282,7 +282,7 @@ courses:
 
 requirements:
   - title: Lower Division General Education Requirements
-    courses:
+    mandates:
       - engl101
       - comm150
       - hist202a
@@ -295,12 +295,12 @@ requirements:
         count: 1
 
   - title: University Requirement
-    courses:
+    mandates:
       - engl102
       - wpe
 
   - title: Lower Division Major Requirements
-    courses:
+    mandates:
       - engr150
       - me103
       - ceme201
@@ -322,7 +322,7 @@ requirements:
       - phys213
 
   - title: Upper Division Major Requirements
-    courses:
+    mandates:
       - engr300
       - engr301
       - ceme303
@@ -339,22 +339,22 @@ requirements:
       - me327
       - me421
   - title: Senior Design Requirements
-    courses:
+    mandates:
       - me497a
       - me497b
       - me497c
 
   - title: Upper Division GE Theme
     electives:
-      - courses: []
+      - choices: []
         count: 3
 
   - title: Upper Division Technical Electives - Lecture
     electives:
-      - courses:  [me402, me403, me404, me406, me407, me408, me409, me410, me411, me414, me415, me416, me419, me422, me423, me428, me430, me454, eeme481]
+      - choices:  [me402, me403, me404, me406, me407, me408, me409, me410, me411, me414, me415, me416, me419, me422, me423, me428, me430, me454, eeme481]
         count: 6
 
   - title: Upper Division Technical Electives - Laboratory
     electives:
-      courses: [me412, me413, me417, me431, me499]
+      choices: [me412, me413, me417, me431, me499]
       count: 1

@@ -20,7 +20,7 @@
         });
 
         fall13 = new Backbone.Collection();
-        _.each(data.courses.slice(4,8), function(course) {
+        _.each(data.courseCollection.slice(4,8), function(course) {
             var placed = new App.Planner.PlacedCourse({
                 course: course,
                 status: 'placed',
