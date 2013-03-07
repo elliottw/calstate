@@ -131,7 +131,7 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
         },
         itemView: function(item) {
             // duck typing to determine view to render
-            if (!_.isUndefined(item.model.get('choicesDelegate'))) {
+            if (_.isUndefined(item.model.get('choicesDelegate'))) {
                 return new Requirements.MandateSlotView({model: item.model});
             }
             else {
@@ -146,6 +146,12 @@ App.module("Requirements", function(Requirements, App, Backbone, Marionette, $, 
                 return new Requirements.MandateSlot({course: mandate});
             })
         );
+        _.each(requirementGroup.electives, function(elective) {
+            var count = elective.count || 1;
+            for(var i = 0; i < count; i++) {
+                slots.add(new Requirements.ElectiveSlot({label: elective.label}));
+            }
+        });
 
         return new Requirements.RequirementTracker({
             slots: slots,
