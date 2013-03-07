@@ -23,14 +23,29 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="span12" id="planner-region" class="planner">
+				<div class="span8 planner" id="planner-region">
 					<div class="semester-region" id="fall13"></div>
+				</div>
+				<div class="span4 requirements-sidebar" id="requirements-region">
 				</div>
 			</div>
 		</div> <!-- .container -->
 
 		<script type="text/html" id="tpl-placed-course">
 			<%= course.label %>
+		</script>
+
+		<script type="text/html" id="tpl-mandate-slot">
+			<%= course.label %>
+		</script>
+
+		<script type="text/html" id="tpl-mandate-slot">
+			+ <%= label %>
+		</script>
+
+		<script type="text/html" id="tpl-requirement-tracker">
+			<%= title %>
+			<ul></ul>
 		</script>
 	</body>
 </html>

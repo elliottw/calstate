@@ -16,8 +16,10 @@
         // plannerLayout.render();
 
         App.addRegions({
-            fall13: '#fall13'
+            fall13: '#fall13',
+            requirementSidebar: '#requirements-region'
         });
+
 
         fall13 = new Backbone.Collection();
         _.each(data.courseCollection.slice(4,8), function(course) {
@@ -33,6 +35,21 @@
         });
 
         App.fall13.show(fall13View);
+
+
+        var trackers = new Backbone.Collection(
+            _.map(data.requirementGroups, function(reqGroup) {
+                return App.Requirements.trackerFactory(reqGroup);
+            })
+        );
+
+        var sidebarView = new (Marionette.CollectionView.extend({
+            itemView: App.Requirements.TrackerView
+        }))({collection: trackers});
+
+        App.requirementSidebar.show(sidebarView);
+
+
 
         // App.addRegions({
         //  plannerRegion: '#planner-region'

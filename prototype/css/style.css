@@ -5,21 +5,27 @@ body {
 	padding-bottom: 30px;
 }
 
-.course-holding-container {
+.requirements-sidebar {
 	border: 1px solid #bbb;
 	padding: 10px;
 }
 
-.course-category {
+.requirements-group {
 	padding-bottom: 16px;
 	border-bottom: 1px solid;
 }
 
-.course-category:last-child {
+.requirements-group:last-child {
 	border-bottom: 0;
 }
 
-.semester-container {
+.requirement-group-heading {
+	font-size: 18px;
+	margin: 6px 0;
+}
+
+
+.planner-region {
 	width: 100%;
 }
 
@@ -31,23 +37,14 @@ body {
 	overflow: hidden;
 }
 
-.semester > div {
-	margin: 25px;
-}
-
 .semester-heading {
 	font-size: 14px;
 	margin: 0.25em 0 0 0.5em;
 	display: inline-block;
 }
 
-
-.course-category-heading {
-	font-size: 18px;
-	margin: 6px 0;
-}
-
 .course-marker {
+	margin: 25px;
 	text-align: center;
 	display: inline-block;
 	margin: 5px;
@@ -64,7 +61,7 @@ body {
 	margin: 5px;
 	min-width: 100px;
 	border: 1px solid;
-	padding: 5px;	
+	padding: 5px;
 }
 
 .drag-placeholder {
