@@ -7,4 +7,18 @@ body {
 
 .popover-mockup {
 	border: 1px solid;
+	padding: 20px;
+}
+
+.filtered-results {
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+.filtered-results td {
+	cursor: pointer;
+}
+
+.input-filter {
+	width: 100%;
 }
