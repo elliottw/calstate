@@ -1,5 +1,5 @@
 (function(){
-    data = App.Utils.importData('http://localhost:8081/data/mech-e.json');
+    data = App.Utils.importData('/data/mech-e.json');
 
     // temporarily give every course each semester
     data.courseCollection.each(function(course) {
