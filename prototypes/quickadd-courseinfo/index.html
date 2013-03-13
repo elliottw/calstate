@@ -38,35 +38,40 @@
 						<tr>
 							<th>Code</th>
 							<th>Name</th>
-							<th>Term</th>
+							<th>Semester</th>
+							<th>Year</th>
 							<th>Requirements</th>
 						</tr>
 					</thead>
-					<tbody>
-					<% scheduledCourses.each(function(scheduledCourse) { %>
-						<tr id="<%= cid %>">
-							<td><%= scheduledCourse.get('course').id %></td>
-							<td>Intro to Something</td>
-							<td><%= scheduledCourse.get('term').get('label') %></td>
-							<td></td>
-						</tr>
-					<% }); %>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 		</script>
 
+
+		<script type="text/html" id="tpl-scheduled-course-row">
+			<td><%= course.id %></td>
+			<td>Intro to Something</td>
+			<td><%= term.semester %></td>
+			<td><%= term.year %></td>
+			<td></td>
+		</script>
+
+
 		<script type="text/html" id="tpl-quick-course-info">
-			<h3><%= course.get('id') %></h3>
+			<% if (backEnabled) { %>
+				<a class="btn-back" href="#">Back</a>
+			<% } %>
+			<h3><%= course.id %></h3>
 			<form>
 				<div class="row">
 					<label for="term" class="span1">Term: </label>
 					<select name="term" id="term" class="span2">
-						<% _.each(course.get('terms'), function(t) { %>
-							<% if (t == term) { %>
-								<option value=<%= t.get('id') %>><%= t.get('label') %></option>
+						<% _.each(course.terms, function(t) { %>
+							<% if (t.id == selectedTerm.id) { %>
+								<option value=<%= t.id %> selected><%= t.semester %> <%= t.year %></option>
 							<% } else { %>
-								<option value=<%= t.get('id') %> selected><%= t.get('label') %></option>
+								<option value=<%= t.id %>><%= t.semester %> <%= t.year %></option>
 							<% } %>
 						<% }); %>
 					</select>
@@ -86,6 +91,7 @@
 					</div>
 				</div>
 			</form>
+
 			<hr />
 			<div class="row">
 				<div class="course-description span7">

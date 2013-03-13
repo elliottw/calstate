@@ -32,44 +32,44 @@ App.module("Utils", function(Utils, App, Backbone, Marionette, $, _){
 			}
 		});
 
-		var Semesters = Backbone.Collection.extend({model: App.Planner.Semester});
-		var semesters = new Semesters(data.semesters);
+		var Terms = Backbone.Collection.extend({model: App.Courses.Term});
+		var terms = new Terms(data.terms);
 
-		var Courses = Backbone.Collection.extend({model: App.Courses.Course});
 		// First pass, define all the courses as a BB Collection with prereq
 		// data still as flat strings
-		var courses = new Courses(data.courses);
-		_.each(courses.models, function(course) {
-			course.set('terms', _.map(course.get('terms'), function(termStr) {
-				return semesters.get(termStr);
-			}));
+		var catalog = new App.Courses.Catalog(data.courses);
+		_.each(catalog.models, function(course) {
+			var termsArray = _.map(course.get('terms'), function(termStr) {
+				return terms.get(termStr);
+			});
+			course.set('terms', new Backbone.Collection(terms));
 		});
 
 		// Now back to resolve the prequesite references to take advantage of
-		// courses.get
-		_.each(courses.models, function(course) {
+		// catalog.get
+		_.each(catalog.models, function(course) {
 			var prereqs = course.get('prereqs');
 			if (prereqs) {
 				if (!_.isArray(prereqs)) {
 					console.warn("Non-array used for course prerequisites. Course id: " + course.id);
 				}
-				course.set('prereqs', processCourses(course.get('prereqs'), courses));
+				course.set('prereqs', processCourses(course.get('prereqs'), catalog));
 			}
 		});
 
 		// create a base Array of requirement groups
 		var requirementGroups = _.map(data.requirements, function(reqGroup) {
 			// resolve course references in mandated cources and elective courses
-			reqGroup.mandates = processCourses(reqGroup.mandates || [], courses);
+			reqGroup.mandates = processCourses(reqGroup.mandates || [], catalog);
 			_.each(reqGroup.electives, function(elec) {
-				elec.choices = processCourses(elec.choices || [], courses);
+				elec.choices = processCourses(elec.choices || [], catalog);
 			});
 			return reqGroup;
 		});
 
 		return {
-			semesterCollection: semesters,
-			courseCollection: courses,
+			termCollection: terms,
+			catalog: catalog,
 			requirementGroups: requirementGroups
 		};
 	};

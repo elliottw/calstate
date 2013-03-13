@@ -1,11 +1,16 @@
-# three example semesters (list them in chronological order)
-semesters:
-    -   id: fall13
-        label: Fall 2013
-    -   id: spr14
-        label: Spring 2014
-    -   id: fall14
-        label: Fall 2014
+# three example terms (list them in chronological order)
+terms:
+  - id:     fall13
+    semester: fall
+    year:     2013
+
+  - id:     spr14
+    semester: spring
+    year:     2014
+
+  - id:     fall14
+    semester: fall
+    year:     2014
 
 courses:
     # Course with label "REQ 101", available in Fall 2013, 2014

@@ -1,26 +1,66 @@
 App.module("Courses", function(Courses, App, Backbone, Marionette, $, _){
+    var Term = Backbone.Model.extend({
+        initialize: function() {
+            _.bindAll(this, 'toJSON');
+        },
+        toJSON: function() {
+            return {
+                id: this.id,
+                semester: this.get('semester') || '',
+                year: this.get('year') || ''
+            };
+        }
+    });
+
 	var Course = Backbone.Model.extend({
-		defaults: {
-            label: '',
-			terms: [],		// list of Semester instances
-			prereqs: []		// list of Course instances
-		}
+        initialize: function() {
+            _.bindAll(this, 'toJSON');
+        },
+        toJSON: function() {
+            var terms = this.terms ? (this.terms && this.terms.length) : [];
+            return {
+                id: this.id,
+                label: this.get('label') || '',
+                terms: this.has('terms') ? this.get('terms').map(function(term) { return term.toJSON(); }) : [],
+                prereqs: []
+            };
+        }
 	});
 
     var ScheduledCourse = Backbone.Model.extend({
-        defaults: {
-            course: null,
-            term: null
+        initialize: function() {
+            _.bindAll(this, 'toJSON');
+        },
+        toJSON: function() {
+            return {
+                course: this.get('course') && this.get('course').toJSON(),
+                term: this.get('term') && this.get('term').toJSON()
+            };
+        }
+    });
+
+    var CatalogFilter = Backbone.Model.extend({
+        initialize: function() {
+            _.bindAll(this, 'toJSON');
+        },
+        toJSON: function() {
+            return {
+                type: this.get('type') || '',
+                value: this.get('value') || ''
+            };
         }
     });
 
     var Catalog = Backbone.Collection.extend({
         model: Course,
+        initialize: function() {
+            _.bindAll(this, 'getScheduledCourses');
+        },
         getScheduledCourses: function() {
-            var ScheduledCourseCollection = Backbone.Collection.extend({});
             var termsToScheduledCourses = function(course) {
-                return _.map(course.get('terms'), function(term) {
-                    return new ScheduledCourse({course: course, term:term});
+                var terms = course.get('terms') || new Backbone.Collection();
+                return terms.map(function(term) {
+                    return new ScheduledCourse({course: course, term: term});
                 });
             };
             var iterator = function(memo, course) {
@@ -30,98 +70,153 @@ App.module("Courses", function(Courses, App, Backbone, Marionette, $, _){
         }
     });
 
-    var QuickCatalogView = Marionette.ItemView.extend({
+
+    var QuickCatalogFilterRow = Marionette.ItemView.extend({
+        template: "#tpl-scheduled-course-row"
+    });
+
+    /* CompositeView expecting the following data types:
+     * - model: any Model with attributes:
+     *          - title: <str>
+     * - collection: a Collection of ScheduledCourses
+     */
+    var QuickCatalogView = Marionette.CompositeView.extend({
         template: '#tpl-quick-catalog',
+
+        itemView: QuickCatalogFilterRow,
+        itemViewContainer: 'tbody',
+        itemViewOptions: function(model) {
+            return {
+                tagName: 'tr',
+                attributes: {'data-cid': model.cid}
+            };
+        },
+
         events: {
-            "click tr": "rowClicked"
+            "dblclick tr": "rowDblClicked"
         },
 
         initialize: function() {
-            // TODO: firx this
-            this.model.set('cid', this.model.cid);
-            console.log(this.model);
-            _.bindAll(this, 'rowClicked');
-
+            _.bindAll(this, 'rowDblClicked');
         },
-        rowClicked: function(e) {
-            // schCourse = this.model.get('scheduledCourses').get($(e.currentTarget).attr('id'));
-            this.trigger('click:scheduledCourse');
+        rowDblClicked: function(e) {
+            var cid = $(e.currentTarget).data('cid');
+            var scheduledCourse = this.collection.get(cid);
+            this.trigger('chosen:scheduledCourse', scheduledCourse);
         }
     });
 
-    var CoursePageView = Marionette.ItemView.extend({
+    var CourseInfoView = Marionette.ItemView.extend({
         template: '#tpl-quick-course-info',
         events: {
-            "click .btn-add": "addBtnClicked"
+            "submit form": "addBtnClicked",
+            "click .btn-back": "backBtnClicked"
         },
-        initialize: function() {
-            _.bindAll(this, 'addBtnClicked');
+
+        initialize: function(options) {
+            _.bindAll(this, 'addBtnClicked', 'backBtnClicked');
+            this.selectedTerm = options && options.selectedTerm;
+            this.selectedElecs = options && options.selectedElecs;
+            this.backEnabled = (options && options.backEnabled) ? options.backEnabled : true;
         },
-        addBtnClicked: function() {
-            this.trigger('click:addScheduledCourse', this.get('course'), this.get('term'));
+
+        serializeData: function() {
+            var courseData = Marionette.ItemView.prototype.serializeData.call(this);
+            return {
+                course: courseData,
+                backEnabled: this.backEnabled,
+                selectedTerm: this.selectedTerm && this.selectedTerm.toJSON()
+            };
+        },
+
+        addBtnClicked: function(e) {
+            var termId = $(e.currentTarget).find('option:selected').val();
+            this.trigger('click:addScheduledCourse', this.model, termId);
+            e.preventDefault();
+        },
+        backBtnClicked: function(e) {
+            this.trigger('click:back');
+            e.preventDefault();
         }
     });
 
     var PopoverController = Marionette.Controller.extend({
-        // initialize with (regionEl, course) or (regionEl, catalog, fixedFilter)
+        // initialize with (course) or (regionEl, catalog, fixedFilter)
         initialize: function(options) {
             var catalog = null;
-            this.course = null;
-            this.coursePageView = null;
-            this.catalogModel = null;
+            this.activeCourse = null;
+            this.activeCourseInfoView = null;
+            this.catalog = null;
             this.catalogView = null;
+            this.region = options.region || null;
 
-            this.region = new Marionette.Region({
-                el: options.regionEl
-            });
-
+            var that = this;
             if (options.course) {
                 // if course version of initializer
-                this.course = options.course;
-                this.coursePageView = new CoursePageView({
-                    model: new Backbone.Model({course: course})
+                this.activeCourse = options.course;
+                this.activeCourseInfoView = new CourseInfoView({
+                    model: new Backbone.Model({course: course}),
+                    backEnabled: false
                 });
-                region.show(this.coursePageView);
+                this.activeCourseInfoView.on("click:addScheduledCourse", function(course, term) {
+                    that.trigger("courseSelected", course, term);
+                });
+                this.region.show(this.activeCourseInfoView);
             }
             else {
                 // if catalog version of initializer
-                catalog = options.catalog;
+                this.catalog = options.catalog;
 
                 var title = "All Courses";
                 if(options.fixedFilter) {
-                    if (options.fixedFilter.type == 'term') {
+                    if (options.fixedFilter.get('type') === 'term') {
                         title = "Fall 13 Courses";
                     }
-                    else if (options.fixedFilter.type == 'requirement') {
+                    else if (options.fixedFilter.get('type') === 'requirement') {
                         title = "Courses satisfying 'Block E'";
                     }
                 }
 
-                this.catalogModel = new Backbone.Model({
-                    scheduledCourses: new Backbone.Collection(
-                        catalog.getScheduledCourses()),
-                    title: title
-                });
                 this.catalogView = new QuickCatalogView({
-                    model: this.catalogModel
+                    model: new Backbone.Model({title: title}),
+                    collection: new Backbone.Collection(this.catalog.getScheduledCourses())
                 });
 
-                var region = this.region;
-                this.catalogView.on('click:scheduledCourse', function() {
-                    this.coursePageView = new CoursePageView({
-                        model: new Backbone.Model({
-                            course: catalog.models[0],
-                            term: catalog.models[0].get('terms')[0]
-                        })
+                this.catalogView.on('chosen:scheduledCourse', function(scheduledCourse) {
+                    that.activeCourseInfoView = new CourseInfoView({
+                        model: scheduledCourse.get('course'),
+                        selectedTerm: scheduledCourse.get('term')
                     });
-                    region.show(this.coursePageView);
+                    that.activeCourseInfoView.on("click:addScheduledCourse", function(course, termId) {
+                        that.trigger("courseSelected", course, termId);
+                    });
+
+
+                    that.activeCourseInfoView.on('click:back', function() {
+                        that.region.show(that.catalogView);
+                        that.catalogView.delegateEvents();
+                    });
+
+                    // don't call region.show!
+                    that.showWithoutClosing(that.activeCourseInfoView);
                 });
 
                 this.region.show(this.catalogView);
             }
+        },
+
+        showWithoutClosing: function(view) {
+            // copy of Marionette.Region.show code, minus the closing of the current view
+            this.region.ensureEl();
+            view.render();
+            this.region.open(view);
+            Marionette.triggerMethod.call(view, "show");
+            Marionette.triggerMethod.call(this.region, "show", view);
+            this.region.currentView = view;
         }
     });
 
+    Courses.Term = Term;
     Courses.Catalog = Catalog;
     Courses.ScheduledCourse = ScheduledCourse;
     Courses.Course = Course;
