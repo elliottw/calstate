@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Quickadd Prototype</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-responsive.css">
+
+		<script src="js/vendor/jquery-1.9.1.js"></script>
+		<script src="js/vendor/jquery-ui-1.10.1.custom.js"></script>
+		<script src="js/vendor/bootstrap.js"></script>
+		<script src="js/vendor/underscore.js"></script>
+		<script src="js/vendor/backbone.js"></script>
+		<script src="js/vendor/backbone.marionette.js"></script>
+
+		<script src="js/app/init.js"></script>
+		<script src="js/app/views.js"></script>
+		<script src="js/app/main.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="span8" id="planner-region"></div>
+				<div class="span4" id="sidebar-region">
+					<h4>Upper Division Requirements</h4>
+					<div id="requirement-group-1"></div>
+				</div>
+			</div>
+		</div> <!-- .container -->
+
+		<script type="text/html" id="tpl-placed-course">
+			<%= course.code %>
+		</script>
+
+		<script type="text/html" id="tpl-mandate-slot">
+			<%= course.code %>
+		</script>
+
+		<script type="text/html" id="tpl-elective-slot">
+			<% if (!_.isEmpty(course)) { %>
+				<%= course.code %>
+			<% } else { %>
+				+ <em><%= label %></em>
+			<% } %>
+		</script>
+
+		<script type="text/html" id="tpl-semester">
+			<h4 class="semester-title"><%= label %></h4>
+			<ul class="placed-course-list"></ul>
+		</script>
+	</body>
+</html>
