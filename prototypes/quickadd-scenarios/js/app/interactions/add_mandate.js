@@ -2,7 +2,10 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
     Interactions.AddMandateController = Marionette.Controller.extend({
         initialize: function(options) {
             _.bindAll(this, 'forward');
+            this.showInfo();
+        },
 
+        showInfo: function() {
             var view = new App.Catalog.CourseInfoView({
                 model: new Backbone.Model({
                     course: slots.reqSlot1.get('course'),
@@ -22,6 +25,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 that.forward();
             });
         },
+
         forward: function() {
             App.quickAddRegion.close();
 

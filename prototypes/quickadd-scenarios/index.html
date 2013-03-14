@@ -62,17 +62,13 @@
 					<label for="term">Term: </label>
 					<select name="term" id="term">
 						<% _.each(terms, function(term){ %>
-							<% if (term.selected) { %>
-								<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
-							<% } else { %>
-								<option><%= term.label %></option>
-							<% } %>
+							<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
 						<% }) %>
 					</select>
 				</div>
 				<% if(!_.isEmpty(satisfies)) { %>
 				<div class="row">
-					<label for="satisfies">Satisfies: </label>
+					<label for="satisfies">Use to satisfy: </label>
 					<div>
 						<% _.each(satisfies, function(elec) { %>
 							<input type="checkbox"
