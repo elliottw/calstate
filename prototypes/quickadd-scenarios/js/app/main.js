@@ -7,6 +7,12 @@
         satisfied: false,
         interactionController: App.Interactions.AddMandateController
     });
+
+    slots.req102Slot = new App.Sidebar.MandateSlot({
+        course: {code: 'REQ 102'},
+        satisfied: false
+    });
+
     slots.elecEmptySlot = new App.Sidebar.ElectiveSlot({
         label: 'Block E',
         course: {},
@@ -15,6 +21,7 @@
 
     data.requirementGroup = new Backbone.Collection([
         slots.req101Slot,
+        slots.req102Slot,
         slots.elecEmptySlot
     ]);
 

@@ -1,10 +1,18 @@
 App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, _){
-    Interactions.addToSemesterController = Marionette.Controller.extend({
+    Interactions.AddToSemesterController = Marionette.Controller.extend({
         initialize: function(options) {
-            this.finishAction();
+            _.bindAll(this, 'forward');
+            this.forward();
         },
-        finishAction: function() {
+        forward: function() {
+            // add course to sidebar
+            slots.req102Slot.set('satisfied', true);
+            views.req1.render();
 
+            // add course to semester
+            views.fall.collection.add(new App.Planner.PlacedCourse({
+                course: slots.req102Slot.get('course')
+            }));
         }
     });
 });

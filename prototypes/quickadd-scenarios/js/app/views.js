@@ -75,6 +75,12 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
     Planner.SemesterView = Marionette.CompositeView.extend({
         template: '#tpl-semester',
         itemView: Planner.PlacedCourseView,
-        itemViewContainer: 'ul'
+        itemViewContainer: 'ul',
+        events: {
+            click: 'onClick'
+        },
+        onClick: function(e) {
+            new App.Interactions.AddToSemesterController();
+        }
     });
 });
