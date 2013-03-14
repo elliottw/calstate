@@ -1,24 +1,21 @@
 (function(){
     data = {}, views = {};
+    slots = {};
+
+    slots.req101Slot = new App.Sidebar.MandateSlot({
+        course: {code: 'REQ 101'},
+        satisfied: false,
+        interactionController: App.Interactions.AddMandateController
+    });
+    slots.elecEmptySlot = new App.Sidebar.ElectiveSlot({
+        label: 'Block E',
+        course: {},
+        interactionController: App.Interactions.AddElectiveController
+    }),
 
     data.requirementGroup = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({
-            course: {code: 'REQ 101'},
-            satisfied: false,
-            interactionController: App.Interactions.AddMandateController
-        }),
-        new App.Sidebar.MandateSlot({
-            course: {code: 'REQ 102'},
-            satisfied: false
-        }),
-        new App.Sidebar.ElectiveSlot({
-            label: 'Block E',
-            course: {code: 'ELEC 101'}
-        }),
-        new App.Sidebar.ElectiveSlot({
-            label: 'Block E',
-            course: {}
-        })
+        slots.req101Slot,
+        slots.elecEmptySlot
     ]);
 
     data.plannedCourses = new Backbone.Collection([]);
