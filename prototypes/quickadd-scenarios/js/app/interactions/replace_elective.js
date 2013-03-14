@@ -1,10 +1,19 @@
 App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, _){
-    Interactions.replaceElectiveController = Marionette.Controller.extend({
+    Interactions.ReplaceElectiveController = Marionette.Controller.extend({
         initialize: function(options) {
-            this.finishAction();
+            _.bindAll(this, 'forward');
+            this.forward();
         },
-        finishAction: function() {
+        forward: function() {
+            // add course to sidebar
+            var newCourse = {code: 'ELEC 103'};
+            slots.elecSlot1.set('course', newCourse);
+            slots.elecSlot1.unset('interactionController');
+            views.req1.render();
 
+            // add course to semester
+            placed.course1.set('course', newCourse);
+            views.fall.render();
         }
     });
 });

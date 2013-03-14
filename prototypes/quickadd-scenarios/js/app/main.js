@@ -2,30 +2,44 @@
     data = {}, views = {};
     slots = {};
 
-    slots.req101Slot = new App.Sidebar.MandateSlot({
+    slots.reqSlot1 = new App.Sidebar.MandateSlot({
         course: {code: 'REQ 101'},
         satisfied: false,
         interactionController: App.Interactions.AddMandateController
     });
 
-    slots.req102Slot = new App.Sidebar.MandateSlot({
+    slots.reqSlot2 = new App.Sidebar.MandateSlot({
         course: {code: 'REQ 102'},
         satisfied: false
     });
 
-    slots.elecEmptySlot = new App.Sidebar.ElectiveSlot({
+    slots.elecSlot1 = new App.Sidebar.ElectiveSlot({
+        label: 'Block E',
+        course: {code: 'ELEC 101'},
+        interactionController: App.Interactions.ReplaceElectiveController
+    }),
+
+    slots.elecSlot2 = new App.Sidebar.ElectiveSlot({
         label: 'Block E',
         course: {},
         interactionController: App.Interactions.AddElectiveController
     }),
 
     data.requirementGroup = new Backbone.Collection([
-        slots.req101Slot,
-        slots.req102Slot,
-        slots.elecEmptySlot
+        slots.reqSlot1,
+        slots.reqSlot2,
+        slots.elecSlot1,
+        slots.elecSlot2
     ]);
 
-    data.plannedCourses = new Backbone.Collection([]);
+    placed = {};
+    placed.course1 = new App.Planner.PlacedCourse({
+        course: {code: 'ELEC 101'}
+    });
+
+    data.plannedCourses = new Backbone.Collection([
+        placed.course1
+    ]);
 
     $(function() {
         App.addRegions({
