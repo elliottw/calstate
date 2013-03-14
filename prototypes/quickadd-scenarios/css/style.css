@@ -5,6 +5,45 @@ body {
 	padding-bottom: 30px;
 }
 
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.popover-mockup {
+	border: 1px solid;
+}
+
+#sidebar-region ul {
+	list-style: none;
+}
+#sidebar-region li {
+	list-style: none;
+}
+
+.requirement-satisfied,
+.requirement-unsatisfied {
+    border: 1px solid;
+}
+
+.requirement-satisfied {
+    background-color: #666;
+}
+
+.requirement-unsatisfied {
+    background-color: #eee;
+}
+
+
+
+
+
+
+
+
+
 .requirements-sidebar {
 	border: 1px solid #bbb;
 	padding: 10px;

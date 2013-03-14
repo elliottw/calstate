@@ -1,9 +1,11 @@
 (function(){
-    data = {};
+    data = {}, views = {};
+
     data.requirementGroup = new Backbone.Collection([
         new App.Sidebar.MandateSlot({
             course: {code: 'REQ 101'},
-            satisfied: true
+            satisfied: false,
+            interactionController: App.Interactions.AddMandateController
         }),
         new App.Sidebar.MandateSlot({
             course: {code: 'REQ 102'},
@@ -19,20 +21,25 @@
         })
     ]);
 
+    data.plannedCourses = new Backbone.Collection([]);
+
     $(function() {
         App.addRegions({
             sidebarRegion1: '#requirement-group-1',
             plannerRegion: '#planner-region'
         });
 
-        App.sidebarRegion1.show(new App.Sidebar.RequirementGroupView({
+        views.req1 = new App.Sidebar.RequirementGroupView({
             // model: new Backbone.Model({label: 'Baseline Requirements'}),
             collection: data.requirementGroup
-        }));
+        });
 
-        App.plannerRegion.show(new App.Planner.SemesterView({
+        App.sidebarRegion1.show(views.req1);
+
+        views.fall = new App.Planner.SemesterView({
             model: new Backbone.Model({label: 'Fall 13'}),
-            collection: new Backbone.Collection()
-        }));
+            collection: data.plannedCourses
+        });
+        App.plannerRegion.show(views.fall);
     });
 })();
