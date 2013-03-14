@@ -75,7 +75,10 @@
 					<label for="satisfies">Satisfies: </label>
 					<div>
 						<% _.each(satisfies, function(elec) { %>
-							<input type="checkbox" <%= elec.checked ? 'checked' : '' %> name="satisfies"/> <%= elec.label %>
+							<input type="checkbox"
+								<%= elec.checked ? 'checked' : '' %>
+								<%= elec.fixed ? 'disabled' : '' %>
+								name="satisfies"/> <%= elec.label %>
 						<% }) %>
 					</div>
 				</div>
