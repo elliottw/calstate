@@ -60,8 +60,12 @@
     $(function() {
         App.addRegions({
             sidebarRegion1: '#requirement-group-1',
-            plannerRegion: '#planner-region'
+            plannerRegion: '#planner-region',
+            quickAddRegion: '#quickadd-region'
         });
+
+        // App.modalRegion.ensureEl();
+        $('#modal-container').modal({show: false});
 
         views.req1 = new App.Sidebar.RequirementGroupView({
             // model: new Backbone.Model({label: 'Baseline Requirements'}),
@@ -75,5 +79,6 @@
             collection: data.plannedCourses
         });
         App.plannerRegion.show(views.fall);
+
     });
 })();

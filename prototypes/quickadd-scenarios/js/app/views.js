@@ -56,10 +56,15 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
             if (model.get('type') === 'mandate') {
                 var className = model.get('satisfied') ?
                     'requirement-satisfied' : 'requirement-unsatisfied';
-                return Sidebar.MandateSlotView.extend({className: className});
+                return Sidebar.MandateSlotView.extend({
+                    className: className,
+                    id: model.cid
+                });
             }
             else {
-                return Sidebar.ElectiveSlotView;
+                return Sidebar.ElectiveSlotView.extend({
+                    id: model.cid
+                });
             }
         }
     });
@@ -78,11 +83,36 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
         template: '#tpl-semester',
         itemView: Planner.PlacedCourseView,
         itemViewContainer: 'ul',
+        itemViewOptions: function(model) {
+            return {id: model.cid};
+        },
         events: {
             click: 'onClick'
         },
         onClick: function(e) {
             new App.Interactions.AddToSemesterController();
+            e.preventDefault();
+        }
+    });
+});
+
+
+App.module("Catalog", function(Catalog, App, Backbone, Marionette, $, _){
+    // expects model with {course: code}
+    Catalog.CourseInfoView = Marionette.ItemView.extend({
+        template: '#tpl-course-info',
+
+        initialize: function() {
+            _.bindAll(this, 'onSubmit');
+        },
+
+        events: {
+            'click input[type="submit"]': 'onSubmit'
+        },
+
+        onSubmit: function(e) {
+            e.preventDefault();
+            this.trigger('courseSelected');
         }
     });
 });

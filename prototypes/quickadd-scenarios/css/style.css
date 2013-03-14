@@ -36,7 +36,9 @@ body {
     background-color: #eee;
 }
 
-
+.popover {
+	max-width: 700px;
+}
 
 
 
