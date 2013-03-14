@@ -6,9 +6,9 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         },
         forward: function() {
             // add course to sidebar
-            var course = {code: 'ELEC 102'};
-            slots.elecSlot2.set('course', course);
-            slots.elecSlot2.unset('interactionController');
+            var course = {code: 'ELEC 103'};
+            slots.elecSlot3.set('course', course);
+            slots.elecSlot3.unset('interactionController');
             views.req1.render();
 
             // add course to semester

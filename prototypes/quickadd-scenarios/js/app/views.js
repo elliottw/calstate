@@ -13,6 +13,8 @@ App.module("Core", function(Core, App, Backbone, Marionette, $, _){
             else {
                 console.log('no action');
             }
+            e.stopImmediatePropagation();
+            e.preventDefault();
         }
     };
 

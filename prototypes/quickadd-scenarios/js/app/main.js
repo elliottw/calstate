@@ -13,6 +13,11 @@
         satisfied: false
     });
 
+    slots.reqSlot3 = new App.Sidebar.MandateSlot({
+        course: {code: 'REQ 102'},
+        satisfied: true
+    });
+
     slots.elecSlot1 = new App.Sidebar.ElectiveSlot({
         label: 'Block E',
         course: {code: 'ELEC 101'},
@@ -20,6 +25,11 @@
     }),
 
     slots.elecSlot2 = new App.Sidebar.ElectiveSlot({
+        label: 'Block E',
+        course: {code: 'ELEC 102'}
+    }),
+
+    slots.elecSlot3 = new App.Sidebar.ElectiveSlot({
         label: 'Block E',
         course: {},
         interactionController: App.Interactions.AddElectiveController
@@ -29,16 +39,22 @@
         slots.reqSlot1,
         slots.reqSlot2,
         slots.elecSlot1,
-        slots.elecSlot2
+        slots.elecSlot2,
+        slots.elecSlot3
     ]);
 
     placed = {};
     placed.course1 = new App.Planner.PlacedCourse({
         course: {code: 'ELEC 101'}
     });
+    placed.course2 = new App.Planner.PlacedCourse({
+        course: {code: 'ELEC 102'},
+        interactionController: App.Interactions.ReplacePlacedController
+    });
 
     data.plannedCourses = new Backbone.Collection([
-        placed.course1
+        placed.course1,
+        placed.course2
     ]);
 
     $(function() {
