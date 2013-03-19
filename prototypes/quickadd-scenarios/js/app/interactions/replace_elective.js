@@ -3,16 +3,29 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         initialize: function(options) {
             _.bindAll(this, 'forward');
             this.newCourse = {code: 'ELEC 104'};
+            this.sourceEl = options.sourceEl;
             this.showCatalog();
         },
 
         showCatalog: function() {
             var view = new App.Catalog.QuickCatalogView({
                 model: new Backbone.Model({
-                    title: 'Block E Courses'
+                    filter: 'satisfies'
                 })
             });
-            App.quickAddRegion.show(view);
+
+            this.sourceEl.popover({
+                html: true,
+                content: ' ',
+                placement: 'left',
+                title: 'All Block E Courses'
+            });
+            this.sourceEl.popover('show');
+            this.popoverRegion = new Marionette.Region({
+                el: '.popover-content'
+            });
+
+            this.popoverRegion.show(view);
 
             var that = this;
             view.on('rowSelected', function() {
@@ -37,7 +50,8 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 })
             });
 
-            App.quickAddRegion.show(view);
+            $('.popover-title').text(this.newCourse.code);
+            this.popoverRegion.show(view);
 
             var that = this;
             view.on('courseSelected', function() {
@@ -46,7 +60,10 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         },
 
         forward: function() {
-            App.quickAddRegion.close();
+            this.popoverRegion.close();
+            this.sourceEl.popover('destroy');
+            delete this.popoverRegion;
+
             // add course to sidebar
 
             slots.elecSlot1.set('course', this.newCourse);

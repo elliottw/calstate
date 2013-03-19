@@ -3,16 +3,29 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         initialize: function(options) {
             _.bindAll(this, 'forward');
             this.newCourse = {code: 'ELEC 105'};
+            this.sourceEl = options.sourceEl;
             this.showCatalog();
         },
 
         showCatalog: function() {
             var view = new App.Catalog.QuickCatalogView({
                 model: new Backbone.Model({
-                    title: 'Fall 2013 Courses'
+                    filter: 'semester'
                 })
             });
-            App.quickAddRegion.show(view);
+
+            this.sourceEl.popover({
+                html: true,
+                content: ' ',
+                placement: 'bottom',
+                title: 'Fall 2013 Courses'
+            });
+            this.sourceEl.popover('show');
+            this.popoverRegion = new Marionette.Region({
+                el: '.popover-content'
+            });
+
+            this.popoverRegion.show(view);
 
             var that = this;
             view.on('rowSelected', function() {
@@ -35,7 +48,8 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 })
             });
 
-            App.quickAddRegion.show(view);
+            $('.popover-title').text(this.newCourse.code);
+            this.popoverRegion.show(view);
 
             var that = this;
             view.on('courseSelected', function() {
@@ -44,7 +58,10 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         },
 
         forward: function() {
-            App.quickAddRegion.close();
+            this.popoverRegion.close();
+            this.sourceEl.popover('destroy');
+            delete this.popoverRegion;
+
             // add course to sidebar
             slots.elecSlot2.set('course', this.newCourse);
             views.req1.render();

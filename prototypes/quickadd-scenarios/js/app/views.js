@@ -8,7 +8,9 @@ App.module("Core", function(Core, App, Backbone, Marionette, $, _){
         },
         runInteraction: function(e) {
             if (this.model.has('interactionController')) {
-                new (this.model.get('interactionController'))();
+                new (this.model.get('interactionController'))({
+                    sourceEl: this.$el
+                });
             }
             else {
                 console.log('no action');
@@ -97,7 +99,9 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
             click: 'onClick'
         },
         onClick: function(e) {
-            new App.Interactions.AddToSemesterController();
+            new App.Interactions.AddToSemesterController({
+                sourceEl: this.$el
+            });
             e.preventDefault();
         }
     });
@@ -106,18 +110,26 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
 App.module("Catalog", function(Catalog, App, Backbone, Marionette, $, _){
     // expects model with {course: code}
     Catalog.QuickCatalogView = Marionette.ItemView.extend({
-        template: '#tpl-quick-catalog',
+        template: function(serialized_model) {
+            if (serialized_model.filter === 'satisfies') {
+                return _.template($('#tpl-quick-catalog-blocke').html(), serialized_model);
+            }
+            else {
+                return _.template($('#tpl-quick-catalog-fall13').html(), serialized_model);
+            }
+        },
 
         initialize: function() {
             _.bindAll(this, 'onRowChosen');
         },
 
         events: {
-            'dblclick tr': 'onRowChosen'
+            'click tr': 'onRowChosen'
         },
 
         onRowChosen: function(e) {
             e.preventDefault();
+            e.stopImmediatePropagation();
             this.trigger('rowSelected');
         }
     });
@@ -136,6 +148,7 @@ App.module("Catalog", function(Catalog, App, Backbone, Marionette, $, _){
 
         onSubmit: function(e) {
             e.preventDefault();
+            e.stopImmediatePropagation();
             this.trigger('courseSelected');
         }
     });

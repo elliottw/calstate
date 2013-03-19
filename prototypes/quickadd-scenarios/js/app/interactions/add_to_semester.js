@@ -2,6 +2,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
     Interactions.AddToSemesterController = Marionette.Controller.extend({
         initialize: function(options) {
             _.bindAll(this, 'forward');
+            this.sourceEl = options.sourceEl;
             this.showCatalog();
         },
 
@@ -11,7 +12,19 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                     title: 'Fall 2013 Courses'
                 })
             });
-            App.quickAddRegion.show(view);
+
+            this.sourceEl.popover({
+                html: true,
+                content: ' ',
+                placement: 'bottom',
+                title: 'Fall 2013 Courses'
+            });
+            this.sourceEl.popover('show');
+            this.popoverRegion = new Marionette.Region({
+                el: '.popover-content'
+            });
+
+            this.popoverRegion.show(view);
 
             var that = this;
             view.on('rowSelected', function() {
@@ -32,7 +45,8 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 })
             });
 
-            App.quickAddRegion.show(view);
+            $('.popover-title').text(slots.reqSlot2.get('course').code);
+            this.popoverRegion.show(view);
 
             var that = this;
             view.on('courseSelected', function() {
@@ -41,7 +55,9 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         },
 
         forward: function() {
-            App.quickAddRegion.close();
+            this.popoverRegion.close();
+            this.sourceEl.popover('destroy');
+            delete this.popoverRegion;
 
             // add course to sidebar
             slots.reqSlot2.set('satisfied', true);

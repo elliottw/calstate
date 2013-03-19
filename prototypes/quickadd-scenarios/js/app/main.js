@@ -60,8 +60,7 @@
     $(function() {
         App.addRegions({
             sidebarRegion1: '#requirement-group-1',
-            plannerRegion: '#planner-region',
-            quickAddRegion: '#quickadd-region'
+            plannerRegion: '#planner-region'
         });
 
         // App.modalRegion.ensureEl();
