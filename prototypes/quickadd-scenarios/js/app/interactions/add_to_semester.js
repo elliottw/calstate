@@ -2,7 +2,21 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
     Interactions.AddToSemesterController = Marionette.Controller.extend({
         initialize: function(options) {
             _.bindAll(this, 'forward');
-            this.showInfo();
+            this.showCatalog();
+        },
+
+        showCatalog: function() {
+            var view = new App.Catalog.QuickCatalogView({
+                model: new Backbone.Model({
+                    title: 'Fall 2013 Courses'
+                })
+            });
+            App.quickAddRegion.show(view);
+
+            var that = this;
+            view.on('rowSelected', function() {
+                that.showInfo();
+            });
         },
 
         showInfo: function() {
@@ -12,7 +26,9 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                     terms: [
                         {label: 'Fall 2013', selected: true}
                     ],
-                    satisfies: []
+                    satisfies: [],
+                    title: 'Fall 2013 Courses',
+                    buttonText: 'Add Course'
                 })
             });
 

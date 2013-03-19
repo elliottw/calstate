@@ -5,46 +5,111 @@ body {
 	padding-bottom: 30px;
 }
 
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-
-body {
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
-
 .popover-mockup {
 	border: 1px solid;
 }
 
+#planner-region > div {
+	border: 1px solid;
+	padding: 1em;
+	background-color: #eee;
+}
+
+#planner-region > div:hover {
+	background-color: #fff;
+}
+
+#planner-region li {
+	border: 1px solid;
+	background-color: #999;
+}
+
+#planner-region li:hover {
+	background-color: #aaa;
+}
+
 #sidebar-region ul {
 	list-style: none;
+	margin-left: 0;
 }
-#sidebar-region li {
+
+#sidebar-region li,
+#planner-region li {
 	list-style: none;
+	display: inline-block;
+	min-width: 85px;
+	text-align: center;
+	margin: 6px;
+	padding: 2px;
 }
 
 .requirement-satisfied,
-.requirement-unsatisfied {
+.requirement-unsatisfied,
+.elective-satisfied,
+.elective-unsatisfied,
+.placed-course-list > div,
+tr {
+	cursor: pointer;
+}
+
+.requirement-satisfied,
+.requirement-unsatisfied,
+.elective-satisfied,
+.elective-unsatisfied {
     border: 1px solid;
 }
 
-.requirement-satisfied {
-    background-color: #666;
+.requirement-satisfied,
+.elective-satisfied {
+    background-color: #999;
+}
+
+.requirement-satisfied:hover,
+.elective-satisfied:hover {
+    background-color: #aaa;
 }
 
 .requirement-unsatisfied {
+    background-color: #ddd;
+}
+
+.elective-unsatisfied:hover {
+	color: #888;
+}
+
+.requirement-unsatisfied:hover {
     background-color: #eee;
+}
+
+#quickadd-region {
+	height: 400px;
+	overflow: auto;
+	border: 2px solid;
+	padding: 1em;
+}
+
+.popover-title {
+	background-color: #e3e;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.popover-content {
+	border: 1px solid #888;
+}
+
+.course-code {
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+.search-query {
+	width: 100%;
 }
 
 .popover {
 	max-width: 700px;
 }
-
-
-
-
-
-
 
 .requirements-sidebar {
 	border: 1px solid #bbb;
@@ -64,7 +129,6 @@ body {
 	font-size: 18px;
 	margin: 6px 0;
 }
-
 
 .planner-region {
 	width: 100%;
@@ -134,22 +198,6 @@ body {
 	margin: 4px 0;
 }
 
-
-.course-slot-open.hover {
-	background-color: #e5eecc !important;
-}
-
-.semester.hover {
-	background-color: #e5eecc !important;
-}
-
-.semester.active {
-	background-color: #DCECB5;
-}
-
-.semester.active {
-	background-color: #FFB2B2;
-}
 
 label[for="semester-templates"] {
 	display: inline-block;

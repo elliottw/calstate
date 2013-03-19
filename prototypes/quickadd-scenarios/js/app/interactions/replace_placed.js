@@ -3,7 +3,21 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         initialize: function(options) {
             _.bindAll(this, 'forward');
             this.newCourse = {code: 'ELEC 105'};
-            this.showInfo();
+            this.showCatalog();
+        },
+
+        showCatalog: function() {
+            var view = new App.Catalog.QuickCatalogView({
+                model: new Backbone.Model({
+                    title: 'Fall 2013 Courses'
+                })
+            });
+            App.quickAddRegion.show(view);
+
+            var that = this;
+            view.on('rowSelected', function() {
+                that.showInfo();
+            });
         },
 
         showInfo: function() {
@@ -15,7 +29,9 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                     ],
                     satisfies: [
                         {label: 'Block E', checked: true}
-                    ]
+                    ],
+                    title: 'Fall 2013 Courses',
+                    buttonText: 'Replace Course'
                 })
             });
 

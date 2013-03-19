@@ -14,7 +14,9 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                         {label: 'Spring 2014', selected: false},
                         {label: 'Fall 2014', selected: false}
                     ],
-                    satisfies: []
+                    satisfies: [],
+                    title: '',
+                    buttonText: 'Add Course'
                 })
             });
 

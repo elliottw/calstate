@@ -75,7 +75,7 @@
         App.sidebarRegion1.show(views.req1);
 
         views.fall = new App.Planner.SemesterView({
-            model: new Backbone.Model({label: 'Fall 13'}),
+            model: new Backbone.Model({label: 'Fall 2013'}),
             collection: data.plannedCourses
         });
         App.plannerRegion.show(views.fall);

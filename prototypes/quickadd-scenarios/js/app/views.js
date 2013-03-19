@@ -49,12 +49,13 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
     });
 
     // expects collection of MandateSlot/ElectiveSlot models
+    var className;
     Sidebar.RequirementGroupView = Marionette.CollectionView.extend({
         tagName: 'ul',
         template: '#tpl-requirement-group',
         getItemView: function(model) {
             if (model.get('type') === 'mandate') {
-                var className = model.get('satisfied') ?
+                className = model.get('satisfied') ?
                     'requirement-satisfied' : 'requirement-unsatisfied';
                 return Sidebar.MandateSlotView.extend({
                     className: className,
@@ -62,7 +63,10 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
                 });
             }
             else {
+                className = !_.isEmpty(model.get('course')) ?
+                    'elective-satisfied' : 'elective-unsatisfied';
                 return Sidebar.ElectiveSlotView.extend({
+                    className: className,
                     id: model.cid
                 });
             }
@@ -84,7 +88,10 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
         itemView: Planner.PlacedCourseView,
         itemViewContainer: 'ul',
         itemViewOptions: function(model) {
-            return {id: model.cid};
+            return {
+                id: model.cid,
+                tagName: 'li'
+            };
         },
         events: {
             click: 'onClick'
@@ -96,8 +103,25 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
     });
 });
 
-
 App.module("Catalog", function(Catalog, App, Backbone, Marionette, $, _){
+    // expects model with {course: code}
+    Catalog.QuickCatalogView = Marionette.ItemView.extend({
+        template: '#tpl-quick-catalog',
+
+        initialize: function() {
+            _.bindAll(this, 'onRowChosen');
+        },
+
+        events: {
+            'dblclick tr': 'onRowChosen'
+        },
+
+        onRowChosen: function(e) {
+            e.preventDefault();
+            this.trigger('rowSelected');
+        }
+    });
+
     // expects model with {course: code}
     Catalog.CourseInfoView = Marionette.ItemView.extend({
         template: '#tpl-course-info',

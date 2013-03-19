@@ -2,9 +2,9 @@
 	<head>
 		<title>Quickadd Prototype</title>
 		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/style.css">
 
 		<script src="js/vendor/jquery-1.9.1.js"></script>
 		<script src="js/vendor/jquery-ui-1.10.1.custom.js"></script>
@@ -31,7 +31,10 @@
 					<div id="requirement-group-1"></div>
 				</div>
 			</div>
-			<div id="quickadd-region"></div>
+			<div class="row">
+				<div class="span8">
+				<div id="quickadd-region"></div>
+			</div>
 		</div> <!-- .container -->
 
 		<script type="text/html" id="tpl-placed-course">
@@ -55,60 +58,121 @@
 			<ul class="placed-course-list"></ul>
 		</script>
 
-		<script type="text/html" id="tpl-course-info">
-			<h3><%= course.code %></h3>
-			<form>
-				<div class="row">
-					<label for="term">Term: </label>
-					<select name="term" id="term">
-						<% _.each(terms, function(term){ %>
-							<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
-						<% }) %>
-					</select>
+		<script type="text/html" id="tpl-quick-catalog">
+			<h3 class="popover-title"><%= title %></h3>
+			<div class="popover-content">
+				<input class="input-filter search-query"/>
+				<div class="filtered-results">
+					<table class="table table-condensed table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Code</th>
+								<th>Name</th>
+								<th>Semester</th>
+								<th>Year</th>
+								<th>Satisfies</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>REQ 101</td>
+								<td>Intro to Something</td>
+								<td>Fall</td>
+								<td>2013</td>
+								<td>Mandate</td>
+							</tr>
+							<tr>
+								<td>REQ 102</td>
+								<td>Intermediate Something</td>
+								<td>Spring</td>
+								<td>2014</td>
+								<td>Mandate</td>
+							</tr>
+							<tr>
+								<td>ELEC 103</td>
+								<td>Basketweaving I</td>
+								<td>Fall</td>
+								<td>2014</td>
+								<td>Block E</td>
+							</tr>
+							<tr>
+								<td>ELEC 104</td>
+								<td>Basketweaving II</td>
+								<td>Fall</td>
+								<td>2013</td>
+								<td>Block E</td>
+							</tr>
+							<tr>
+								<td>ELEC 105</td>
+								<td>Advanced Basketweaving Seminar</td>
+								<td>Fall</td>
+								<td>2013</td>
+								<td>Block E, Block F</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<% if(!_.isEmpty(satisfies)) { %>
-				<div class="row">
-					<label for="satisfies">Use to satisfy: </label>
-					<div>
-						<% _.each(satisfies, function(elec) { %>
-							<input type="checkbox"
-								<%= elec.checked ? 'checked' : '' %>
-								<%= elec.fixed ? 'disabled' : '' %>
-								name="satisfies"/> <%= elec.label %>
-						<% }) %>
-					</div>
-				</div>
-				<% } %>
-				<div class="row">
-					<div>
-						<input class="btn btn-large" type="submit" class="btn" value="Add Course" />
-					</div>
-				</div>
-			</form>
+			</div>
+		</script>
 
-			<hr />
-			<div class="row">
-				<div class="course-description span7">
-					<h3 class="course-name">English for Engineers</h3>
-					<dl>
-						<dt>Description</dt>
-						<dd>University structure, policies, and procedures, resources available, and skills necessary for success. Introduction to profession of engineering; engineering, design process; communication skills in engineering. Laboratory 3 hours. Graded CR/NC.</dd>
-						<dt>Learning Outcome</dt>
-						<dd>Upon successful completion of the course, each student should be able to understand and apply concepts and skills that will enhance their success and a student and as an engineer.</dd>
-						<dt>Text</dt>
-						<dd>Landis, Raymond B. (2007). Studying Engineering: A Road Map to a Rewarding Career (3rd Ed.) Los Angeles: Discovery Press.</dd>
-						<dt>Sections</dt>
-						<dd></dd>
-						<dt>Equivalencies</dt>
-						<dd></dd>
-						<dt>Pre-requirements</dt>
-						<dd></dd>
-						<dt>Co-requirements</dt>
-						<dd></dd>
-						<dt>Requirements for</dt>
-						<dd></dd>
-					</dl>
-				</div> <!-- .course-description -->
+		<script type="text/html" id="tpl-course-info">
+			<h3 class="popover-title"><%= title %></h3>
+			<div class="popover-content">
+				<p class="course-code">Course: <em><%= course.code %><em></p>
+				<p class="course-code"><%= course.name %></p>
+				<form>
+					<div>
+						<label for="term">Term: </label>
+						<select name="term" id="term">
+							<% _.each(terms, function(term){ %>
+								<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
+							<% }) %>
+						</select>
+					</div>
+					<% if(!_.isEmpty(satisfies)) { %>
+					<div>
+						<label for="satisfies">Use to satisfy: </label>
+						<div>
+							<% _.each(satisfies, function(elec) { %>
+								<input type="checkbox"
+									<%= elec.checked ? 'checked' : '' %>
+									<%= elec.fixed ? 'disabled' : '' %>
+									name="satisfies"/> <%= elec.label %>
+							<% }) %>
+						</div>
+					</div>
+					<% } %>
+					<div>
+						<div>
+							<input class="btn btn-large" type="submit" class="btn" value="<%= buttonText %>" />
+						</div>
+					</div>
+				</form>
+
+				<hr />
+				<div class="row">
+					<div class="course-description span7">
+						<h3 class="course-name">English for Engineers</h3>
+						<dl>
+							<dt>Description</dt>
+							<dd>University structure, policies, and procedures, resources available, and skills necessary for success. Introduction to profession of engineering; engineering, design process; communication skills in engineering. Laboratory 3 hours. Graded CR/NC.</dd>
+							<dt>Learning Outcome</dt>
+							<dd>Upon successful completion of the course, each student should be able to understand and apply concepts and skills that will enhance their success and a student and as an engineer.</dd>
+							<dt>Text</dt>
+							<dd>Landis, Raymond B. (2007). Studying Engineering: A Road Map to a Rewarding Career (3rd Ed.) Los Angeles: Discovery Press.</dd>
+							<dt>Sections</dt>
+							<dd></dd>
+							<dt>Equivalencies</dt>
+							<dd></dd>
+							<dt>Pre-requirements</dt>
+							<dd></dd>
+							<dt>Co-requirements</dt>
+							<dd></dd>
+							<dt>Requirements for</dt>
+							<dd></dd>
+						</dl>
+					</div> <!-- .course-description -->
+				</div>
 			</div>
 		</script>
 	</body>
