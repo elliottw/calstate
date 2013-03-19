@@ -1,10 +1,136 @@
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 body {
-	padding-top: 30px;
-	padding-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-.popover-mockup {
-	border: 1px solid;
+.course-holding-container {
+    border: 1px solid #bbb;
+    padding: 10px;
+}
+
+.course-category {
+    padding-bottom: 16px;
+    border-bottom: 1px solid;
+}
+
+.course-category:last-child {
+    border-bottom: 0;
+}
+
+.semester-container {
+    width: 100%;
+}
+
+.semester {
+    height: 100px;
+    margin-bottom: 20px;
+    background-color: #ddd;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+.semester > div {
+    margin: 25px;
+}
+
+.semester-heading {
+    font-size: 14px;
+    margin: 0.25em 0 0 0.5em;
+    display: inline-block;
+}
+
+
+.course-category-heading {
+    font-size: 18px;
+    margin: 6px 0;
+}
+
+.course-marker {
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    min-width: 100px;
+    border: 1px solid;
+    padding: 5px;
+    cursor: move;
+    background-color: #bbb;
+}
+
+.course-slot {
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    min-width: 100px;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.drag-placeholder {
+    opacity: .33;
+}
+
+.prereq {
+    background-color: #c99;
+}
+
+.course-slot-claimed {
+    cursor: auto;
+    background-color: #bbb;
+    opacity: .33;
+}
+
+.course-slot-open {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.course-slot-open.hover {
+    background-color: #e5eecc !important;
+}
+
+.semester.hover {
+    background-color: #e5eecc !important;
+}
+
+.semester.active {
+    background-color: #DCECB5;
+}
+
+.semester.active {
+    background-color: #FFB2B2;
+}
+
+label[for="semester-templates"] {
+    display: inline-block;
+}
+
+.catalog select {
+    width: 100%;
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+}
+
+.course-description {
+    border: 1px solid;
+}
+
+.course-description > .course {
+    float: left;
+    margin: 8px;
+}
+
+.course-name {
+    font-size: 18px;
+    line-height: 1.25em;
+    margin: 8px;
+}
+
+.course-description dl {
+    margin: 20px;
+}
+
+.course-description dd {
+    margin-bottom: 1em;
 }
