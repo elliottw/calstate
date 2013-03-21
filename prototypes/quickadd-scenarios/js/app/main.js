@@ -2,138 +2,129 @@
     data = {}, views = {};
     slots = {};
 
-    slots.req101 = new App.Sidebar.MandateSlot({
-        course: {code: 'REQ 101'},
-        satisfied: false,
-        interactionController: App.Interactions.AddMandateController
-    });
-
-    slots.req102 = new App.Sidebar.MandateSlot({
-        course: {code: 'REQ 102'},
-        satisfied: false
-    });
-
-    slots.elec101 = new App.Sidebar.ElectiveSlot({
-        label: 'English',
-        course: {code: 'ELEC 101'},
-        interactionController: App.Interactions.ReplaceElectiveController
-    }),
-
-    slots.elec102 = new App.Sidebar.ElectiveSlot({
-        label: 'English',
-        course: {code: 'ELEC 102'}
-    }),
-
-    slots.elecFreeSlot = new App.Sidebar.ElectiveSlot({
-        label: 'Hist',
-        course: {},
-        interactionController: App.Interactions.AddElectiveController
-    }),
-
-    data.mandateGroup = new Backbone.Collection([
-        slots.req101,
-        slots.req102,
-        new App.Sidebar.MandateSlot({course: {code: 'ENGR 300'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ENGR 301'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CE/ME 303'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 306'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 310'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CE/ME 313'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 315'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 316'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CE/ME 320'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 318'}})
-    ]);
-
-    data.electiveGroup = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 104'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 105'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ENGL 102'}}),
-        slots.elec101,
-        slots.elec102,
-        new App.Sidebar.MandateSlot({course: {code: 'COMM 150'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'POLS 150'}}),
-        new App.Sidebar.ElectiveSlot({label: 'Phil', course: {}}),
-        slots.elecFreeSlot
-    ]);
-
-    data.inactiveGroup1 = new Backbone.Collection([
-        new App.Sidebar.ElectiveSlot({label: 'Block C', course: {}}),
-        new App.Sidebar.ElectiveSlot({label: 'Block E', course: {}}),
-        new App.Sidebar.ElectiveSlot({label: 'Block E', course: {}}),
-    ]);
-
-    data.inactiveGroup2 = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({course: {code: 'ENGR 150'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 103'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CE/ME 201'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 204'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CE/ME 210'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'EE 210'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CE/ME 211'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CHEM 101'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'CS 290'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 206'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 207'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 208'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 209'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'MATH 215'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'PHYS 211'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'PHYS 212'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'PHYS 213'}})
-    ]);
-
-    data.inactiveGroup3 = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({course: {code: 'ENGL 101'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'WPE'}})
-    ]);
-
-    data.inactiveGroup4 = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({course: {code: 'ME 497A'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 497B'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'ME 497C'}})
-    ]);
-
-    placed = {};
-    placed.course1 = new App.Planner.PlacedCourse({
-        course: {code: 'ELEC 101'}
-    });
-    placed.course2 = new App.Planner.PlacedCourse({
-        course: {code: 'ELEC 102'},
-        interactionController: App.Interactions.ReplacePlacedController
-    });
-
-    data.plannedCourses = new Backbone.Collection([
-        placed.course1,
-        placed.course2
-    ]);
-
-
-
-
-    $(function() {
-        App.addRegions({
-            mandateSidebarRegion: '#active-mandate-group',
-            electiveSidebarRegion: '#active-elective-group',
-
-            semesterRegion1: '#semester-region-1',
-            semesterRegion2: '#semester-region-2',
-            semesterRegion3: '#semester-region-3',
-            semesterRegion4: '#semester-region-4',
-            semesterRegion5: '#semester-region-5',
-            semesterRegion6: '#semester-region-6',
-            semesterRegion7: '#semester-region-7',
-            semesterRegion8: '#semester-region-8',
-
-            sidebarRegion1: '#inactive-group-1',
-            sidebarRegion2: '#inactive-group-2',
-            sidebarRegion3: '#inactive-group-3',
-            sidebarRegion4: '#inactive-group-4'
+    function resetBlank() {
+        slots.req101 = new App.Sidebar.MandateSlot({
+            course: {code: 'REQ 101'},
+            satisfied: false
         });
 
-        // App.modalRegion.ensureEl();
-        $('#modal-container').modal({show: false});
+        slots.req102 = new App.Sidebar.MandateSlot({
+            course: {code: 'REQ 102'},
+            satisfied: false
+        });
 
+        slots.elec1 = new App.Sidebar.ElectiveSlot({
+            label: 'English',
+            course: {code: 'ELEC 101'}
+        }),
+
+        slots.elec2 = new App.Sidebar.ElectiveSlot({
+            label: 'English',
+            course: {code: 'ELEC 102'}
+        }),
+
+        slots.elec3 = new App.Sidebar.ElectiveSlot({
+            label: 'Hist',
+            course: {}
+        }),
+
+        slots.elec3.set('interactionController',
+            App.Interactions.AddElectiveController);
+
+        slots.elec1.set('interactionController',
+            App.Interactions.ReplaceElectiveController);
+
+        slots.req101.set('interactionController',
+            App.Interactions.AddMandateController);
+
+        data.mandateGroup = new Backbone.Collection([
+            slots.req101,
+            slots.req102,
+            new App.Sidebar.MandateSlot({course: {code: 'ENGR 300'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ENGR 301'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CE/ME 303'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 306'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 310'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CE/ME 313'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 315'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 316'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CE/ME 320'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 318'}})
+        ]);
+
+        data.electiveGroup = new Backbone.Collection([
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 104'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 105'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ENGL 102'}}),
+            slots.elec1,
+            slots.elec2,
+            new App.Sidebar.MandateSlot({course: {code: 'COMM 150'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'POLS 150'}}),
+            new App.Sidebar.ElectiveSlot({label: 'Phil', course: {}}),
+            slots.elec3
+        ]);
+
+        data.inactiveGroup1 = new Backbone.Collection([
+            new App.Sidebar.ElectiveSlot({label: 'Block C', course: {}}),
+            new App.Sidebar.ElectiveSlot({label: 'Block E', course: {}}),
+            new App.Sidebar.ElectiveSlot({label: 'Block E', course: {}})
+        ]);
+
+        data.inactiveGroup2 = new Backbone.Collection([
+            new App.Sidebar.MandateSlot({course: {code: 'ENGR 150'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 103'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CE/ME 201'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 204'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CE/ME 210'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'EE 210'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CE/ME 211'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CHEM 101'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'CS 290'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 206'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 207'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 208'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 209'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'MATH 215'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'PHYS 211'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'PHYS 212'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'PHYS 213'}})
+        ]);
+
+        data.inactiveGroup3 = new Backbone.Collection([
+            new App.Sidebar.MandateSlot({course: {code: 'ENGL 101'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'WPE'}})
+        ]);
+
+        data.inactiveGroup4 = new Backbone.Collection([
+            new App.Sidebar.MandateSlot({course: {code: 'ME 497A'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 497B'}}),
+            new App.Sidebar.MandateSlot({course: {code: 'ME 497C'}})
+        ]);
+
+        placed = {};
+        placed.course1 = new App.Planner.PlacedCourse({
+            course: {code: 'ELEC 101'}
+        });
+        placed.course2 = new App.Planner.PlacedCourse({
+            course: {code: 'ELEC 102'}
+        });
+
+        data.plannedCourses = new Backbone.Collection([
+            placed.course1,
+            placed.course2
+        ]);
+
+        placed.course2.set('interactionController',
+            App.Interactions.ReplacePlacedController);
+
+        resetRegions();
+    }
+
+    function resetTemplate() {
+
+    }
+
+    function resetRegions() {
         views.mandateRequirementView = new App.Sidebar.ActiveRequirementGroupView({
             collection: data.mandateGroup
         });
@@ -166,14 +157,14 @@
 
         views.fall13 = new App.Planner.SemesterView({
             model: new Backbone.Model({label: 'Fall 2013'}),
-            collection: data.plannedCourses,
-            hasInteraction: true
+            collection: data.plannedCourses
         });
         App.semesterRegion1.show(views.fall13);
 
         views.spr14 = new App.Planner.SemesterView({
             model: new Backbone.Model({label: 'Spring 2014'}),
-            collection: new Backbone.Collection()
+            collection: new Backbone.Collection(),
+            hasInteraction: true
         });
         App.semesterRegion2.show(views.spr14);
 
@@ -212,5 +203,40 @@
             collection: new Backbone.Collection()
         });
         App.semesterRegion8.show(views.spr17);
+    }
+
+    $(function() {
+        App.addRegions({
+            mandateSidebarRegion: '#active-mandate-group',
+            electiveSidebarRegion: '#active-elective-group',
+
+            semesterRegion1: '#semester-region-1',
+            semesterRegion2: '#semester-region-2',
+            semesterRegion3: '#semester-region-3',
+            semesterRegion4: '#semester-region-4',
+            semesterRegion5: '#semester-region-5',
+            semesterRegion6: '#semester-region-6',
+            semesterRegion7: '#semester-region-7',
+            semesterRegion8: '#semester-region-8',
+
+            sidebarRegion1: '#inactive-group-1',
+            sidebarRegion2: '#inactive-group-2',
+            sidebarRegion3: '#inactive-group-3',
+            sidebarRegion4: '#inactive-group-4'
+        });
+
+        $("#btn-template-blank").on('click', function(e) {
+            resetBlank();
+            e.preventDefault();
+        });
+
+        $("#btn-template-1").on('click', function(e) {
+            resetTemplate();
+            e.preventDefault();
+        });
+
+
+        resetBlank();
     });
+
 })();

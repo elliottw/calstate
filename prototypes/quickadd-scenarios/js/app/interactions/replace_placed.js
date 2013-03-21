@@ -41,7 +41,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                         {label: 'Fall 2013', selected: true}
                     ],
                     satisfies: [
-                        {label: 'Block E', checked: true}
+                        {label: 'English', checked: true}
                     ],
                     title: 'Fall 2013 Courses',
                     buttonText: 'Replace Course'
@@ -63,7 +63,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             delete this.popoverRegion;
 
             // add course to sidebar
-            slots.elec102.set('course', this.newCourse);
+            slots.elec2.set('course', this.newCourse);
             views.electiveRequirementView.render();
 
             // add course to semester

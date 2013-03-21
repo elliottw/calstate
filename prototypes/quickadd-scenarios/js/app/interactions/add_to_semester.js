@@ -8,16 +8,14 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
 
         showCatalog: function() {
             var view = new App.Catalog.QuickCatalogView({
-                model: new Backbone.Model({
-                    title: 'Fall 2013 Courses'
-                })
+                model: new Backbone.Model()
             });
 
             this.sourceEl.popover({
                 html: true,
                 content: ' ',
                 placement: 'bottom',
-                title: 'Fall 2013 Courses'
+                title: 'Spring 2014 Courses'
             });
             this.sourceEl.popover('show');
             this.popoverRegion = new Marionette.Region({
@@ -37,10 +35,9 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 model: new Backbone.Model({
                     course: slots.req102.get('course'),
                     terms: [
-                        {label: 'Fall 2013', selected: true}
+                        {label: 'Spring 2014', selected: true}
                     ],
                     satisfies: [],
-                    title: 'Fall 2013 Courses',
                     buttonText: 'Add Course'
                 })
             });
@@ -64,10 +61,10 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             views.mandateRequirementView.render();
 
             // add course to semester
-            views.fall13.collection.add(new App.Planner.PlacedCourse({
+            views.spr14.collection.add(new App.Planner.PlacedCourse({
                 course: slots.req102.get('course')
             }));
-            views.fall13.undelegateEvents();
+            views.spr14.undelegateEvents();
         }
     });
 });

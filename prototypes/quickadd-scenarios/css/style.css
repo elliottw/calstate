@@ -6,27 +6,21 @@ body {
 }
 
 .semester-region li {
-	border: 1px solid;
-	background-color: #999;
-}
-
-.semester-region li:hover {
-	background-color: #aaa;
-}
-
-#sidebar-region ul {
-	list-style: none;
-	margin-left: 0;
-}
-
-#sidebar-region li,
-.semester-region li {
+	height: 50px;
+	min-width: 90px;
 	list-style: none;
 	display: inline-block;
-	min-width: 85px;
+	margin: 8px;
+	padding: 4px;
 	text-align: center;
-	margin: 6px;
-	padding: 2px;
+}
+
+#planner-region {
+	margin-top: 1em;
+}
+
+#sidebar-region {
+	margin-top: 1em;
 }
 
 .semester {
@@ -34,7 +28,7 @@ body {
 	margin-bottom: 20px;
 	background-color: #eee;
 	overflow: hidden;
-	height: 150px;
+	height: 100px;
 }
 
 .semester:hover {
@@ -44,14 +38,24 @@ body {
 .semester-heading {
 	font-size: 16px;
 	line-height: 16px;
-	margin: 0.25em 0 1em 0.25em;
+	margin: 0.25em;
 	display: inline-block;
 }
 
+.placed-course-list {
+	margin: 0 0 10px 15px;
+}
 
+.placed-course-list li {
+	border: 1px solid;
+	background-color: #999;
+}
 
-.requirement-slot,
-.placed-course-list > div,
+.placed-course-list li:hover {
+	background-color: #aaa;
+}
+
+.placed-course-list li,
 tr {
 	cursor: pointer;
 }
@@ -123,6 +127,24 @@ tr {
 
 .requirements-group:last-child {
 	border-bottom: 0;
+}
+
+.requirements-group ul {
+	margin-left: 0;
+}
+
+.requirements-group li {
+	list-style: none;
+	display: inline-block;
+	min-width: 85px;
+	text-align: center;
+	margin: 6px;
+	padding: 2px;
+	cursor: pointer;
+}
+
+.btn-group-templates {
+	min-width: 800px;
 }
 
 .requirements-heading {

@@ -64,6 +64,16 @@
 					<div id="semester-region-8" class="semester-region"></div>
 				</div>
 				<div class="span4" id="sidebar-region">
+					<div class="btn-group btn-group-templates">
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+							<span class="dropdown-label">Initialize Using Template</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="btn-template" id="btn-template-blank" href="#">Blank</a></li>
+							<li><a class="btn-template" id="btn-template-1" href="#">Template 1</a></li>
+						</ul>
+					</div>
 					<div class="requirements-group">
 						<h3 class="requirements-heading">Lower Divison GE Requirements</h3>
 						<div id="active-elective-group"></div>
@@ -217,12 +227,16 @@
 			<div class="popover-content">
 				<form class="clearfix">
 					<div class="courseinfo-options">
-						<label for="term">Term: </label>
-						<select name="term" id="term">
-							<% _.each(terms, function(term){ %>
-								<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
-							<% }) %>
-						</select>
+						<% if(terms.length === 1) { %>
+							<p class="term-fixed">Term: <%= terms[0].label %></p>
+						<% } else { %>
+							<label for="term">Term: </label>
+							<select name="term" id="term">
+								<% _.each(terms, function(term){ %>
+									<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
+								<% }) %>
+							</select>
+						<% } %>
 
 						<% if(!_.isEmpty(satisfies)) { %>
 						<label for="satisfies">Use to satisfy: </label>

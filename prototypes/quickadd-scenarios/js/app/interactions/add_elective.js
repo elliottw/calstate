@@ -65,8 +65,8 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             delete this.popoverRegion;
 
             // add course to sidebar
-            slots.elecFreeSlot.set('course', this.newCourse);
-            slots.elecFreeSlot.unset('interactionController');
+            slots.elec3.set('course', this.newCourse);
+            slots.elec3.unset('interactionController');
             views.electiveRequirementView.render();
 
             // add course to semester
