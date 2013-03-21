@@ -8,6 +8,7 @@
 
 		<script src="js/vendor/jquery-1.9.1.js"></script>
 		<script src="js/vendor/jquery-ui-1.10.1.custom.js"></script>
+		<script src="js/vendor/ttable.js"></script>
 		<script src="js/vendor/bootstrap.js"></script>
 		<script src="js/vendor/underscore.js"></script>
 		<script src="js/vendor/backbone.js"></script>
@@ -131,9 +132,9 @@
 
 		<script type="text/html" id="tpl-quick-catalog-blocke">
 			<div class="popover-content">
-				<input class="input-filter search-query"/>
+				<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
 				<div class="filtered-results">
-					<table class="table table-condensed table-striped table-hover">
+					<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Code</th>
@@ -181,9 +182,9 @@
 
 		<script type="text/html" id="tpl-quick-catalog-fall13">
 			<div class="popover-content">
-				<input class="input-filter search-query"/>
+				<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
 				<div class="filtered-results">
-					<table class="table table-condensed table-striped table-hover">
+					<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Code</th>

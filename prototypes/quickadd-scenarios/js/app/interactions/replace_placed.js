@@ -26,6 +26,8 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             });
 
             this.popoverRegion.show(view);
+            App.Core.activateFilterTable('tbl-catalog', 'tbl-catalog-filter');
+            $('#tbl-catalog-filter').focus();
 
             var that = this;
             view.on('rowSelected', function() {

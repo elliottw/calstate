@@ -56,8 +56,12 @@ body {
 }
 
 .placed-course-list li,
-tr {
+td {
 	cursor: pointer;
+}
+
+.numcx {
+	display: none;
 }
 
 .requirement-slot {

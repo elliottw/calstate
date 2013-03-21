@@ -1,28 +1,3 @@
-App.module("Core", function(Core, App, Backbone, Marionette, $, _){
-    Core.interactionViewExtension = {
-        initialize: function() {
-            _.bindAll(this, 'runInteraction');
-        },
-        events: {
-            'click': 'runInteraction'
-        },
-        runInteraction: function(e) {
-            if (this.model.has('interactionController')) {
-                new (this.model.get('interactionController'))({
-                    sourceEl: this.$el
-                });
-            }
-            else {
-                console.log('no action');
-            }
-            e.stopImmediatePropagation();
-            e.preventDefault();
-        }
-    };
-
-    Core.InteractionItemView = Marionette.ItemView.extend(Core.interactionViewExtension);
-});
-
 App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
     // expects attributes {course: { code: <str> }, satisfied: <bool>}
     Sidebar.MandateSlot = Backbone.Model.extend({
@@ -131,7 +106,7 @@ App.module("Catalog", function(Catalog, App, Backbone, Marionette, $, _){
         },
 
         events: {
-            'click tr': 'onRowChosen'
+            'click td': 'onRowChosen'
         },
 
         onRowChosen: function(e) {
