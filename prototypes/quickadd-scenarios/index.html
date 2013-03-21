@@ -131,154 +131,148 @@
 		</script>
 
 		<script type="text/html" id="tpl-quick-catalog-blocke">
-			<div class="popover-content">
-				<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
-				<div class="filtered-results">
-					<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
-						<thead>
-							<tr>
-								<th>Code</th>
-								<th>Name</th>
-								<th>Semester</th>
-								<th>Year</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>REQ 101</td>
-								<td>Intro to Something</td>
-								<td>Fall</td>
-								<td>2013</td>
-							</tr>
-							<tr>
-								<td>REQ 102</td>
-								<td>Intermediate Something</td>
-								<td>Spring</td>
-								<td>2014</td>
-							</tr>
-							<tr>
-								<td>ELEC 103</td>
-								<td>Basketweaving I</td>
-								<td>Fall</td>
-								<td>2014</td>
-							</tr>
-							<tr>
-								<td>ELEC 104</td>
-								<td>Basketweaving II</td>
-								<td>Fall</td>
-								<td>2013</td>
-							</tr>
-							<tr>
-								<td>ELEC 105</td>
-								<td>Advanced Basketweaving Seminar</td>
-								<td>Fall</td>
-								<td>2013</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
+			<div class="filtered-results">
+				<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+							<th>Semester</th>
+							<th>Year</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>REQ 101</td>
+							<td>Intro to Something</td>
+							<td>Fall</td>
+							<td>2013</td>
+						</tr>
+						<tr>
+							<td>REQ 102</td>
+							<td>Intermediate Something</td>
+							<td>Spring</td>
+							<td>2014</td>
+						</tr>
+						<tr>
+							<td>ELEC 103</td>
+							<td>Basketweaving I</td>
+							<td>Fall</td>
+							<td>2014</td>
+						</tr>
+						<tr>
+							<td>ELEC 104</td>
+							<td>Basketweaving II</td>
+							<td>Fall</td>
+							<td>2013</td>
+						</tr>
+						<tr>
+							<td>ELEC 105</td>
+							<td>Advanced Basketweaving Seminar</td>
+							<td>Fall</td>
+							<td>2013</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</script>
 
 		<script type="text/html" id="tpl-quick-catalog-fall13">
-			<div class="popover-content">
-				<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
-				<div class="filtered-results">
-					<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
-						<thead>
-							<tr>
-								<th>Code</th>
-								<th>Name</th>
-								<th>Satisfies</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>REQ 101</td>
-								<td>Intro to Something</td>
-								<td>Mandate</td>
-							</tr>
-							<tr>
-								<td>REQ 102</td>
-								<td>Intermediate Something</td>
-								<td>Mandate</td>
-							</tr>
-							<tr>
-								<td>ELEC 103</td>
-								<td>Basketweaving I</td>
-								<td>Block E</td>
-							</tr>
-							<tr>
-								<td>ELEC 104</td>
-								<td>Basketweaving II</td>
-								<td>Block E</td>
-							</tr>
-							<tr>
-								<td>ELEC 105</td>
-								<td>Advanced Basketweaving Seminar</td>
-								<td>Block E, Block F</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
+			<div class="filtered-results">
+				<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+							<th>Satisfies</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>REQ 101</td>
+							<td>Intro to Something</td>
+							<td>Mandate</td>
+						</tr>
+						<tr>
+							<td>REQ 102</td>
+							<td>Intermediate Something</td>
+							<td>Mandate</td>
+						</tr>
+						<tr>
+							<td>ELEC 103</td>
+							<td>Basketweaving I</td>
+							<td>Block E</td>
+						</tr>
+						<tr>
+							<td>ELEC 104</td>
+							<td>Basketweaving II</td>
+							<td>Block E</td>
+						</tr>
+						<tr>
+							<td>ELEC 105</td>
+							<td>Advanced Basketweaving Seminar</td>
+							<td>Block E, Block F</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</script>
 
 		<script type="text/html" id="tpl-course-info">
-			<div class="popover-content">
-				<form class="clearfix">
-					<div class="courseinfo-options">
-						<% if(terms.length === 1) { %>
-							<p class="term-fixed">Term: <%= terms[0].label %></p>
-						<% } else { %>
-							<label for="term">Term: </label>
-							<select name="term" id="term">
-								<% _.each(terms, function(term){ %>
-									<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
-								<% }) %>
-							</select>
-						<% } %>
-
-						<% if(!_.isEmpty(satisfies)) { %>
-						<label for="satisfies">Use to satisfy: </label>
-						<div>
-							<% _.each(satisfies, function(elec) { %>
-								<input type="checkbox"
-									<%= elec.checked ? 'checked' : '' %>
-									<%= elec.fixed ? 'disabled' : '' %>
-									name="satisfies"/> <%= elec.label %>
+			<form class="clearfix">
+				<div class="courseinfo-options">
+					<% if(terms.length === 1) { %>
+						<p class="term-fixed">Term: <%= terms[0].label %></p>
+					<% } else { %>
+						<label for="term">Term: </label>
+						<select name="term" id="term">
+							<% _.each(terms, function(term){ %>
+								<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
 							<% }) %>
-						</div>
-						<% } %>
-					</div>
-						<div class="courseinfo-action">
-						<input class="btn btn-large" type="submit" class="btn" value="<%= buttonText %>" />
-					</div>
-				</form>
+						</select>
+					<% } %>
 
-				<hr />
-				<div class="course-description">
-					<h3 class="course-name">English for Engineers</h3>
-					<dl>
-						<dt>Description</dt>
-						<dd>University structure, policies, and procedures, resources available, and skills necessary for success. Introduction to profession of engineering; engineering, design process; communication skills in engineering. Laboratory 3 hours. Graded CR/NC.</dd>
-						<dt>Learning Outcome</dt>
-						<dd>Upon successful completion of the course, each student should be able to understand and apply concepts and skills that will enhance their success and a student and as an engineer.</dd>
-						<dt>Text</dt>
-						<dd>Landis, Raymond B. (2007). Studying Engineering: A Road Map to a Rewarding Career (3rd Ed.) Los Angeles: Discovery Press.</dd>
-						<dt>Sections</dt>
-						<dd></dd>
-						<dt>Equivalencies</dt>
-						<dd></dd>
-						<dt>Pre-requirements</dt>
-						<dd></dd>
-						<dt>Co-requirements</dt>
-						<dd></dd>
-						<dt>Requirements for</dt>
-						<dd></dd>
-					</dl>
-				</div> <!-- .course-description -->
-			</div>
+					<% if(!_.isEmpty(satisfies)) { %>
+					<label for="satisfies">Use to satisfy: </label>
+					<div>
+						<% _.each(satisfies, function(elec) { %>
+							<input type="checkbox"
+								<%= elec.checked ? 'checked' : '' %>
+								<%= elec.fixed ? 'disabled' : '' %>
+								name="satisfies"/> <%= elec.label %>
+						<% }) %>
+					</div>
+					<% } %>
+				</div>
+					<div class="courseinfo-action">
+					<input class="btn btn-large" type="submit" class="btn" value="<%= buttonText %>" />
+				</div>
+			</form>
+
+			<hr />
+			<div class="course-description">
+				<h3 class="course-name">English for Engineers</h3>
+				<dl>
+					<dt>Description</dt>
+					<dd>University structure, policies, and procedures, resources available, and skills necessary for success. Introduction to profession of engineering; engineering, design process; communication skills in engineering. Laboratory 3 hours. Graded CR/NC.</dd>
+					<dt>Learning Outcome</dt>
+					<dd>Upon successful completion of the course, each student should be able to understand and apply concepts and skills that will enhance their success and a student and as an engineer.</dd>
+					<dt>Text</dt>
+					<dd>Landis, Raymond B. (2007). Studying Engineering: A Road Map to a Rewarding Career (3rd Ed.) Los Angeles: Discovery Press.</dd>
+					<dt>Sections</dt>
+					<dd></dd>
+					<dt>Equivalencies</dt>
+					<dd></dd>
+					<dt>Pre-requirements</dt>
+					<dd></dd>
+					<dt>Co-requirements</dt>
+					<dd></dd>
+					<dt>Requirements for</dt>
+					<dd></dd>
+				</dl>
+			</div> <!-- .course-description -->
 		</script>
 	</body>
 </html>
