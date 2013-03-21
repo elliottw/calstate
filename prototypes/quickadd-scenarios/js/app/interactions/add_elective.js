@@ -40,7 +40,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                     course: this.newCourse,
                     terms: [
                         {label: 'Fall 2013', selected: false},
-                        {label: 'Spring 2014', selected: false},
+                        {label: 'Spring 2014', selected: true},
                         {label: 'Fall 2014', selected: false}
                     ],
                     satisfies: [
@@ -70,7 +70,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             views.electiveRequirementView.render();
 
             // add course to semester
-            views.fall13.collection.add(new App.Planner.PlacedCourse({
+            views.spr14.collection.add(new App.Planner.PlacedCourse({
                 course: this.newCourse
             }));
         }

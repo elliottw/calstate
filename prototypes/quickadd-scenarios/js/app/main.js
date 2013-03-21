@@ -1,6 +1,6 @@
 (function(){
     data = {}, views = {};
-    slots = {};
+    slots = {}, placed = {};
 
     function resetBlank() {
         slots.req101 = new App.Sidebar.MandateSlot({
@@ -15,12 +15,12 @@
 
         slots.elec1 = new App.Sidebar.ElectiveSlot({
             label: 'English',
-            course: {code: 'ELEC 101'}
+            course: {}
         }),
 
         slots.elec2 = new App.Sidebar.ElectiveSlot({
             label: 'English',
-            course: {code: 'ELEC 102'}
+            course: {}
         }),
 
         slots.elec3 = new App.Sidebar.ElectiveSlot({
@@ -31,12 +31,51 @@
         slots.elec3.set('interactionController',
             App.Interactions.AddElectiveController);
 
-        slots.elec1.set('interactionController',
-            App.Interactions.ReplaceElectiveController);
-
         slots.req101.set('interactionController',
             App.Interactions.AddMandateController);
 
+        resetRequirementGroups();
+
+        data.plannedCourses = new Backbone.Collection([]);
+
+        resetRegions();
+    }
+
+    function resetTemplate() {
+        slots.elec1 = new App.Sidebar.ElectiveSlot({
+            label: 'English',
+            course: {code: 'ELEC 101'}
+        }),
+
+        slots.elec2 = new App.Sidebar.ElectiveSlot({
+            label: 'English',
+            course: {code: 'ELEC 102'}
+        }),
+
+        resetRequirementGroups();
+
+        placed.course1 = new App.Planner.PlacedCourse({
+            course: {code: 'ELEC 101'}
+        });
+        placed.course2 = new App.Planner.PlacedCourse({
+            course: {code: 'ELEC 102'}
+        });
+
+        data.plannedCourses = new Backbone.Collection([
+            placed.course1,
+            placed.course2
+        ]);
+
+        slots.elec1.set('interactionController',
+            App.Interactions.ReplaceElectiveController);
+
+        placed.course2.set('interactionController',
+            App.Interactions.ReplacePlacedController);
+
+        resetRegions();
+    }
+
+    function resetRequirementGroups() {
         data.mandateGroup = new Backbone.Collection([
             slots.req101,
             slots.req102,
@@ -100,28 +139,6 @@
             new App.Sidebar.MandateSlot({course: {code: 'ME 497B'}}),
             new App.Sidebar.MandateSlot({course: {code: 'ME 497C'}})
         ]);
-
-        placed = {};
-        placed.course1 = new App.Planner.PlacedCourse({
-            course: {code: 'ELEC 101'}
-        });
-        placed.course2 = new App.Planner.PlacedCourse({
-            course: {code: 'ELEC 102'}
-        });
-
-        data.plannedCourses = new Backbone.Collection([
-            placed.course1,
-            placed.course2
-        ]);
-
-        placed.course2.set('interactionController',
-            App.Interactions.ReplacePlacedController);
-
-        resetRegions();
-    }
-
-    function resetTemplate() {
-
     }
 
     function resetRegions() {
