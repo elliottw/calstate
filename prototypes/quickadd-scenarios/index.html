@@ -23,6 +23,34 @@
 		<script src="js/app/main.js"></script>
 	</head>
 	<body>
+		<header class="container">
+			<div class="row">
+				<div class="student-stats span8">
+					<div class="row">
+						<div class="span3 header-label">Credits Taken</div>
+						<div class="span1 header-value">124</div>
+						<div class="span3 header-label">Average Credit Load</div>
+						<div class="span1 header-value">14.4</div>
+					</div>
+					<div class="row">
+						<div class="span3 header-label">Credits Planned</div>
+						<div class="span1 header-value">43</div>
+						<div class="span3 header-label">In Major GPA</div>
+						<div class="span1 header-value">3.43</div>
+					</div>
+					<div class="row">
+						<div class="span3 header-label">Credits for Graduation</div>
+						<div class="span1 header-value">56</div>
+						<div class="span3 header-label">GPA</div>
+						<div class="span1 header-value">3.78</div>
+					</div>
+				</div>
+				<div class="student-info span4">
+					<p class="student-info-name">Firstname Lastname</p>
+					<p class="student-info-major">Mechanical Engineering</p>
+				</div>
+			</div>
+		</header>
 		<div class="container">
 			<div class="row">
 				<div class="span8" id="planner-region">
@@ -36,18 +64,32 @@
 					<div id="semester-region-8" class="semester-region"></div>
 				</div>
 				<div class="span4" id="sidebar-region">
-					<h4>Lower Divison GE Requirements</h4>
-					<div id="inactive-group-1"></div>
-					<h4>Lower Divison Major Requirements</h4>
-					<div id="inactive-group-2"></div>
-					<h4>Upper Division Major Requirements</h4>
-					<div id="active-mandate-group"></div>
-					<h4>Upper Division GE Requirements</h4>
-					<div id="active-elective-group"></div>
-					<h4>University Requirements</h4>
-					<div id="inactive-group-3"></div>
-					<h4>Senior Design Requirements</h4>
-					<div id="inactive-group-4"></div>
+					<div class="requirements-group">
+						<h3 class="requirements-heading">Lower Divison GE Requirements</h3>
+						<div id="active-elective-group"></div>
+					</div>
+					<div class="requirements-group">
+						<h3 class="requirements-heading">Lower Divison Major Requirements</h3>
+						<div id="active-mandate-group"></div>
+					</div>
+					<div class="requirements-group">
+						<h3 class="requirements-heading">Upper Division Major Requirements</h3>
+						<p class="requirements-heading-description">May Substitute a course in any high-level programming language with department approval</p>
+						<div id="inactive-group-2"></div>
+					</div>
+					<div class="requirements-group">
+						<h3 class="requirements-heading">Upper Division GE Requirements</h3>
+						<div id="inactive-group-1"></div>
+					</div>
+					<div class="requirements-group">
+						<h3 class="requirements-heading">University Requirements</h3>
+						<div id="inactive-group-3"></div>
+					</div>
+					<div class="requirements-group">
+						<h3 class="requirements-heading">Senior Design Requirements</h3>
+						<p class="requirements-heading-description">The Senior Design requirement is a 3 course series that must be completed sequentially. The first course, 497A, is only offered during the Fall Quarter.</p>
+						<div id="inactive-group-4"></div>
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -73,7 +115,7 @@
 		</script>
 
 		<script type="text/html" id="tpl-semester">
-			<h4 class="semester-title"><%= label %></h4>
+			<h3 class="semester-heading"><%= label %></h3>
 			<ul class="placed-course-list"></ul>
 		</script>
 

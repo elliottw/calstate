@@ -18,7 +18,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 html: true,
                 content: ' ',
                 placement: 'left',
-                title: 'All Block E Courses'
+                title: "All 'Hist' Courses"
             });
             this.sourceEl.popover('show');
             this.popoverRegion = new Marionette.Region({

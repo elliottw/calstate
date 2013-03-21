@@ -58,9 +58,9 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
         getItemView: function(model) {
             if (model.get('type') === 'mandate') {
                 className = model.get('satisfied') ?
-                    'requirement-satisfied' : 'requirement-unsatisfied';
+                    'mandate-satisfied' : 'mandate-unsatisfied';
                 return Sidebar.MandateSlotView.extend({
-                    className: className,
+                    className: className + " mandate-slot requirement-slot",
                     id: model.cid
                 });
             }
@@ -68,7 +68,7 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
                 className = !_.isEmpty(model.get('course')) ?
                     'elective-satisfied' : 'elective-unsatisfied';
                 return Sidebar.ElectiveSlotView.extend({
-                    className: className,
+                    className: className + " elective-slot requirement-slot",
                     id: model.cid
                 });
             }

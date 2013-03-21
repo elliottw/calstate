@@ -14,7 +14,7 @@ body {
 	background-color: #aaa;
 }
 
-.sidebar-region ul {
+#sidebar-region ul {
 	list-style: none;
 	margin-left: 0;
 }
@@ -31,8 +31,6 @@ body {
 
 .semester {
 	border: 1px solid;
-	padding: 1em;
-	height: 100px;
 	margin-bottom: 20px;
 	background-color: #eee;
 	overflow: hidden;
@@ -44,38 +42,38 @@ body {
 }
 
 .semester-heading {
-	font-size: 14px;
-	margin: 0.25em 0 0 0.5em;
+	font-size: 16px;
+	line-height: 16px;
+	margin: 0.25em 0 1em 0.25em;
 	display: inline-block;
 }
 
-.requirement-satisfied,
-.requirement-unsatisfied,
-.elective-satisfied,
-.elective-unsatisfied,
+
+
+.requirement-slot,
 .placed-course-list > div,
 tr {
 	cursor: pointer;
 }
 
-.requirement-satisfied,
-.requirement-unsatisfied,
-.elective-satisfied,
-.elective-unsatisfied {
+.requirement-slot {
     border: 1px solid;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 1px;
 }
 
-.requirement-satisfied,
+.mandate-satisfied,
 .elective-satisfied {
     background-color: #999;
 }
 
-.requirement-satisfied:hover,
+.mandate-satisfied:hover,
 .elective-satisfied:hover {
     background-color: #aaa;
 }
 
-.requirement-unsatisfied {
+.mandate-unsatisfied {
     background-color: #ddd;
 }
 
@@ -83,7 +81,7 @@ tr {
 	color: #888;
 }
 
-.requirement-unsatisfied:hover {
+.mandate-unsatisfied:hover {
     background-color: #eee;
 }
 
@@ -119,7 +117,7 @@ tr {
 }
 
 .requirements-group {
-	padding-bottom: 16px;
+	padding: 0.5em 0;
 	border-bottom: 1px solid;
 }
 
@@ -127,7 +125,48 @@ tr {
 	border-bottom: 0;
 }
 
-.requirement-group-heading {
-	font-size: 18px;
+.requirements-heading {
+	font-size: 16px;
 	margin: 6px 0;
+	line-height: 18px;
+}
+
+.requirements-heading-description {
+	font-size: 13px;
+}
+
+.student-stats {
+	text-transform: uppercase;
+}
+
+.student-stats .row {
+	margin-bottom: 0.5em;
+}
+
+.student-info-name {
+	font-size: 20px;
+}
+
+.student-info-major {
+	font-size: 16px;
+	color: #999;
+}
+
+.student-info {
+	font-weight: bold;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+.header-label {
+	text-align: right;
+	color: #666;
+	font-weight: bold;
+}
+
+.header-value {
+	background-color: #000;
+	color: #fff;
+	font-weight: bold;
+	padding-left: 2px;
 }

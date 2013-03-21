@@ -14,18 +14,18 @@
     });
 
     slots.elec101 = new App.Sidebar.ElectiveSlot({
-        label: 'Block E',
+        label: 'English',
         course: {code: 'ELEC 101'},
         interactionController: App.Interactions.ReplaceElectiveController
     }),
 
     slots.elec102 = new App.Sidebar.ElectiveSlot({
-        label: 'Block E',
+        label: 'English',
         course: {code: 'ELEC 102'}
     }),
 
     slots.elecFreeSlot = new App.Sidebar.ElectiveSlot({
-        label: 'Block E',
+        label: 'Hist',
         course: {},
         interactionController: App.Interactions.AddElectiveController
     }),
@@ -44,20 +44,23 @@
         new App.Sidebar.MandateSlot({course: {code: 'CE/ME 320'}}),
         new App.Sidebar.MandateSlot({course: {code: 'ME 318'}})
     ]);
+
     data.electiveGroup = new Backbone.Collection([
+        new App.Sidebar.MandateSlot({course: {code: 'MATH 104'}}),
+        new App.Sidebar.MandateSlot({course: {code: 'MATH 105'}}),
+        new App.Sidebar.MandateSlot({course: {code: 'ENGL 102'}}),
         slots.elec101,
         slots.elec102,
+        new App.Sidebar.MandateSlot({course: {code: 'COMM 150'}}),
+        new App.Sidebar.MandateSlot({course: {code: 'POLS 150'}}),
+        new App.Sidebar.ElectiveSlot({label: 'Phil', course: {}}),
         slots.elecFreeSlot
     ]);
 
     data.inactiveGroup1 = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({course: {code: 'ENGL 101'}}),
-        new App.Sidebar.ElectiveSlot({label: 'English', course: {}}),
-        new App.Sidebar.ElectiveSlot({label: 'English', course: {}}),
-        new App.Sidebar.MandateSlot({course: {code: 'COMM 150'}}),
-        new App.Sidebar.MandateSlot({course: {code: 'POLS 150'}}),
-        new App.Sidebar.ElectiveSlot({label: 'Hist', course: {}}),
-        new App.Sidebar.ElectiveSlot({label: 'Phil', course: {}})
+        new App.Sidebar.ElectiveSlot({label: 'Block C', course: {}}),
+        new App.Sidebar.ElectiveSlot({label: 'Block E', course: {}}),
+        new App.Sidebar.ElectiveSlot({label: 'Block E', course: {}}),
     ]);
 
     data.inactiveGroup2 = new Backbone.Collection([
@@ -81,7 +84,7 @@
     ]);
 
     data.inactiveGroup3 = new Backbone.Collection([
-        new App.Sidebar.MandateSlot({course: {code: 'ENGL 102'}}),
+        new App.Sidebar.MandateSlot({course: {code: 'ENGL 101'}}),
         new App.Sidebar.MandateSlot({course: {code: 'WPE'}})
     ]);
 
