@@ -65,12 +65,12 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             delete this.popoverRegion;
 
             // add course to sidebar
-            slots.elecSlot3.set('course', this.newCourse);
-            slots.elecSlot3.unset('interactionController');
-            views.req1.render();
+            slots.elecFreeSlot.set('course', this.newCourse);
+            slots.elecFreeSlot.unset('interactionController');
+            views.electiveRequirementView.render();
 
             // add course to semester
-            views.fall.collection.add(new App.Planner.PlacedCourse({
+            views.fall13.collection.add(new App.Planner.PlacedCourse({
                 course: this.newCourse
             }));
         }

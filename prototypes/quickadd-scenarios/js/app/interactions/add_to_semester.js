@@ -35,7 +35,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         showInfo: function() {
             var view = new App.Catalog.CourseInfoView({
                 model: new Backbone.Model({
-                    course: slots.reqSlot2.get('course'),
+                    course: slots.req102.get('course'),
                     terms: [
                         {label: 'Fall 2013', selected: true}
                     ],
@@ -45,7 +45,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 })
             });
 
-            $('.popover-title').text(slots.reqSlot2.get('course').code);
+            $('.popover-title').text(slots.req102.get('course').code);
             this.popoverRegion.show(view);
 
             var that = this;
@@ -60,14 +60,14 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             delete this.popoverRegion;
 
             // add course to sidebar
-            slots.reqSlot2.set('satisfied', true);
-            views.req1.render();
+            slots.req102.set('satisfied', true);
+            views.mandateRequirementView.render();
 
             // add course to semester
-            views.fall.collection.add(new App.Planner.PlacedCourse({
-                course: slots.reqSlot2.get('course')
+            views.fall13.collection.add(new App.Planner.PlacedCourse({
+                course: slots.req102.get('course')
             }));
-            views.fall.undelegateEvents();
+            views.fall13.undelegateEvents();
         }
     });
 });

@@ -66,13 +66,13 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
 
             // add course to sidebar
 
-            slots.elecSlot1.set('course', this.newCourse);
-            slots.elecSlot1.unset('interactionController');
-            views.req1.render();
+            slots.elec101.set('course', this.newCourse);
+            slots.elec101.unset('interactionController');
+            views.electiveRequirementView.render();
 
             // add course to semester
             placed.course1.set('course', this.newCourse);
-            views.fall.render();
+            views.fall13.render();
         }
     });
 });

@@ -52,7 +52,7 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
 
     // expects collection of MandateSlot/ElectiveSlot models
     var className;
-    Sidebar.RequirementGroupView = Marionette.CollectionView.extend({
+    Sidebar.ActiveRequirementGroupView = Marionette.CollectionView.extend({
         tagName: 'ul',
         template: '#tpl-requirement-group',
         getItemView: function(model) {
@@ -88,6 +88,7 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
     Planner.SemesterView = Marionette.CompositeView.extend({
         template: '#tpl-semester',
         itemView: Planner.PlacedCourseView,
+        className: 'semester',
         itemViewContainer: 'ul',
         itemViewOptions: function(model) {
             return {
@@ -95,14 +96,20 @@ App.module("Planner", function(Planner, App, Backbone, Marionette, $, _){
                 tagName: 'li'
             };
         },
+        initialize: function(options) {
+            this.hasInteraction = (options && options.hasInteraction) || false;
+        },
         events: {
             click: 'onClick'
         },
         onClick: function(e) {
-            new App.Interactions.AddToSemesterController({
-                sourceEl: this.$el
-            });
-            e.preventDefault();
+            if (this.hasInteraction) {
+                new App.Interactions.AddToSemesterController({
+                    sourceEl: this.$el
+                });
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            }
         }
     });
 });

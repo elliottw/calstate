@@ -5,42 +5,48 @@ body {
 	padding-bottom: 30px;
 }
 
-#planner-region > div {
-	border: 1px solid;
-	padding: 1em;
-	background-color: #eee;
-}
-
-#planner-region > div:hover {
-	background-color: #fff;
-}
-
-#planner-region li {
+.semester-region li {
 	border: 1px solid;
 	background-color: #999;
 }
 
-#planner-region li:hover {
+.semester-region li:hover {
 	background-color: #aaa;
 }
 
-#sidebar-region {
-	margin-top: 200px;
-}
-
-#sidebar-region ul {
+.sidebar-region ul {
 	list-style: none;
 	margin-left: 0;
 }
 
 #sidebar-region li,
-#planner-region li {
+.semester-region li {
 	list-style: none;
 	display: inline-block;
 	min-width: 85px;
 	text-align: center;
 	margin: 6px;
 	padding: 2px;
+}
+
+.semester {
+	border: 1px solid;
+	padding: 1em;
+	height: 100px;
+	margin-bottom: 20px;
+	background-color: #eee;
+	overflow: hidden;
+	height: 150px;
+}
+
+.semester:hover {
+	background-color: #fff;
+}
+
+.semester-heading {
+	font-size: 14px;
+	margin: 0.25em 0 0 0.5em;
+	display: inline-block;
 }
 
 .requirement-satisfied,
@@ -81,7 +87,6 @@ tr {
     background-color: #eee;
 }
 
-
 .popover-title {
 	padding: 16px;
 	font-size: 1.5em;
@@ -90,7 +95,7 @@ tr {
 
 .popover-content {
 	width: 460px;
-	height: 400px;
+	height: 300px;
 	overflow: hidden;
 	padding: 8px;
 }
@@ -125,106 +130,4 @@ tr {
 .requirement-group-heading {
 	font-size: 18px;
 	margin: 6px 0;
-}
-
-.planner-region {
-	width: 100%;
-}
-
-.semester {
-	height: 100px;
-	margin-bottom: 20px;
-	background-color: #ddd;
-	border: 1px solid;
-	overflow: hidden;
-}
-
-.semester-heading {
-	font-size: 14px;
-	margin: 0.25em 0 0 0.5em;
-	display: inline-block;
-}
-
-.course-marker {
-	text-align: center;
-	display: inline-block;
-	margin: 10px;
-	min-width: 90px;
-	border: 1px solid;
-	padding: 5px;
-	cursor: move;
-	background-color: #bbb;
-}
-
-.course-slot {
-	cursor: pointer;
-	text-align: center;
-	display: inline-block;
-	margin: 5px;
-	min-width: 90px;
-	border: 1px solid;
-	padding: 5px;
-}
-
-.requirement-slot-list {
-	margin: 0;
-}
-
-.drag-placeholder {
-	opacity: .33;
-}
-
-.prereq {
-	background-color: #c99;
-}
-
-.course-slot-claimed {
-	cursor: auto;
-	background-color: #bbb;
-	opacity: .33;
-}
-
-.course-slot-open {
-	cursor: pointer;
-	background-color: #fff;
-}
-
-.semester-choice button {
-	display: block;
-	width: 125px;
-	margin: 4px 0;
-}
-
-
-label[for="semester-templates"] {
-	display: inline-block;
-}
-
-.catalog select {
-	width: 100%;
-	margin-top: 0.25em;
-	margin-bottom: 1em;
-}
-
-.course-description {
-	border: 1px solid;
-}
-
-.course-description > .course {
-	float: left;
-	margin: 8px;
-}
-
-.course-name {
-	font-size: 18px;
-	line-height: 1.25em;
-	margin: 8px;
-}
-
-.course-description dl {
-	margin: 20px;
-}
-
-.course-description dd {
-	margin-bottom: 1em;
 }

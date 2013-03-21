@@ -9,7 +9,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         showInfo: function() {
             var view = new App.Catalog.CourseInfoView({
                 model: new Backbone.Model({
-                    course: slots.reqSlot1.get('course'),
+                    course: slots.req101.get('course'),
                     terms: [
                         {label: 'Fall 2013', selected: false},
                         {label: 'Spring 2014', selected: false},
@@ -46,13 +46,13 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             delete this.popoverRegion;
 
             // add course to sidebar
-            slots.reqSlot1.set('satisfied', true);
-            slots.reqSlot1.unset('interactionController');
-            views.req1.render();
+            slots.req101.set('satisfied', true);
+            slots.req101.unset('interactionController');
+            views.mandateRequirementView.render();
 
             // add course to semester
-            views.fall.collection.add(new App.Planner.PlacedCourse({
-                course: slots.reqSlot1.get('course')
+            views.fall13.collection.add(new App.Planner.PlacedCourse({
+                course: slots.req101.get('course')
             }));
         }
     });

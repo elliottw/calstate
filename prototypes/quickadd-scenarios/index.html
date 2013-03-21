@@ -25,10 +25,29 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="span8" id="planner-region"></div>
+				<div class="span8" id="planner-region">
+					<div id="semester-region-1" class="semester-region"></div>
+					<div id="semester-region-2" class="semester-region"></div>
+					<div id="semester-region-3" class="semester-region"></div>
+					<div id="semester-region-4" class="semester-region"></div>
+					<div id="semester-region-5" class="semester-region"></div>
+					<div id="semester-region-6" class="semester-region"></div>
+					<div id="semester-region-7" class="semester-region"></div>
+					<div id="semester-region-8" class="semester-region"></div>
+				</div>
 				<div class="span4" id="sidebar-region">
-					<h4>Upper Division Requirements</h4>
-					<div id="requirement-group-1"></div>
+					<h4>Lower Divison GE Requirements</h4>
+					<div id="inactive-group-1"></div>
+					<h4>Lower Divison Major Requirements</h4>
+					<div id="inactive-group-2"></div>
+					<h4>Upper Division Major Requirements</h4>
+					<div id="active-mandate-group"></div>
+					<h4>Upper Division GE Requirements</h4>
+					<div id="active-elective-group"></div>
+					<h4>University Requirements</h4>
+					<div id="inactive-group-3"></div>
+					<h4>Senior Design Requirements</h4>
+					<div id="inactive-group-4"></div>
 				</div>
 			</div>
 			<div class="row">
@@ -154,18 +173,16 @@
 
 		<script type="text/html" id="tpl-course-info">
 			<div class="popover-content">
-				<p class="course-code"><%= course.name %></p>
-				<form>
-					<div>
+				<form class="clearfix">
+					<div class="courseinfo-options">
 						<label for="term">Term: </label>
 						<select name="term" id="term">
 							<% _.each(terms, function(term){ %>
 								<option <%= term.selected ? 'selected' : ''%>><%= term.label %></option>
 							<% }) %>
 						</select>
-					</div>
-					<% if(!_.isEmpty(satisfies)) { %>
-					<div>
+
+						<% if(!_.isEmpty(satisfies)) { %>
 						<label for="satisfies">Use to satisfy: </label>
 						<div>
 							<% _.each(satisfies, function(elec) { %>
@@ -175,12 +192,10 @@
 									name="satisfies"/> <%= elec.label %>
 							<% }) %>
 						</div>
+						<% } %>
 					</div>
-					<% } %>
-					<div>
-						<div>
-							<input class="btn btn-large" type="submit" class="btn" value="<%= buttonText %>" />
-						</div>
+						<div class="courseinfo-action">
+						<input class="btn btn-large" type="submit" class="btn" value="<%= buttonText %>" />
 					</div>
 				</form>
 
