@@ -32,5 +32,17 @@
             tbl.search.casesensitive = false;
             tbl.rendertable();
         };
+
+        Core.placeCourse = function(slotModel, semesterView) {
+            // add course to sidebar
+            slotModel.set('satisfied', true);
+            views.mandateRequirementView.render();
+
+            // add course to semester
+            semesterView.collection.add(new App.Planner.PlacedCourse({
+                course: slotModel.get('course')
+            }));
+            semesterView.render();
+        };
     });
 })();

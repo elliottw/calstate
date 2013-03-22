@@ -66,6 +66,8 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
 
+            // don't use Core.placeCourse here so we can add a new course
+
             // add course to sidebar
             slots.elec3.set('course', this.newCourse);
             slots.elec3.unset('interactionController');
