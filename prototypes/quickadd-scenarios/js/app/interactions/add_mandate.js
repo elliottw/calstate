@@ -28,6 +28,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 title: 'REQ 101'
             });
             this.sourceEl.popover('show');
+
             this.popoverRegion = new Marionette.Region({
                 el: '.popover-content'
             });
@@ -35,6 +36,20 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.popoverRegion.show(view);
 
             var that = this;
+
+            // get body click events to close popover
+            $('.popover').on('click', function(e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            });
+            $(document).on('click', function(e) {
+                that.popoverRegion.close();
+                that.sourceEl.popover('destroy');
+                delete that.popoverRegion;
+                $(document).off('click');
+            });
+
+
             view.on('courseSelected', function() {
                 that.forward();
             });
@@ -44,6 +59,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.popoverRegion.close();
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
+            $(document).off('click');
 
             // add course to sidebar
             slots.req101.set('satisfied', true);

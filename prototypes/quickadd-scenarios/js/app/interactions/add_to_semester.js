@@ -18,15 +18,29 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 title: 'Spring 2014 Courses'
             });
             this.sourceEl.popover('show');
+
             this.popoverRegion = new Marionette.Region({
                 el: '.popover-content'
             });
 
             this.popoverRegion.show(view);
+
+            var that = this;
+            // get body click events to close popover
+            $('.popover').on('click', function(e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            });
+            $(document).on('click', function(e) {
+                that.popoverRegion.close();
+                that.sourceEl.popover('destroy');
+                delete that.popoverRegion;
+                $(document).off('click');
+            });
+
             App.Core.activateFilterTable('tbl-catalog', 'tbl-catalog-filter');
             $('#tbl-catalog-filter').focus();
 
-            var that = this;
             view.on('rowSelected', function() {
                 that.showInfo();
             });
@@ -57,6 +71,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.popoverRegion.close();
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
+            $(document).off('click');
 
             // add course to sidebar
             slots.req102.set('satisfied', true);

@@ -26,10 +26,24 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             });
 
             this.popoverRegion.show(view);
+
+            var that = this;
+
+            // get body click events to close popover
+            $('.popover').on('click', function(e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            });
+            $(document).on('click', function(e) {
+                that.popoverRegion.close();
+                that.sourceEl.popover('destroy');
+                delete that.popoverRegion;
+                $(document).off('click');
+            });
+
             App.Core.activateFilterTable('tbl-catalog', 'tbl-catalog-filter');
             $('#tbl-catalog-filter').focus();
 
-            var that = this;
             view.on('rowSelected', function() {
                 that.showInfo();
             });
@@ -65,6 +79,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.popoverRegion.close();
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
+            $(document).off('click');
 
             // don't use Core.placeCourse here so we can add a new course
 
