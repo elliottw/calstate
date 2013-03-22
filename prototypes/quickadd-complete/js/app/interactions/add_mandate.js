@@ -42,11 +42,11 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 e.stopImmediatePropagation();
                 e.preventDefault();
             });
-            $(document).on('click', function(e) {
+            $('header').on('click', function(e) {
                 that.popoverRegion.close();
                 that.sourceEl.popover('destroy');
                 delete that.popoverRegion;
-                $(document).off('click');
+                $('header').off('click');
             });
 
 
@@ -59,7 +59,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.popoverRegion.close();
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
-            $(document).off('click');
+            $('header').off('click');
 
             // add course to sidebar
             slots.req101.set('satisfied', true);

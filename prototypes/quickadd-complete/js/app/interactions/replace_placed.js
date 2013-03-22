@@ -33,11 +33,11 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
                 e.stopImmediatePropagation();
                 e.preventDefault();
             });
-            $(document).on('click', function(e) {
+            $('header').on('click', function(e) {
                 that.popoverRegion.close();
                 that.sourceEl.popover('destroy');
                 delete that.popoverRegion;
-                $(document).off('click');
+                $('header').off('click');
             });
 
             App.Core.activateFilterTable('tbl-catalog', 'tbl-catalog-filter');
@@ -76,7 +76,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.popoverRegion.close();
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
-            $(document).off('click');
+            $('header').off('click');
 
             // don't use Core.placeCourse here so we can replace course content in place
 

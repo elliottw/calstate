@@ -211,4 +211,6 @@ td {
 
 .courseinfo-action {
 	float: right;
+	margin-top: 16px;
+	margin-right: 8px;
 }
