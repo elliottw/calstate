@@ -33,10 +33,10 @@
             tbl.rendertable();
         };
 
-        Core.placeCourse = function(slotModel, semesterView) {
+        Core.placeCourse = function(slotModel, semesterView, requirementGroupView) {
             // add course to sidebar
             slotModel.set('satisfied', true);
-            views.mandateRequirementView.render();
+            requirementGroupView.render();
 
             // add course to semester
             semesterView.collection.add(new App.Planner.PlacedCourse({
@@ -44,5 +44,16 @@
             }));
             semesterView.render();
         };
+
+        Core.findSlot = function(slotCollection, courseCode) {
+            var slots = slotCollection.models;
+            for (var i = slots.length - 1; i >= 0; i--) {
+                if (slots[i].get('course').code === courseCode) {
+                    return slots[i];
+                }
+            }
+            return null;
+        };
+
     });
 })();

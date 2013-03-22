@@ -73,6 +73,26 @@
             App.Interactions.ReplacePlacedController);
 
         resetRegions();
+
+        var place = function(code, mandateRequirementView, semesterView) {
+            var slot = App.Core.findSlot(mandateRequirementView.collection, code);
+            if (slot) {
+                App.Core.placeCourse(slot, semesterView, mandateRequirementView);
+            }
+        };
+
+        place('ENGR 300', views.mandateRequirementView, views.fall13);
+        place('CE/ME 303', views.mandateRequirementView, views.fall13);
+
+        place('ENGR 301', views.mandateRequirementView, views.spr14);
+        place('MATH 104', views.electiveRequirementView, views.spr14);
+
+        place('CE/ME 313', views.mandateRequirementView, views.fall14);
+        place('MATH 105', views.electiveRequirementView, views.fall14);
+        place('POLS 150', views.electiveRequirementView, views.fall14);
+
+        place('ENGR 150', views.inactiveRequirementView2, views.spr15);
+        place('CE/ME 201', views.inactiveRequirementView2, views.spr15);
     }
 
     function resetRequirementGroups() {
@@ -207,7 +227,7 @@
             model: new Backbone.Model({label: 'Spring 2016'}),
             collection: new Backbone.Collection()
         });
-        App.semesterRegion6.show(views.spr15);
+        App.semesterRegion6.show(views.spr16);
 
         views.fall16 = new App.Planner.SemesterView({
             model: new Backbone.Model({label: 'Fall 2016'}),

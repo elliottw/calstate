@@ -58,7 +58,15 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
             this.sourceEl.popover('destroy');
             delete this.popoverRegion;
 
-            App.Core.placeCourse(slots.req102, views.spr14);
+            // add course to sidebar
+            slots.req102.set('satisfied', true);
+            views.mandateRequirementView.render();
+
+            // add course to semester
+            views.spr14.collection.add(new App.Planner.PlacedCourse({
+                course: slots.req102.get('course')
+            }));
+
             views.spr14.undelegateEvents();
         }
     });
