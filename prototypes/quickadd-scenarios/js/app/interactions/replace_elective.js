@@ -2,7 +2,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
     Interactions.ReplaceElectiveController = Marionette.Controller.extend({
         initialize: function(options) {
             _.bindAll(this, 'forward');
-            this.newCourse = {code: 'ELEC 104'};
+            this.newCourse = {code: 'ENGL 107'};
             this.sourceEl = options.sourceEl;
             this.showCatalog();
         },
@@ -10,7 +10,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
         showCatalog: function() {
             var view = new App.Catalog.QuickCatalogView({
                 model: new Backbone.Model({
-                    filter: 'satisfies'
+                    filter: 'satisfiesE'
                 })
             });
 

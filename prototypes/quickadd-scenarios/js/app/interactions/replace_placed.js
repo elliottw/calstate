@@ -2,7 +2,7 @@ App.module("Interactions", function(Interactions, App, Backbone, Marionette, $, 
     Interactions.ReplacePlacedController = Marionette.Controller.extend({
         initialize: function(options) {
             _.bindAll(this, 'forward');
-            this.newCourse = {code: 'ELEC 105'};
+            this.newCourse = {code: 'ENGL 106'};
             this.sourceEl = options.sourceEl;
             this.showCatalog();
         },

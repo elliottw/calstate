@@ -93,6 +93,10 @@ td {
     background-color: #eee;
 }
 
+.tbl-catalog-filter {
+	position: fixed;
+}
+
 .popover-title {
 	padding: 16px;
 	font-size: 1.5em;
@@ -101,9 +105,13 @@ td {
 
 .popover-content {
 	width: 460px;
-	height: 300px;
+	height: 250px;
 	overflow: auto;
 	padding: 1em;
+}
+
+.term-fixed {
+	font-size: 1.25em;
 }
 
 .course-code {
@@ -195,4 +203,12 @@ td {
 	color: #fff;
 	font-weight: bold;
 	padding-left: 2px;
+}
+
+.courseinfo-options {
+	float: left;
+}
+
+.courseinfo-action {
+	float: right;
 }

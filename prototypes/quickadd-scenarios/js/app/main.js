@@ -44,21 +44,21 @@
     function resetTemplate() {
         slots.elec1 = new App.Sidebar.ElectiveSlot({
             label: 'English',
-            course: {code: 'ELEC 101'}
+            course: {code: 'ENGL 103'}
         }),
 
         slots.elec2 = new App.Sidebar.ElectiveSlot({
             label: 'English',
-            course: {code: 'ELEC 102'}
+            course: {code: 'ENGL 104'}
         }),
 
         resetRequirementGroups();
 
         placed.course1 = new App.Planner.PlacedCourse({
-            course: {code: 'ELEC 101'}
+            course: {code: 'ENGL 103'}
         });
         placed.course2 = new App.Planner.PlacedCourse({
-            course: {code: 'ELEC 102'}
+            course: {code: 'ENGL 104'}
         });
 
         data.plannedCourses = new Backbone.Collection([

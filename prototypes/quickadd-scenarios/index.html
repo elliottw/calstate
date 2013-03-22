@@ -130,7 +130,7 @@
 			<ul class="placed-course-list"></ul>
 		</script>
 
-		<script type="text/html" id="tpl-quick-catalog-blocke">
+		<script type="text/html" id="tpl-quick-catalog-engl">
 			<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
 			<div class="filtered-results">
 				<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
@@ -144,32 +144,32 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>REQ 101</td>
+							<td>ENGL 101</td>
 							<td>Intro to Something</td>
 							<td>Fall</td>
 							<td>2013</td>
 						</tr>
 						<tr>
-							<td>REQ 102</td>
+							<td>ENGL 102</td>
 							<td>Intermediate Something</td>
 							<td>Spring</td>
 							<td>2014</td>
 						</tr>
 						<tr>
-							<td>ELEC 103</td>
+							<td>ENGL 103</td>
 							<td>Basketweaving I</td>
 							<td>Fall</td>
 							<td>2014</td>
 						</tr>
 						<tr>
-							<td>ELEC 104</td>
-							<td>Basketweaving II</td>
+							<td>ENGL 106</td>
+							<td>Conjunctions I</td>
 							<td>Fall</td>
 							<td>2013</td>
 						</tr>
 						<tr>
-							<td>ELEC 105</td>
-							<td>Advanced Basketweaving Seminar</td>
+							<td>ENGL 107</td>
+							<td>19th Century Literature</td>
 							<td>Fall</td>
 							<td>2013</td>
 						</tr>
@@ -178,7 +178,56 @@
 			</div>
 		</script>
 
-		<script type="text/html" id="tpl-quick-catalog-fall13">
+
+		<script type="text/html" id="tpl-quick-catalog-hist">
+			<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
+			<div class="filtered-results">
+				<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+							<th>Semester</th>
+							<th>Year</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>HIST 101</td>
+							<td>Intro to Something</td>
+							<td>Fall</td>
+							<td>2013</td>
+						</tr>
+						<tr>
+							<td>HIST 102</td>
+							<td>Intermediate Something</td>
+							<td>Spring</td>
+							<td>2014</td>
+						</tr>
+						<tr>
+							<td>HIST 103</td>
+							<td>Basketweaving I</td>
+							<td>Fall</td>
+							<td>2014</td>
+						</tr>
+						<tr>
+							<td>HIST 106</td>
+							<td>Conjunctions I</td>
+							<td>Fall</td>
+							<td>2013</td>
+						</tr>
+						<tr>
+							<td>HIST 107</td>
+							<td>19th Century Literature</td>
+							<td>Fall</td>
+							<td>2013</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</script>
+
+		<script type="text/html" id="tpl-quick-catalog-semester">
 			<input id="tbl-catalog-filter" class="input-filter search-query" placeholder="Enter text to filter"/>
 			<div class="filtered-results">
 				<table id="tbl-catalog" class="table table-condensed table-striped table-hover">
@@ -191,30 +240,81 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>REQ 101</td>
-							<td>Intro to Something</td>
-							<td>Mandate</td>
-						</tr>
-						<tr>
 							<td>REQ 102</td>
 							<td>Intermediate Something</td>
 							<td>Mandate</td>
 						</tr>
 						<tr>
-							<td>ELEC 103</td>
-							<td>Basketweaving I</td>
-							<td>Block E</td>
+							<td>HIST 102</td>
+							<td>History of China</td>
+							<td>History</td>
 						</tr>
 						<tr>
-							<td>ELEC 104</td>
+							<td>ENGL 106</td>
+							<td>20th Century Literature</td>
+							<td>English</td>
+						</tr>
+						<tr>
+							<td>COMM 150</td>
+							<td>Lorem Ipsum</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>ENGR 300</td>
+							<td>Basketweaving I</td>
+							<td>Block E, Block F</td>
+						</tr>
+						<tr>
+							<td>ENGR 301</td>
 							<td>Basketweaving II</td>
 							<td>Block E</td>
 						</tr>
 						<tr>
-							<td>ELEC 105</td>
+							<td>ENGR 150</td>
 							<td>Advanced Basketweaving Seminar</td>
-							<td>Block E, Block F</td>
+							<td></td>
 						</tr>
+						<tr>
+							<td>ME 103</td>
+							<td>Linear Algebra</td>
+							<td>Block F</td>
+						</tr>
+						<tr>
+							<td>CE/ME 201</td>
+							<td>Intro to Programming</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>CHEM 101</td>
+							<td>Organic Chemistry</td>
+							<td>Chem</td>
+						</tr>
+						<tr>
+							<td>MATH 208</td>
+							<td>Calculus I</td>
+							<td>Math 1</td>
+						</tr>
+						<tr>
+							<td>MATH 209</td>
+							<td>Calculus II</td>
+							<td>Math 2</td>
+						</tr>
+						<tr>
+							<td>MATH 215</td>
+							<td>Calculus III</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>PHYS 211</td>
+							<td>Gravity And You</td>
+							<td>Mandate</td>
+						</tr>
+						<tr>
+							<td>MATH 215</td>
+							<td>Calculus III</td>
+							<td></td>
+						</tr>
+
 					</tbody>
 				</table>
 			</div>
@@ -224,7 +324,7 @@
 			<form class="clearfix">
 				<div class="courseinfo-options">
 					<% if(terms.length === 1) { %>
-						<p class="term-fixed">Term: <%= terms[0].label %></p>
+						<p class="term-fixed">Term: <strong><%= terms[0].label %></strong></p>
 					<% } else { %>
 						<label for="term">Term: </label>
 						<select name="term" id="term">
@@ -246,7 +346,7 @@
 					</div>
 					<% } %>
 				</div>
-					<div class="courseinfo-action">
+				<div class="courseinfo-action">
 					<input class="btn btn-large" type="submit" class="btn" value="<%= buttonText %>" />
 				</div>
 			</form>

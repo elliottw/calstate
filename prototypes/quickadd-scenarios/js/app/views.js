@@ -16,7 +16,18 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
     Sidebar.MandateSlotView = App.Core.InteractionItemView.extend({
         // expects MandateSlot model
         template: '#tpl-mandate-slot',
-        tagName: 'li'
+        tagName: 'li',
+        initialize: function() {
+            var that = this;
+            this.model.on('change:satisfied', function(model, isSatisfied) {
+                if (isSatisfied) {
+                    that.$el.addClass('mandate-satisfied', 1000);
+                }
+                else {
+                    that.$el.removeClass('mandate-satisfied');
+                }
+            });
+        }
     });
 
     // expects ElectiveSlot model
@@ -32,8 +43,7 @@ App.module("Sidebar", function(Sidebar, App, Backbone, Marionette, $, _){
         template: '#tpl-requirement-group',
         getItemView: function(model) {
             if (model.get('type') === 'mandate') {
-                className = model.get('satisfied') ?
-                    'mandate-satisfied' : 'mandate-unsatisfied';
+                className = model.get('satisfied') ? 'mandate-satisfied' : '';
                 return Sidebar.MandateSlotView.extend({
                     className: className + " mandate-slot requirement-slot",
                     id: model.cid
@@ -93,11 +103,14 @@ App.module("Catalog", function(Catalog, App, Backbone, Marionette, $, _){
     // expects model with {course: code}
     Catalog.QuickCatalogView = Marionette.ItemView.extend({
         template: function(serialized_model) {
-            if (serialized_model.filter === 'satisfies') {
-                return _.template($('#tpl-quick-catalog-blocke').html(), serialized_model);
+            if (serialized_model.filter === 'satisfiesE') {
+                return _.template($('#tpl-quick-catalog-engl').html(), serialized_model);
+            }
+            else if (serialized_model.filter === 'satisfiesH') {
+                return _.template($('#tpl-quick-catalog-hist').html(), serialized_model);
             }
             else {
-                return _.template($('#tpl-quick-catalog-fall13').html(), serialized_model);
+                return _.template($('#tpl-quick-catalog-semester').html(), serialized_model);
             }
         },
 
